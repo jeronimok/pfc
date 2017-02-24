@@ -8,8 +8,8 @@ return [
 	'register_button' 		=> 'Registrarse',
 	'remember_me'     		=> 'Recordarme',
 	'forgot_password' 		=> '¿Olvidó su contraseña?',
-	'reset_password'  	 	=> 'Reestablecer contraseña',
-	'send_password_link'	=> 'Enviar link para reestablecer contraseña',
+	'reset_password'  	 	=> 'Restablecer contraseña',
+	'send_password_link'	=> 'Enviar link para restablecer contraseña',
 	'failed'				=> 'Estos datos no coinciden con nuestros registros'
 
 

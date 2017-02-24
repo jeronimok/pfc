@@ -29,4 +29,25 @@ class PasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    /**
+     * Get the post pass reset path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        return route('home');
+    }
+
+    /**
+     * Get the e-mail subject line to be used for the reset link email.
+     *
+     * @return string
+     */
+    protected function getEmailSubject()
+    {
+        return trans('passwords.email_subjet');
+    }
+
 }
