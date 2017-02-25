@@ -9,6 +9,12 @@
 				<div class="panel-body">
 					@include('partials/errors')
 
+					@if(Session::has('alert'))
+						<p class="alert alert-success">
+							{{ Session::get('alert') }}
+						</p>
+					@endif
+
 					<form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 

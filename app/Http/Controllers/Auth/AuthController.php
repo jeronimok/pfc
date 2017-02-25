@@ -7,6 +7,8 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -62,7 +64,14 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
         $user->role = 'general';
+        $user->registration_token = str_random(40);
         $user->save();
+
+        $url = route('confirmation', ['token' => $user->registration_token]);
+
+        Mail::send('emails/registration', compact('user', 'url'), function($m) use ($user){
+            $m->to($user->email, $user->name)->subject('Activa tu cuenta');
+        });
 
         return $user;
     }
@@ -86,5 +95,47 @@ class AuthController extends Controller
     {
         return route('home');
     }    
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $user = $this->create($request->all());
+
+        return redirect()->route('login')
+            ->with('alert', 'Por favor revisa tu casilla para activar la cuenta: ' . $user->email);
+    }
+    
+    protected function getConfirmation($token){
+
+        $user = User::where('registration_token', $token)->firstOrFail();
+        $user->registration_token = null;
+        $user->save();
+
+        return redirect()->route('login')
+            ->with('alert', 'Cuenta activada, ahora puedes iniciar sesión.');
+    }
+
+    protected function getCredentials($request){
+
+        return [
+            'email'                 => $request->get('email'),
+            'password'              => $request->get('password'),
+            'registration_token'    => null
+        ];
+
+    }
 
 }
