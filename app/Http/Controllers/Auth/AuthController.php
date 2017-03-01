@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+
+    // PROPERTIES //
+    protected $maxLoginAttempts = 3;
+    protected $lockoutTime      = 120; //(seconds)
+
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller

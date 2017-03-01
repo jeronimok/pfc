@@ -10,7 +10,8 @@ return [
 	'forgot_password' 		=> '¿Olvidó su contraseña?',
 	'reset_password'  	 	=> 'Restablecer contraseña',
 	'send_password_link'	=> 'Enviar link para restablecer contraseña',
-	'failed'				=> 'Tus datos son incorrectos o tu cuenta no ha sido activada via mail.'
+	'failed'				=> 'Tus datos son incorrectos o tu cuenta no ha sido activada via mail.',
+	'throttle'				=> 'Demasiados intentos fallidos. Intenta de nuevo en :seconds segundos.'
 
 
 ];
