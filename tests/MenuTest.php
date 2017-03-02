@@ -21,10 +21,10 @@ class MenuTest extends TestCase
 
 		// Crear usuario general
 		$user = factory(App\User::class)->create([
-        	'name' => 'Jerónimo',
-        	'role' => 'general',
-        	'email' => 'general@gmail.com',
-        	'password' =>  bcrypt('admin')
+                	'name' => 'Jerónimo',
+                	'role' => 'general',
+                	'email' => 'general@gmail.com',
+                	'password' =>  bcrypt('admin')
                 ]);
                 $this->actingAs($user)
                 	->visit('/')
@@ -34,7 +34,7 @@ class MenuTest extends TestCase
                 	->seeStatusCode('404');
 
                 // Crear usuario action_admin
-        		$user = factory(App\User::class)->create([
+        	$user = factory(App\User::class)->create([
                 	'name' => 'Jerónimo',
                 	'role' => 'action_admin',
                 	'email' => 'actionadmin@gsmail.com',
@@ -49,7 +49,7 @@ class MenuTest extends TestCase
                 	
 
                 // Crear usuario admin
-        		$user = factory(App\User::class)->create([
+        	$user = factory(App\User::class)->create([
                 	'name' => 'Jerónimo',
                 	'role' => 'admin',
                 	'email' => 'jeronimo.calace@gmail.com',
