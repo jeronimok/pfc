@@ -1,6 +1,7 @@
 <?php
 
 return [
-	'home' => 'Inicio'
+	'home' 				=> 'Inicio',
+	'admin_plataforma' 	=> 'Administrar plataforma'
 
 ];

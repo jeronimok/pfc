@@ -49,3 +49,25 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+// Usuarios autenticados
+Route::group(['middleware' => 'auth'], function () {
+
+	// General
+	//...
+
+	// Admin de Accion Participativa
+	//...
+
+	// Administador de la plataforma
+	Route::group(['middleware' => 'role:admin'], function () {
+
+		// Panel de administrador
+		Route::get('administracion', [
+			'uses' 	=> 'AdminController@getSettings',
+			'as' 	=> 'settings'
+			]);
+
+	});
+
+});
