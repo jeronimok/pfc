@@ -62,5 +62,5 @@ class MenuTest extends TestCase
                 $this->click('Administrar plataforma')
                 	->seePageIs('administracion')
                 	->see('Administración');
-        	}
+        }
 }
