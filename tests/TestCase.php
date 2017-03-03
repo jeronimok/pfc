@@ -22,4 +22,13 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    public function createUser($role = 'general'){
+        return factory(App\User::class)->create([
+                    'name' => 'Usuario ' . $role,
+                    'role' => $role,
+                    'email' => $role . '@gmail.com',
+                    'password' =>  bcrypt('123456')
+                ]);
+    }
 }
