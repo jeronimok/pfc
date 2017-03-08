@@ -107,7 +107,10 @@ return array(
         'name'                  => 'Nombre completo',
         'email'                 => 'Correo electrónico',
         'password'              => 'Contraseña',
-        'password_confirmation' => 'Confirmar contraseña'
+        'password_confirmation' => 'Confirmar contraseña',
+        'admin_email'           => 'Administrador (email)',
+        'title'                 => 'Título',
+        'description'           => 'Descripción'
     ),
 
 );
