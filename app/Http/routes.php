@@ -67,6 +67,16 @@ Route::group(['middleware' => 'auth'], function () {
 			'uses' 	=> 'AdminController@getSettings',
 			'as' 	=> 'settings'
 			]);
+		// Crear accion participativa
+		Route::get('administracion/crear-accion-participativa', [
+			'uses' 	=> 'AdminController@getCreateAction',
+			'as' 	=> 'settings/create-action'
+			]);
+		Route::post('administracion/crear-accion-participativa', [
+			'uses' 	=> 'AdminController@postCreateAction',
+			'as'	=> 'settings/create-action'
+			]);
+		
 
 	});
 

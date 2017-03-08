@@ -7,11 +7,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">@lang('auth.reset_password')</div>
 				<div class="panel-body">
-					@if (session('status'))
-						<div class="alert alert-success">
-							{{ session('status') }}
-						</div>
-					@endif
+					@include('partials/success')
 
 					@include('partials/errors')
 

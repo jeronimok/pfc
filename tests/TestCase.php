@@ -27,7 +27,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         return factory(App\User::class)->create([
                     'name' => 'Usuario ' . $role,
                     'role' => $role,
-                    'email' => $role . '@gmail.com',
+                    'email' => $role . rand(0,9) . '@gmail.com',
                     'password' =>  bcrypt('123456')
                 ]);
     }
