@@ -24,7 +24,13 @@ class CrearAPTest extends TestCase
 			->check('create_p')
 			->press('Crear acción participativa')
 			->seePageIs('administracion')
-			->see('La acción participativa ha sido creada con éxito');
+			->see('La acción participativa ha sido creada con éxito')
+			->seeInDatabase('actions', [
+				'title' => 'Consejo de niñas y niños',
+				'description' => 'Esta accion participativa está orientada a ...',
+				'admin_email' => $user->email,
+				'create_p' => 1
+				]);
 
 	}
 
