@@ -29,17 +29,22 @@ class AdminController extends Controller
             ]);
 
         if ( Action::where('title', $request->get('title') )->first() ) {
-            return redirect()->back()->withErrors([
-                'title' => 'Ya existe una acción participativa con ese nombre'
-                ]);
+            return redirect()->back()
+                ->withInput()
+                ->withErrors([
+                    'title' => 'Ya existe una acción participativa con ese nombre'
+                    ]);
         }
         if ( ! User::where('email', $request->get('admin_email') )->first() ) {
-            return redirect()->back()->withErrors([
-                'admin_email' => 'No existe ningún usuario con ese email'
-                ]);
+            return redirect()->back()
+                ->withInput()
+                ->withErrors([
+                    'admin_email' => 'No existe ningún usuario con ese email'
+                    ]);
         }
 
         $user = User::where('email', $request->get('admin_email') )->first();
+
         if ($user->role == 'general'){
             $user->role = 'action_admin';
             $user->save();
