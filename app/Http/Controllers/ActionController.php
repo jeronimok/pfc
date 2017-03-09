@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Action;
 use App\User;
+use Gate;
 
 class ActionController extends Controller
 {
@@ -18,7 +19,9 @@ class ActionController extends Controller
      */
     public function index()
     {
-        //
+        $actions = Action::paginate();
+
+        return view('actions/index', compact('actions'));
     }
 
     /**
@@ -97,5 +100,16 @@ class ActionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getEditAction($id){
+
+        $action = Action::findOrFail($id);
+
+        if (Gate::denies('edit-action', $action)){
+            return redirect()->route('home');
+        }
+
+        return $action->title;
     }
 }

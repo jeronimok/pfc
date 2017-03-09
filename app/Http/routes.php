@@ -50,11 +50,20 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
+// Acciones participativas
+Route::get('acciones-participativas', [
+	'uses'	=> 'ActionController@index',
+	'as'	=> 'actions'
+	]);
+
 // Usuarios autenticados
 Route::group(['middleware' => 'auth'], function () {
 
 	// General
-	//...
+	Route::get('editar-accion/{id}',[
+		'uses' 	=> 'ActionController@getEditAction',
+		'as' 	=> 'edit-action'
+		]);
 
 	// Admin de Accion Participativa
 	//...
