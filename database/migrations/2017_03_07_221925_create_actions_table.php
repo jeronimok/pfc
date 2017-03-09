@@ -14,6 +14,7 @@ class CreateActionsTable extends Migration
     {
         Schema::create('actions', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('title')->unique();
             $table->longText('description');
             $table->boolean('create_p');
@@ -22,7 +23,9 @@ class CreateActionsTable extends Migration
             $table->boolean('opt_p');
             $table->boolean('audit');
             $table->string('admin_email');
-            $table->integer('admin_id');
+            $table->integer('admin_id')->unsigned();
+            $table->foreign('admin_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }
