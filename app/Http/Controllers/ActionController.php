@@ -46,11 +46,11 @@ class ActionController extends Controller
 
         $action->title          = $request->get('title');
         $action->description    = $request->get('description');
-        $action->create_p       = ( $request->get('create_p') == null ? 0 : 1 );
-        $action->debate_p       = ( $request->get('debate_p') == null ? 0 : 1 );
-        $action->support_p      = ( $request->get('support_p') == null ? 0 : 1 );
-        $action->opt_p          = ( $request->get('opt_p') == null ? 0 : 1 );
-        $action->audit          = ( $request->get('audit') == null ? 0 : 1 );
+        $action->create_p       = ( $request->get('create_p') == 'on' ? 1 : 0 );
+        $action->debate_p       = ( $request->get('debate_p') == 'on' ? 1 : 0 );
+        $action->support_p      = ( $request->get('support_p') == 'on' ? 1 : 0 );
+        $action->opt_p          = ( $request->get('opt_p') == 'on' ? 1 : 0 );
+        $action->audit          = ( $request->get('audit') == 'on' ? 1 : 0 );
         $action->admin_email    = $request->get('admin_email');
         $action->admin_id       = User::where('email', $request->get('admin_email'))->first()->id;
 

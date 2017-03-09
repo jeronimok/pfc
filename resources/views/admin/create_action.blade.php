@@ -16,14 +16,14 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label">Título</label>
 							<div class="col-md-9">
-							    <input type="text" name="title" class="form-control" value="{{ old('titulo') }}" required>
+							    <input type="text" name="title" class="form-control" value="{{ old('title') }}" required>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-3 control-label">Descripción</label>
 							<div class="col-md-9">
-								<textarea class="form-control" rows="5" name="description" value="{{ old('descripcion') }}" required></textarea>
+								<textarea class="form-control" rows="5" name="description" required>{{old('description')}}</textarea>
 							</div>
 						</div>
 
@@ -38,19 +38,19 @@
 							<label class="col-md-3 control-label">Funcionalidades</label>
 							<div class="col-md-9">
 							    <div class="checkbox">
-								  <label><input type="checkbox" name="create_p" checked="checked">Crear propuestas</label>
+								  <label><input type="checkbox" name="create_p" checked>Crear propuestas</label>
 								</div>
 								<div class="checkbox">
-								  <label><input type="checkbox" name="debate_p">Debatir propuestas</label>
+								  <label><input type="checkbox" name="debate_p" >Debatir propuestas</label>
 								</div>
 								<div class="checkbox">
-								  <label><input type="checkbox" name="support_p">Apoyar propuestas</label>
+								  <label><input type="checkbox" name="support_p" >Apoyar propuestas</label>
 								</div>
 								<div class="checkbox">
-								  <label><input type="checkbox" name="opt_p">Optar entre alternativas</label>
+								  <label><input type="checkbox" name="opt_p" >Optar entre alternativas</label>
 								</div>
 								<div class="checkbox">
-								  <label><input type="checkbox" name="audit">Auditar obras</label>
+								  <label><input type="checkbox" name="audit" >Auditar obras</label>
 								</div>
 							</div>
 						</div>	
