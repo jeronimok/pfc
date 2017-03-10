@@ -65,7 +65,8 @@ class ActionController extends Controller
      */
     public function show($id)
     {
-        //
+        $action = Action::findOrFail($id);
+        return view('actions/action', compact('action'));
     }
 
     /**

@@ -41,6 +41,7 @@
           </button>
           <a class="navbar-brand" href="/">@lang('layout.home')</a>
           <ul class="nav navbar-nav">
+            <li><a href="{{ route('actions') }}">Acciones participativas</a></li>
             @if (Auth::check() and Auth::user()->role == 'admin')
               <li><a href="{{ route('settings') }}">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>

@@ -55,6 +55,10 @@ Route::get('acciones-participativas', [
 	'uses'	=> 'ActionController@index',
 	'as'	=> 'actions'
 	]);
+Route::get('accion-participativa/{id}', [
+	'uses'	=> 'ActionController@show',
+	'as'	=> 'action'
+	]);
 
 // Usuarios autenticados
 Route::group(['middleware' => 'auth'], function () {

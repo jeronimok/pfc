@@ -7,7 +7,7 @@
 			</td>
 
 			<td>
-				<h3><a href="">{{ $action->title }}</a></h3>
+				<h3><a href="{{ route('action', ['id' => $action->id]) }}">{{ $action->title }}</a></h3>
 				{{ substr($action->description, 0, 150) }}...
 			</td>
 		</tr>
