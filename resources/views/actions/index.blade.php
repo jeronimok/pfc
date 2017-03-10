@@ -2,18 +2,13 @@
 
 @section('content')
 
-<table class="table">
-	<tr>
-		<th>Nombre</th>
-		<th>Administrador</th>
-	</tr>
-	@foreach($actions as $action)
-	<tr>
-		<td>{{ $action->title }}</td>
-		<td>{{ $action->admin_email }}</td>
-	</tr>
-	@endforeach
-</table>
-{!! $actions->render() !!}
+<div class="row">
+	<div class="col">
+		<h2>Acciones participativas</h2>
+		@include('partials/actions_list')
+	</div>
+</div>
+
+
 
 @endsection

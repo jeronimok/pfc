@@ -27,6 +27,6 @@ class ActionTableSeeder extends Seeder
         	'audit'        => 1
         ]);
 
-        factory(App\Action::class, 11)->create();
+        factory(App\Action::class, 50)->create();
     }
 }
