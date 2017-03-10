@@ -8,7 +8,7 @@
 
 			<td>
 				<h3><a href="">{{ $action->title }}</a></h3>
-				<p>{{ substr($action->description, 0, 150) }}...</p>
+				{{ substr($action->description, 0, 150) }}...
 			</td>
 		</tr>
 		@endforeach

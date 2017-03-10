@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <!-- Css local -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+     <link rel="stylesheet" type="text/css" href="/css/app.css"/> 
 
     <style type="text/css">
       body {
@@ -53,7 +53,7 @@
           @if (Auth::guest())
             <div class="navbar-right">
               <a class="btn btn-primary navbar-btn" href="{{ route('login') }}">@lang('auth.login')</a>
-              <a class="btn btn-success navbar-btn" href="{{ route('register') }}">@lang('auth.register')</a>
+              <a class="btn btn-default navbar-btn" href="{{ route('register') }}">@lang('auth.register')</a>
             </div>
           @else
             <div class="navbar-right">
