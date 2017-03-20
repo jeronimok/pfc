@@ -11,7 +11,7 @@ class ActionTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('actions')->truncate();
+        DB::table('actions')->delete();
 
         factory(App\Action::class)->create([
         	'title'        => 'Consejo de niños y niñas',

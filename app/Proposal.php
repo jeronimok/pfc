@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Action extends Model
+class Proposal extends Model
 {
-     
 	/**
      * The number of models to return for pagination.
      *
@@ -19,5 +18,5 @@ class Action extends Model
      *
      * @var string
      */
-    protected $table = 'actions';
+    protected $table = 'proposals';
 }

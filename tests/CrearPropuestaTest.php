@@ -16,13 +16,13 @@ class CrearPropuestaTest extends TestCase
         	->visit('accion-participativa/1')
         	->see('Crear propuesta')
         	->click('Crear propuesta')
-        	->seePageIs('accion-participativa/crear-propuesta')
+        	->seePageIs('crear-propuesta')
         	->see('NUEVA PROPUESTA')
         	->type('Nuevos juegos en las plazas', 'title')
         	->type('Necesitamos nuevos juegos en las plazas porque... Y propongo hacer...', 'content')
         	->press('Publicar propuesta')
         	->seePageIs('accion-participativa/1')
-        	->see('La propuesta ha sudo creada con éxito')
+        	->see('La propuesta ha sido creada con éxito')
         	->seeInDataBase('proposals', [
         		'title' => 'Nuevos juegos en las plazas',
         		'content' => 'Necesitamos nuevos juegos en las plazas porque... Y propongo hacer...'

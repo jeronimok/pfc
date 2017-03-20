@@ -24,15 +24,6 @@ class ActionController extends Controller
         return view('actions/index', compact('actions'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -112,5 +103,27 @@ class ActionController extends Controller
         }
 
         return $action->title;
+    }
+
+    public function getCreateProposal($action_id){
+
+        $action = Action::findOrFail($action_id);
+
+        return view('proposals.create_proposal', compact('action'));
+    }
+
+    public function postCreateProposal(Request $request){
+
+
+        $this->validate($request,[
+            'title'         => 'required',
+            'content'   => 'required'
+            ]);
+
+        app('App\Http\Controllers\ProposalController')->store($request);
+
+        return redirect(route('action', $request->get('action_id')))
+            ->with('alert', 'La propuesta ha sido creada con éxito');
+
     }
 }

@@ -69,6 +69,17 @@ Route::group(['middleware' => 'auth'], function () {
 		'as' 	=> 'edit-action'
 		]);
 
+	Route::get('crear-propuesta/{action_id}', [
+		'uses'	=> 'ActionController@getCreateProposal',
+		'as'	=> 'create-proposal-form'
+		]);
+
+	Route::post('crear-propuesta', [
+		'uses'	=> 'ActionController@postCreateProposal',
+		'as'	=> 'create-proposal'
+		]);
+	
+
 	// Admin de Accion Participativa
 	//...
 
