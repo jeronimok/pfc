@@ -3,7 +3,7 @@
 		@foreach($actions as $action)
 		<tr>
 			<td class="col-md-4" align="center" valign="middle" >
-				<img class="img-responsive" src="http://placehold.it/300x150" alt="...">
+				<img class="img-responsive" src="/images/300x150.png" alt="...">
 			</td>
 
 			<td>

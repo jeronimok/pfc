@@ -46,13 +46,13 @@
         		<div class="panel-body">
         			<div class="row">
         				<div class="col-md-8">
-        					<img class="img-responsive" src="http://placehold.it/700x400" alt="...">
+        					<img class="img-responsive" src="/images/700x400.png" alt="...">
         					<hr>
         				</div>
         				<div class="col-md-4">
-    						<img class="img-responsive" src="http://placehold.it/400x210" alt="...">
+    						<img class="img-responsive" src="/images/400x210.png" alt="...">
     						<hr>
-    						<img class="img-responsive" src="http://placehold.it/400x210" alt="...">
+    						<img class="img-responsive" src="/images/400x210.png" alt="...">
     						<hr>
         				</div>
         			</div>
