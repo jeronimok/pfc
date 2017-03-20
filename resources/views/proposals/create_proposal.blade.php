@@ -10,7 +10,7 @@
 				<div class="panel-body">
 					@include('partials/errors')
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ route('create-proposal', ['id' => $action->id]) }}">
+					<form class="form-horizontal" role="form" method="POST" action="{{ route('create-proposal') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="action_id" value="{{ $action->id }}">
 
