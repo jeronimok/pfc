@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Action;
 use App\User;
+use App\Proposal;
 use Gate;
 
 class ActionController extends Controller
@@ -57,7 +58,8 @@ class ActionController extends Controller
     public function show($id)
     {
         $action = Action::findOrFail($id);
-        return view('actions/action', compact('action'));
+        $proposals = Proposal::where('action_id', $id)->paginate();
+        return view('actions/action', compact('action', 'proposals'));
     }
 
     /**

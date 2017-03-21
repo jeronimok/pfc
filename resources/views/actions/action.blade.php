@@ -19,7 +19,12 @@
 		  			{{ $action->description }}
 		  		</div>
 		  	</div>
-		  	<a href="{{ route('create-proposal-form', ['action_id' => $action->id]) }}" class="btn btn-primary">Crear propuesta</a>
+		  	<h2>
+		  		Propuestas
+		  		<a href="{{ route('create-proposal-form', ['action_id' => $action->id]) }}" class="btn btn-primary pull-right">Crear propuesta</a>
+		  	</h2>
+		  	
+		  	@include('partials/proposals_list')
 		</div>
 	</div>
 </div>

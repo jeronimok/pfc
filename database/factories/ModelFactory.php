@@ -34,3 +34,12 @@ $factory->define(App\Action::class, function (Faker\Generator $faker) {
     	'audit'			=> rand(0,1)
     ];
 });
+
+$factory->define(App\Proposal::class, function (Faker\Generator $faker) {
+    return [
+        'title'         => $faker->sentence,
+        'content'       => $faker->text,
+        'action_id'     => 1,
+        'creator_id'    => 1
+    ];
+});
