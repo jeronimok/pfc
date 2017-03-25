@@ -11,7 +11,7 @@ class Proposal extends Model
      *
      * @var int
      */
-    protected $perPage = 5;
+    protected $perPage = 3;
 
      /**
      * The table associated with the model.

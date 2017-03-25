@@ -12,7 +12,7 @@ class Action extends Model
      *
      * @var int
      */
-    protected $perPage = 5;
+    protected $perPage = 9;
 
      /**
      * The table associated with the model.

@@ -1,17 +1,23 @@
-<div class="panel">
-	<table class="table">
-		@foreach($actions as $action)
-		<tr>
-			<td class="col-md-4" align="center" valign="middle" >
-				<img class="img-responsive" src="/images/300x150.png" alt="...">
-			</td>
+@for ($i = 0; $i < count($actions); $i=$i+3)
+	<div class="card-deck">
+	@for ($j = $i; $j < $i+3; $j++)
+		@if($j >= count($actions))
+			<div class="card card-holder"></div>
+		@else
+			<div class="card">
+				<a href="{{ route('action', ['id' => $actions[$j]->id]) }}">
+					<img class="card-img-top img-fluid" align="center" src="/images/700x400.png" alt="Card image cap">
+			    	<div class="card-block">
+			    		<h3 class="card-title" style="color: black;">{{ $actions[$j]->title }}</h3>
+			    		<span style="color: black;">{{ substr($actions[$j]->description, 0, 150) }}...</span>
+			    	</div>
+			    </a>
+			</div>
+		@endif
+		<hr>
+	@endfor
+	</div>
+	<hr>
+@endfor
 
-			<td>
-				<h3><a href="{{ route('action', ['id' => $action->id]) }}">{{ $action->title }}</a></h3>
-				{{ substr($action->description, 0, 150) }}...
-			</td>
-		</tr>
-		@endforeach
-	</table>
-</div>
 {!! $actions->render() !!}
