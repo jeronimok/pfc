@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-theme.css">
 
     <!-- Css local -->
-     <link rel="stylesheet" type="text/css" href="/css/app.css"/> 
+     <link rel="stylesheet" type="text/css" href="/css/app.css?v=<?=time();?>"/> 
 
     <style type="text/css">
       body {
@@ -76,8 +76,6 @@
     <div class="container">
       
       @yield('bottom_content')
-
-      <hr>
 
       <footer>
         <p>&copy; 2017 Jerónimo Calace Montú</p>

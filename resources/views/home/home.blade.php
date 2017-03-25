@@ -1,9 +1,14 @@
 @extends('layout')
 
 @section('content')
-	<h1>Participación ciudadana</h1>
-	<p>Bienvenidos a la plataforma web de participación ciudadana de la Ciudad de Santa Fe</p>
-  <a href="{{route('actions')}}" class="btn btn-primary btn-lg">Ver acciones participativas</a>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+      <h1>Participación ciudadana</h1>
+      <p>Bienvenidos a la plataforma web de participación ciudadana de la Ciudad de Santa Fe</p>
+  </div>
+</div>
+	
+  <!-- <a href="{{route('actions')}}" class="btn btn-primary btn-lg">Ver acciones participativas</a> -->
 @endsection
 
 @section('bottom_content')
@@ -12,7 +17,7 @@
     font-size: 50px;
 }
 </style>
-<!-- Example row of columns -->
+<!-- Example row of columns 
 <div class="row">
   <div class="col-md-4">
 
@@ -49,4 +54,13 @@
     <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. </p>
   </div>
 </div>
+-->
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+      @include('partials/actions_list')
+  </div>
+</div>
+
+<hr>
+
 @endsection
