@@ -5,7 +5,7 @@
 			<div class="card card-holder"></div>
 		@else
 			<div class="card">
-				<a href="">
+				<a href="{{ route('proposal', ['id' => $proposals[$j]->id]) }}">
 					<img class="card-img-top img-fluid" align="center" src="/images/700x400.png" alt="Card image cap">
 			    	<div class="card-block">
 			    		<h3 class="card-title" style="color: black;">{{ $proposals[$j]->title }}</h3>
