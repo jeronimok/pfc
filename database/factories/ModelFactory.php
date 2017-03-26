@@ -40,6 +40,6 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
         'title'         => $faker->sentence,
         'content'       => $faker->text,
         'action_id'     => 1,
-        'creator_id'    => 1
+        'user_id'    => 1
     ];
 });

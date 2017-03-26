@@ -19,4 +19,11 @@ class Proposal extends Model
      * @var string
      */
     protected $table = 'proposals';
+
+    protected $fillable = ['title', 'content', 'action_id'];
+
+    public function comments(){
+
+        return $this->hasMany(Comment::class);
+    }
 }

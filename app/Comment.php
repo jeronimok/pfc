@@ -19,4 +19,10 @@ class Comment extends Model
      * @var string
      */
     protected $table = 'comments';
+
+    protected $fillable = ['comment', 'proposal_id'];
+
+    public function proposal(){
+    	return $this->belongsTo(Proposal::class);	
+    }
 }

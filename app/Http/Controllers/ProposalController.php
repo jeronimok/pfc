@@ -42,10 +42,9 @@ class ProposalController extends Controller
 
         $proposal->title        = $request->get('title');
         $proposal->content      = $request->get('content');
-        $proposal->creator_id   = auth()->user()->id;
         $proposal->action_id    = $request->get('action_id');
 
-        $proposal->save();
+        auth()->user()->proposals()->save($proposal);
     }
 
     /**

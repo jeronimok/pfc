@@ -16,8 +16,8 @@ class CreateProposalsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->longText('content');
-            $table->integer('creator_id')->unsigned();
-            $table->foreign('creator_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('action_id')->unsigned();
             $table->foreign('action_id')->references('id')->on('actions');
             $table->timestamps();
