@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Proposal;
+use App\Comment;
 
-class ProposalController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,14 +38,13 @@ class ProposalController extends Controller
      */
     public function store(Request $request)
     {
-        $proposal = new Proposal;
+        $comment = new Comment;
 
-        $proposal->title        = $request->get('title');
-        $proposal->content      = $request->get('content');
-        $proposal->creator_id   = auth()->user()->id;
-        $proposal->action_id    = $request->get('action_id');
+        $comment->comment       = $request->get('comment');
+        $comment->user_id       = auth()->user()->id;
+        $comment->proposal_id   = $request->get('proposal_id');
 
-        $proposal->save();
+        $comment->save();
     }
 
     /**
@@ -56,8 +55,7 @@ class ProposalController extends Controller
      */
     public function show($id)
     {
-        $proposal = Proposal::findOrFail($id);
-        return view('proposals/proposal', compact('proposal'));
+        //
     }
 
     /**
@@ -92,18 +90,5 @@ class ProposalController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function postComment(Request $request) {
-        
-        $this->validate($request,[
-            'comment'   => 'required'
-            ]);
-
-        app('App\Http\Controllers\CommentController')->store($request);
-
-
-        return redirect(route('proposal', $request->get('proposal_id')))
-            ->with('alert', 'El comentario ha sido publicado con éxito');
     }
 }

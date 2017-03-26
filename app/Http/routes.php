@@ -84,6 +84,11 @@ Route::group(['middleware' => 'auth'], function () {
 		'uses'	=> 'ActionController@postCreateProposal',
 		'as'	=> 'create-proposal'
 		]);
+
+	Route::post('comentar-propuesta', [
+		'uses'	=> 'ProposalController@postComment',
+		'as'	=> 'proposal.comment'
+		]);
 	
 
 	// Admin de Accion Participativa
