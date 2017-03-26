@@ -56,7 +56,8 @@ class ProposalController extends Controller
      */
     public function show($id)
     {
-        //
+        $proposal = Proposal::findOrFail($id);
+        return view('proposals/proposal', compact('proposal'));
     }
 
     /**

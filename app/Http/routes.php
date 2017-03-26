@@ -60,6 +60,12 @@ Route::get('accion-participativa/{id}', [
 	'as'	=> 'action'
 	]);
 
+//Propuestas
+Route::get('propuesta/{id}', [
+	'uses'	=> 'ProposalController@show',
+	'as'	=> 'proposal'
+	]);
+
 // Usuarios autenticados
 Route::group(['middleware' => 'auth'], function () {
 
