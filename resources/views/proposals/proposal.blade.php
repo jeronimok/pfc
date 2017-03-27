@@ -4,18 +4,29 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<h2>{{ $proposal->title }}</h2>
+			<h2>
+				<a href="{{ route('action', ['id' => $action->id]) }}"><small>{{$action->title}} >> </small> </a>
+				<br>
+				{{ $proposal->title }}
+			</h2>
 		  	<ul class="nav nav-tabs">
 		    	<li class="active"><a href="#"> <h4>Propuesta</h4> </a></li>
 		  	</ul>
 		  	<div class="panel panel-default">
 		  		<div class="panel-body"> 
 		  			{{ $proposal->content }}
+		  			<hr>
+		  			<span class="text-muted pull-right">
+		  				Creado por <a href="">{{$creator->name}}</a>. 
+		  				<br>
+		  				Última edición: {{$proposal->updated_at}}
+		  			</span>
 		  		</div>
 		  	</div>
 
 		  	@include('partials/errors')
 		  	@include('partials/success')
+		  	<h3>Comentarios</h3>
 		  	<ul class="nav nav-tabs">
 		    	<li class="active"><a href="#"> Comentar </a></li>
 		  	</ul>

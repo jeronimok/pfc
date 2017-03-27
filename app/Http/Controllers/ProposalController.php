@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Proposal;
+use App\User;
+use App\Action;
 
 class ProposalController extends Controller
 {
@@ -56,7 +58,9 @@ class ProposalController extends Controller
     public function show($id)
     {
         $proposal = Proposal::findOrFail($id);
-        return view('proposals/proposal', compact('proposal'));
+        $action   = Action::findOrFail($proposal->action_id);
+        $creator  = User::findOrFail($proposal->user_id);
+        return view('proposals/proposal', compact('proposal', 'creator', 'action'));
     }
 
     /**
