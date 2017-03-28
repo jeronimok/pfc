@@ -5,7 +5,7 @@
 			<br>
 			<small>{{$comment->updated_at}}</small>
 			<br>
-			<p class="proposal-comment">{!! nl2br($comment->comment) !!}</p>
+			<div class="proposal-comment">{!! nl2br($comment->comment) !!}</div>
 			<hr>
 			<span class="glyphicon glyphicon-heart pull-right" aria-hidden="true"> 0</span>
 		</div>

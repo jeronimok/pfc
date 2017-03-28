@@ -283,13 +283,13 @@ footer {
 
 .proposal-text{
   font-size: 20px;
-  font-family: georgia;
+  font-weight: lighter;
 }
 .action-text{
   font-size: 20px;
-  font-family: georgia;
+  font-weight: lighter;
 }
 .proposal-comment{
   font-size: 20px;
-  font-family: georgia;
+  font-weight: lighter;
 }
