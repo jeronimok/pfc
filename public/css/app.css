@@ -245,6 +245,47 @@ fieldset[disabled] .btn-primary.active {
   background-color: #eee;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin-bottom: 60px;
+}
+footer {
+  text-align: center;
+}
+.footer {
+  position: absolute;
+  padding-top: 20px;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+.container-fluid {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.jumbotron{
+  background-color: #f2f2f2;
+}
+
+.jumbo-white{
+  background-color: #fff;
+}
+
+.proposal-text{
+  font-size: 20px;
+  font-family: georgia;
+}
+.action-text{
+  font-size: 20px;
+  font-family: georgia;
+}
+.proposal-comment{
+  font-size: 20px;
+  font-family: georgia;
 }

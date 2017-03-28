@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Proposal;
 use App\User;
 use App\Action;
+use App\Comment;
 
 class ProposalController extends Controller
 {
@@ -60,7 +61,8 @@ class ProposalController extends Controller
         $proposal = Proposal::findOrFail($id);
         $action   = Action::findOrFail($proposal->action_id);
         $creator  = User::findOrFail($proposal->user_id);
-        return view('proposals/proposal', compact('proposal', 'creator', 'action'));
+        $comments = Comment::where('proposal_id', $proposal->id)->paginate();
+        return view('proposals/proposal', compact('proposal', 'creator', 'action', 'comments'));
     }
 
     /**

@@ -40,17 +40,19 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">@lang('layout.home')</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
           <ul class="nav navbar-nav">
             <li><a href="{{ route('actions') }}">Acciones participativas</a></li>
             @if (Auth::check() and Auth::user()->role == 'admin')
               <li><a href="{{ route('settings') }}">
+                ADMINISTRACIÓN
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                @lang('layout.admin_plataforma')
               </a></li>
             @endif
           </ul>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
+
           @if (Auth::guest())
             <div class="navbar-right">
               <a class="btn btn-primary navbar-btn" href="{{ route('login') }}">@lang('auth.login')</a>
@@ -66,21 +68,13 @@
       </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        @yield('content')
-      </div>
-    </div>
+    @yield('content')
 
-    <div class="container">
-      
-      @yield('bottom_content')
+    <footer class="footer">
+      &copy; 2017 Jerónimo Calace Montú
+    </footer>
 
-      <footer>
-        <p>&copy; 2017 Jerónimo Calace Montú</p>
-      </footer>
-    </div> <!-- /container -->
+  </body>
 
 
     <!-- Bootstrap core JavaScript
