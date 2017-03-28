@@ -41,7 +41,7 @@
 
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
-									<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
+									<button type="submit" class="btn btn-default" style="margin-right: 15px;">
 										@lang('auth.login_button')
 									</button>
 

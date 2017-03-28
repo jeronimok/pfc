@@ -59,10 +59,16 @@
               <a class="btn btn-default navbar-btn" href="{{ route('register') }}">@lang('auth.register')</a>
             </div>
           @else
-            <div class="navbar-right">
-              <a class="navbar-brand">{{ Auth::user()->name }}</a>
-              <a class="btn btn-primary navbar-btn" href="{{ route('logout') }}">@lang('auth.logout')</a>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Perfil</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li> <a href="{{ route('logout') }}">@lang('auth.logout')</a> </li>
+                </ul>
+              </li>
+            </ul>
           @endif
         </div><!--/.navbar-collapse -->
       </div>

@@ -25,13 +25,13 @@
 							<div class="form-group">
 								<label class="col-md-2 control-label">Contenido</label>
 								<div class="col-md-10">
-									<textarea class="form-control" rows="5" name="content" required>{{old('content')}}</textarea>
+									<textarea class="form-control" rows="8" name="content" required>{{old('content')}}</textarea>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-2">
-									<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
+									<button type="submit" class="btn btn-default" style="margin-right: 15px;">
 										Publicar propuesta
 									</button>
 								</div>
