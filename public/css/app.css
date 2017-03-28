@@ -277,6 +277,10 @@ footer {
   background-color: #fff;
 }
 
+.no-bottom{
+  padding-bottom: 0px;
+}
+
 .proposal-text{
   font-size: 20px;
   font-family: georgia;
