@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<h3>
-					Propuestas <a href="#" class="scroll-top back-to-top btn btn-default pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
+					Propuestas <a href="#" class="scroll-top back-to-top btn btn-modern pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
 				</h3>
 				<br />
 				@include('partials/proposals_list')
