@@ -58,11 +58,13 @@ class ProposalController extends Controller
      */
     public function show($id)
     {
-        $proposal = Proposal::findOrFail($id);
-        $action   = Action::findOrFail($proposal->action_id);
-        $creator  = User::findOrFail($proposal->user_id);
-        $comments = Comment::where('proposal_id', $proposal->id)->paginate();
-        return view('proposals/proposal', compact('proposal', 'creator', 'action', 'comments'));
+        $proposal   = Proposal::findOrFail($id);
+        $action     = Action::findOrFail($proposal->action_id);
+        $creator    = User::findOrFail($proposal->user_id);
+        $comments   = Comment::where('proposal_id', $proposal->id)->paginate();
+        $supporters = $proposal->supporters()->lists('user_id')->toArray();
+
+        return view('proposals/proposal', compact('proposal', 'creator', 'action', 'comments', 'supporters'));
     }
 
     /**
@@ -110,5 +112,38 @@ class ProposalController extends Controller
 
         return redirect(route('proposal', $request->get('proposal_id')))
             ->with('alert', 'El comentario ha sido publicado con éxito');
+    }
+
+    public function support(Request $request) {
+
+        $user = auth()->user();
+        $proposal   = Proposal::findOrFail($request->get('proposal_id'));
+        $supporters = $proposal->supporters()->lists('user_id')->toArray();
+
+
+        if ( in_array($user->id, $supporters) ) {
+            return redirect()->back()
+                ->with('warning', 'Ya estás apoyando esta propuesta');
+        }
+
+        $user->supportProposal()->attach($proposal->id);
+
+        return redirect(route('proposal', $proposal->id));
+    }
+
+    public function unsupport(Request $request) {
+
+        $user = auth()->user();
+        $proposal   = Proposal::findOrFail($request->get('proposal_id'));
+        $supporters = $proposal->supporters()->lists('user_id')->toArray();
+
+        if ( ! in_array($user->id, $supporters) ) {
+            return redirect()->back()
+                ->with('warning', 'No estás apoyando esta propuesta');
+        }
+
+        $user->supportProposal()->detach($proposal->id);
+
+        return redirect(route('proposal', $proposal->id));
     }
 }

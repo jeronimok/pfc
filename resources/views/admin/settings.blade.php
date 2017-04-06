@@ -17,7 +17,7 @@
 				
 				<div class="row">
 			        <div class="col-md-6">
-			        	<div class="panel panel-primary">
+			        	<div class="panel panel-modern">
 							<div class="panel-heading"> <h4>Acciones participativas</h4> </div>
 				    		<ul class="list-group">
 				    			<strong>
@@ -29,7 +29,7 @@
 					  	</div>
 			        </div>
 			        <div class="col-md-6">
-			        	<div class="panel panel-primary">
+			        	<div class="panel panel-modern">
 							<div class="panel-heading"> <h4>Usuarios</h4> </div>
 					    	<ul class="list-group">
 					    		<strong>
@@ -44,7 +44,7 @@
 
 			    <div class="row">
 			        <div class="col-md-12">
-			        	<div class="panel panel-primary">
+			        	<div class="panel panel-modern">
 			        		<div class="panel-heading"><h4>Estadísticas</h4></div>
 			        		<div class="panel-body">
 			        			<div class="row">

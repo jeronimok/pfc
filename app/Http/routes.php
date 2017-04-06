@@ -89,6 +89,16 @@ Route::group(['middleware' => 'auth'], function () {
 		'uses'	=> 'ProposalController@postComment',
 		'as'	=> 'proposal.comment'
 		]);
+
+	Route::post('apoyar-propuesta', [
+		'uses'	=> 'ProposalController@support',
+		'as'	=> 'proposal.support'
+		]);
+
+	Route::delete('quitar-apoyo-propuesta', [
+		'uses'	=> 'ProposalController@unsupport',
+		'as'	=> 'proposal.unsupport'
+		]);
 	
 
 	// Admin de Accion Participativa

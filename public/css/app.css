@@ -101,36 +101,23 @@ fieldset[disabled] .btn-primary.active {
 }
 
 
-.panel-primary {
-  border-color: #f0ad4e;
+.panel-modern {
+  border-color: #555;
 }
-.panel-primary > .panel-heading {
+.panel-modern > .panel-heading {
   color: #fff;
-  background-color: #f0ad4e;
-  border-color: #f0ad4e;
+  background-color: #555;
+  border-color: #555;
 }
-.panel-primary > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #f0ad4e;
+.panel-modern > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #555;
 }
-.panel-primary > .panel-heading .badge {
-  color: #f0ad4e;
+.panel-modern > .panel-heading .badge {
+  color: #555;
   background-color: #fff;
 }
-.panel-primary > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #f0ad4e;
-}
-
-.panel-primary > .panel-heading {
-  background-image: -webkit-linear-gradient(top, #f0ad4e 0%, #f1ac4d 100%);
-  background-image:      -o-linear-gradient(top, #f0ad4e 0%, #f1ac4d 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f0ad4e), to(#f1ac4d));
-  background-image:         linear-gradient(to bottom, ##f0ad4e 0%, #f1ac4d 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0ad4e', endColorstr='#f1ac4d', GradientType=0);
-  background-repeat: repeat-x;
-}
-.panel-default > .panel-heading {
-  text-transform: uppercase;
-  font-weight: bold;
+.panel-modern > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #555;
 }
 
 .card {
@@ -293,3 +280,40 @@ footer {
   font-size: 20px;
   font-weight: lighter;
 }
+
+
+.btn-modern {
+  color: #555;
+  background-color: transparent;
+  border-color: #555;
+}
+.btn-modern:focus,
+.btn-modern.focus {
+  background-color: #eee;
+  border-color: #555;
+}
+.btn-modern:hover {
+  color: #eee;
+  background-color: #555;
+  border-color: #555;
+}
+
+.btn-modern-dark {
+  color: #eee;
+  background-color: #555;
+  border-color: #555;
+}
+.btn-modern-dark:focus,
+.btn-modern-dark.focus {
+  color: #555;
+  background-color: #eee;
+  border-color: #555;
+}
+.btn-modern-dark:hover {
+  color: #555;
+  background-color: #eee;
+  border-color: #555;
+}
+
+
+
