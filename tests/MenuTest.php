@@ -14,14 +14,14 @@ class MenuTest extends TestCase
 	public function testLinkAdministracion(){
 
 		// Usuario anonimo
-		$this->visit('/')->dontSee('Administrar plataforma');
+		$this->visit('/')->dontSee('ADMINISTRACIÓN');
 		$this->visit('administracion')->see('Iniciar sesión');
 
 		// Usuario general
 		$user = $this->createUser('general');
                 $this->actingAs($user)
                 	->visit('/')
-                	->dontSee('Administrar plataforma');
+                	->dontSee('ADMINISTRACIÓN');
                 $this->actingAs($user)
                 	->get('/administracion')
                 	->seeStatusCode('404');
@@ -30,7 +30,7 @@ class MenuTest extends TestCase
         	$user = $this->createUser('action_admin');
                 $this->actingAs($user)
                 	->visit('/')
-                	->dontSee('Administrar plataforma');
+                	->dontSee('ADMINISTRACIÓN');
                 $this->actingAs($user)
                 	->get('/administracion')
                 	->seeStatusCode('404');
@@ -39,10 +39,10 @@ class MenuTest extends TestCase
         	$user = $this->createUser('admin');
                 $this->actingAs($user)
                 	->visit('/')
-                	->see('Administrar plataforma');
+                	->see('ADMINISTRACIÓN');
 
                 $this->actingAs($user)
-                        ->click('Administrar plataforma')
+                        ->click('ADMINISTRACIÓN')
                 	->seePageIs('administracion')
                 	->see('Administración');
         }

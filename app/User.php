@@ -46,4 +46,9 @@ class User extends Model implements AuthenticatableContract,
         
         return $this->hasMany(Proposal::class);
     }
+
+    public function supportProposal(){
+        
+        return $this->belongsToMany(Proposal::class, 'user_support_proposal')->withTimestamps();;
+    }
 }

@@ -26,4 +26,8 @@ class Proposal extends Model
 
         return $this->hasMany(Comment::class);
     }
+
+    public function supporters(){
+        return $this->belongsToMany(User::class, 'user_support_proposal')->withTimestamps();;
+    }
 }
