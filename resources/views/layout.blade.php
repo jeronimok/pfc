@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-theme.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-theme.css"> -->
 
     <!-- Css local -->
      <link rel="stylesheet" type="text/css" href="/css/app.css?v=<?=time();?>"/> 

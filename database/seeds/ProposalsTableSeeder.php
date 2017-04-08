@@ -23,10 +23,17 @@ class ProposalsTableSeeder extends Seeder
         factory(App\Proposal::class)->create([
         	'title' => 'Más luces en las calles',
         	'content' => 'Propongo poner más luces en las calles de la ciudad. Esto puede traer más seguridad y evitar accidentes.',
-        	'action_id' => 2,
+        	'action_id' => 1,
         	'user_id' => 2
         ]);
 
-        factory(App\Proposal::class, 8)->create();
+        factory(App\Proposal::class)->create([
+            'title' => 'Veredas más anchas',
+            'content' => 'Propongo ensachar las veredas en el barrio equis para poder plantar árboles y disminuir la velocidad de los autos.',
+            'action_id' => 1,
+            'user_id' => 2
+        ]);
+
+        factory(App\Proposal::class, 9)->create();
     }
 }

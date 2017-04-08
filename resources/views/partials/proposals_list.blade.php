@@ -21,7 +21,7 @@
 @endfor
 
 <div class="row text-center">
-	<a href="{{ route('create-proposal-form', ['action_id' => $action->id]) }}" class="btn btn-default btn-lg">Crear propuesta</a>
+	<a href="{{ route('create-proposal-form', ['action_id' => $action->id]) }}" class="btn btn-modern btn-lg">Crear propuesta</a>
 </div>
 
 {!! $proposals->render() !!}

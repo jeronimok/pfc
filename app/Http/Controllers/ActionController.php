@@ -128,4 +128,11 @@ class ActionController extends Controller
             ->with('alert', 'La propuesta ha sido creada con éxito');
 
     }
+
+    public function getCreatePoll($action_id){
+        $action = Action::findOrFail($action_id);
+        $proposals = Proposal::where('action_id', $action_id)->paginate();
+
+        return view('polls.create_poll', compact('action', 'proposals'));
+    }
 }

@@ -104,6 +104,11 @@ Route::group(['middleware' => 'auth'], function () {
 	// Admin de Accion Participativa
 	//...
 
+	Route::get('crear-votacion/{action_id}', [
+		'uses'	=> 'ActionController@getCreatePoll',
+		'as'	=> 'action.create-poll'
+		]);
+
 	// Administador de la plataforma
 	Route::group(['middleware' => 'role:admin'], function () {
 
