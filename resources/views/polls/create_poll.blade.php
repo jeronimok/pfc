@@ -11,14 +11,14 @@
 					<div class="panel-body">
 						@include('partials/errors')
 
-						<form class="form-horizontal" role="form" method="POST" action="">
+						<form class="form-horizontal" role="form" method="POST" action="{{ route('create-poll') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="action_id" value="{{ $action->id }}">
 
 							<div class="form-group">
 								<label class="col-md-4 control-label">* Pregunta:</label>
 								<div class="col-md-8">
-								    <input type="text" name="question" class="form-control" value="{{ old('title') }}" required>
+								    <input type="text" name="question" class="form-control" value="{{ old('question') }}" required>
 								</div>
 							</div>
 
@@ -26,12 +26,12 @@
 								<label class="col-md-4 control-label">
 									* Opciones:
 									<br>
-									<span class="light text-muted">(Selecciona las propuestas que participarán de la votación)</span>
+									<span class="light text-muted">(Selecciona las propuestas que participarán de la votación. Min: 2)</span>
 								</label>
 								<div class="col-md-8">
 								    @foreach($proposals as $proposal)
 									    <div class="checkbox">
-										  <label><input type="checkbox" name="{{$proposal->id}}" >
+										  <label><input type="checkbox" name="{{$proposal->id}}">
 										  	{{$proposal->title}}
 										  </label>
 										</div>

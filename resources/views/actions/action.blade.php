@@ -15,6 +15,7 @@
 					  </ul>
 					</div>
 				</h1>
+				@include('partials/warning')
 				<ul class="nav nav-tabs">
 	  				<li class="active"><a href="#">Descripción</a></li>
 	  				<li><a href="#" class="scroll-link" data-id="propuestas">Propuestas</a></li>
@@ -28,8 +29,8 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
+			@include('partials/success')
 	  		<p class="action-text">{!! nl2br($action->description) !!}</p>
-	  		@include('partials/success')
 	  		<hr>
 		</div>
 	</div>

@@ -20,4 +20,14 @@ class Action extends Model
      * @var string
      */
     protected $table = 'actions';
+
+    public function proposals(){
+
+        return $this->hasMany(Proposal::class);
+    }
+
+    public function poll(){
+
+        return $this->hasOne(Poll::class);
+    }
 }

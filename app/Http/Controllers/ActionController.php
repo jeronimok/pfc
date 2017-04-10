@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Action;
 use App\User;
 use App\Proposal;
+use App\Poll;
 use Gate;
 
 class ActionController extends Controller
@@ -58,7 +59,7 @@ class ActionController extends Controller
     public function show($id)
     {
         $action = Action::findOrFail($id);
-        $proposals = Proposal::where('action_id', $id)->paginate();
+        $proposals = $action->proposals()->paginate();
         return view('actions/action', compact('action', 'proposals'));
     }
 
@@ -127,12 +128,5 @@ class ActionController extends Controller
         return redirect(route('action', $request->get('action_id')))
             ->with('alert', 'La propuesta ha sido creada con éxito');
 
-    }
-
-    public function getCreatePoll($action_id){
-        $action = Action::findOrFail($action_id);
-        $proposals = Proposal::where('action_id', $action_id)->paginate();
-
-        return view('polls.create_poll', compact('action', 'proposals'));
     }
 }

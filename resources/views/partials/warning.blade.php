@@ -1,6 +1,6 @@
 @if(Session::has('warning'))
 	<br>
-	<div class="alert alert-warning">
+	<div class="alert alert-danger">
 		{{ Session::get('warning') }}
 	</div>
 @endif

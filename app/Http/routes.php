@@ -105,9 +105,15 @@ Route::group(['middleware' => 'auth'], function () {
 	//...
 
 	Route::get('crear-votacion/{action_id}', [
-		'uses'	=> 'ActionController@getCreatePoll',
+		'uses'	=> 'PollController@getCreate',
 		'as'	=> 'action.create-poll'
 		]);
+	
+	Route::post('crear-votacion', [
+		'uses'	=> 'PollController@postCreate',
+		'as'	=> 'create-poll'
+		]);
+
 
 	// Administador de la plataforma
 	Route::group(['middleware' => 'role:admin'], function () {

@@ -59,9 +59,9 @@ class ProposalController extends Controller
     public function show($id)
     {
         $proposal   = Proposal::findOrFail($id);
-        $action     = Action::findOrFail($proposal->action_id);
-        $creator    = User::findOrFail($proposal->user_id);
-        $comments   = Comment::where('proposal_id', $proposal->id)->paginate();
+        $action     = $proposal->action;
+        $creator    = $proposal->user;
+        $comments   = $proposal->comments()->paginate();
         $supporters = $proposal->supporters()->lists('user_id')->toArray();
 
         return view('proposals/proposal', compact('proposal', 'creator', 'action', 'comments', 'supporters'));

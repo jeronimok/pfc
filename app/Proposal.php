@@ -22,6 +22,14 @@ class Proposal extends Model
 
     protected $fillable = ['title', 'content', 'action_id'];
 
+    public function action(){
+        return $this->belongsTo(Action::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function comments(){
 
         return $this->hasMany(Comment::class);
@@ -30,4 +38,10 @@ class Proposal extends Model
     public function supporters(){
         return $this->belongsToMany(User::class, 'user_support_proposal')->withTimestamps();;
     }
+
+    public function options(){
+
+        return $this->hasMany(Option::class);
+    }
+
 }

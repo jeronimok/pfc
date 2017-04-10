@@ -16,6 +16,8 @@ class CreatePollsTable extends Migration
             $table->increments('id');
 
             $table->string('question');
+            $table->integer('action_id')->unsigned();
+            $table->foreign('action_id')->references('id')->on('actions');
 
             $table->timestamps();
         });

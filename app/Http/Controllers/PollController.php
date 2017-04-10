@@ -1,0 +1,134 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Action;
+use App\User;
+use App\Proposal;
+use App\Poll;
+use App\Option;
+
+class PollController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getCreate($action_id){
+        $action = Action::findOrFail($action_id);
+
+        if ( $action->poll ) {
+            return redirect()->back()
+                ->with('warning', 'Ya existe una votación entre propuestas, debes eliminarla para crear una nueva.');
+        }
+
+        $proposals = Proposal::where('action_id', $action_id)->get()->all();
+
+        if ( count($proposals) < 2 ) {
+            return redirect()->back()
+                ->with('warning', 'Debe haber al menos 2 propuestas para que puedas crear una votación');
+        }
+
+        return view('polls.create_poll', compact('action', 'proposals'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postCreate(Request $request){
+
+        $this->validate($request,[
+            'question'         => 'required'
+            ]);
+
+        // Validate: min 2 options selected
+        $counts = array_count_values($request->all());
+        if (!array_key_exists('on', $counts) or $counts['on'] < 2){
+            return redirect()->back()
+                ->withInput()
+                ->withErrors(['Selecciona al menos 2 opciones']);
+        }
+
+        //Create poll
+        $poll = new Poll;
+        $poll->question  = $request->get('question');
+        $poll->action_id = $request->get('action_id');
+        $poll->save();
+
+        //Store options
+        $proposal_ids = array_keys($request->all(), 'on');
+        foreach($proposal_ids as $proposal_id){
+            $option = new Option;
+            $option->proposal_id = $proposal_id;
+            $option->poll_id = $poll->id;
+            $option->save();
+        }
+
+        return redirect(route('action', $request->get('action_id')))
+            ->with('alert', 'La votación ha sido creada con éxito');
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}
