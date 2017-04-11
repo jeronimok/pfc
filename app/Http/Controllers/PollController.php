@@ -144,7 +144,7 @@ class PollController extends Controller
         $poll_id    =   Option::findOrFail($option_id)->poll_id;
         $user       =   auth()->user();
         
-        if (!Gate::allows('vote')){
+        if (Gate::denies('vote', $poll_id)){
             return redirect()->back()
                 ->with('warning', 'Ya has participado en esta votación');
         }

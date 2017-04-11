@@ -292,8 +292,8 @@ footer {
 
 .jumbo-img{
   background-color: #fff;
-  background-image: url("/images/");
-  background-size: 100% 95%;
+  /*background-image: url("/images/col.jpg");*/
+  background-size: 30% 30%;
   background-repeat: no-repeat;
   background-position: bottom right;
 }

@@ -30,8 +30,13 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $action->admin_id || $user->role == 'admin';
         });
 
-        $gate->define('vote',function($poll){
-            return  auth()->user() and !in_array($poll->id, auth()->user()->polls());
+        $gate->define('vote',function($user, $poll_id){
+            if (auth()->check()){
+                return !in_array($poll_id, $user->polls());
+            }
+            else {
+                return false;
+            }
         });
     }
 }
