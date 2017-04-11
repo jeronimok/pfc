@@ -57,7 +57,9 @@
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<h1 class="light" align="center">
-						Votación <a href="#" class="scroll-top back-to-top btn btn-modern pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
+						<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+						VOTACIÓN
+						<a href="#" class="scroll-top back-to-top btn btn-modern pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
 					</h1>
 					<br />
 					@include('partials/poll')

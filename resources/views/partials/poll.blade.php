@@ -12,23 +12,23 @@
                             <li class="list-group-item">
                                 @if(Gate::allows('vote', $action->poll->id))
                                     <div class="radio">
-                                      <label><input type="radio" name="selected_option" value="{{$option->id}}">{{$option->proposal->title}}</label>
+                                      <label><h4><input type="radio" name="selected_option" value="{{$option->id}}">{{$option->proposal->title}}</h4></label>
                                     </div>
                                 @else
                                     @if($action->poll->num_votes()==0)
-                                        <h5>
+                                        <h4>
                                             {{$option->proposal->title}}
                                             (0%)
-                                        </h5>
+                                        </h4>
                                         <div class="progress">
                                           <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"  style="width:0%">
                                           </div>
                                         </div>
                                     @else
-                                        <h5>
+                                        <h4>
                                             {{$option->proposal->title}}
                                             ({{ round(100*count($option->voters)/$action->poll->num_votes(), 2) }}%)
-                                        </h5>
+                                        </h4>
                                         <div class="progress">
                                           <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"  style="width: {{ 100*count($option->voters)/$action->poll->num_votes() }}%">
                                             
