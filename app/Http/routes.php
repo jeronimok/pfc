@@ -99,6 +99,11 @@ Route::group(['middleware' => 'auth'], function () {
 		'uses'	=> 'ProposalController@unsupport',
 		'as'	=> 'proposal.unsupport'
 		]);
+
+	Route::post('votar', [
+		'uses'	=> 'PollController@vote',
+		'as'	=> 'vote'
+		]);
 	
 
 	// Admin de Accion Participativa

@@ -19,7 +19,9 @@
 				<ul class="nav nav-tabs">
 	  				<li class="active"><a href="#">Descripción</a></li>
 	  				<li><a href="#" class="scroll-link" data-id="propuestas">Propuestas</a></li>
-	  				<li><a href="#" class="scroll-link" data-id="votacion">Votación</a></li>
+	  				@if($action->poll)
+	  					<li><a href="#" class="scroll-link" data-id="votacion">Votación</a></li>
+	  				@endif
 	  			</ul>
 			</div>
 		</div>
@@ -49,23 +51,25 @@
 		</div>
 	</div>
 </div>
-
-<div class="jumbotron jumbo-sky">
-	<div class="container-fluid page-section" id="votacion">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<h1 class="light" align="center">
-					Votación <a href="#" class="scroll-top back-to-top btn btn-modern pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
-				</h1>
-				<br />
-				@include('partials/poll')
+@if($action->poll)
+	<div class="jumbotron jumbo-img">
+		<div class="container-fluid page-section" id="votacion">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<h1 class="light" align="center">
+						Votación <a href="#" class="scroll-top back-to-top btn btn-modern pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
+					</h1>
+					<br />
+					@include('partials/poll')
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+@endif
 
 @endsection
 
 @section('scripts')
 <script src="/js/scroll.js"></script>
+<script src="/js/button_block.js"></script>
 @endsection

@@ -290,8 +290,12 @@ footer {
   background-color: #fff;
 }
 
-.jumbo-sky{
+.jumbo-img{
   background-color: #fff;
+  background-image: url("/images/");
+  background-size: 100% 95%;
+  background-repeat: no-repeat;
+  background-position: bottom right;
 }
 
 .no-bottom{

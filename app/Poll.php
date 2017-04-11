@@ -14,4 +14,12 @@ class Poll extends Model
     public function action(){
     	return $this->belongsTo(Action::class);
     }
+
+    public function num_votes(){
+    	$n = 0;
+    	foreach($this->options as $option){
+    		$n = $n + count($option->voters);
+    	}
+    	return $n;
+    }
 }

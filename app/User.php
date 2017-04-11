@@ -55,4 +55,9 @@ class User extends Model implements AuthenticatableContract,
     public function votes(){
         return $this->belongsToMany(Option::class, 'user_vote_option');
     }
+
+    //return array of polls ids
+    public function polls(){
+        return $this->votes()->lists('poll_id')->toArray();
+    }
 }

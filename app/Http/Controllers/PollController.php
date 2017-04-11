@@ -11,6 +11,7 @@ use App\User;
 use App\Proposal;
 use App\Poll;
 use App\Option;
+use Gate;
 
 class PollController extends Controller
 {
@@ -130,5 +131,26 @@ class PollController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function vote(Request $request)
+    {
+        if (!array_key_exists('selected_option', $request->all())){
+            return redirect()->back()
+                ->with('warning', 'Selecciona una opción');
+        }
+
+        $option_id  =   $request->get('selected_option');
+        $poll_id    =   Option::findOrFail($option_id)->poll_id;
+        $user       =   auth()->user();
+        
+        if (!Gate::allows('vote')){
+            return redirect()->back()
+                ->with('warning', 'Ya has participado en esta votación');
+        }
+
+        $user->votes()->attach($option_id);
+
+        return redirect()->back();
     }
 }
