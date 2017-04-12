@@ -39,7 +39,15 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
     return [
         'title'         => $faker->sentence,
         'content'       => $faker->text,
-        'action_id'     => rand(2,6),
+        'action_id'     => rand(1,6),
         'user_id'    => 1
+    ];
+});
+
+$factory->define(App\Work::class, function (Faker\Generator $faker) {
+    return [
+        'title'         => $faker->sentence,
+        'content'       => $faker->text,
+        'action_id'     => rand(1,5)
     ];
 });

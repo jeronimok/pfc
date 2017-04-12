@@ -24,6 +24,9 @@
 	  				@if($action->poll)
 	  					<li><a href="#" class="scroll-link" data-id="votacion">Votación</a></li>
 	  				@endif
+	  				@if($action->works)
+	  					<li><a href="#" class="scroll-link" data-id="obras">Obras</a></li>
+	  				@endif
 	  			</ul>
 			</div>
 		</div>
@@ -54,17 +57,33 @@
 	</div>
 </div>
 @if($action->poll)
-	<div class="jumbotron jumbo-img">
-		<div class="container-fluid page-section" id="votacion">
+	<div class="jumbotron jumbo-img no-margin-bottom page-section" id="votacion">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<h1 class="light" align="center">
+					<h1 class="light" align="center" style="color: #f5f5f5;">
 						<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
 						VOTACIÓN
-						<a href="#" class="scroll-top back-to-top btn btn-modern pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
+						<a href="#" class="scroll-top back-to-top btn btn-modern modern-light pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
 					</h1>
 					<br />
 					@include('partials/poll')
+				</div>
+			</div>
+		</div>
+	</div>
+@endif
+
+@if($action->works)
+	<div class="jumbotron no-margin-bottom page-section" id="obras">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<h2 class="light">
+						Obras del municipio <a href="#" class="scroll-top back-to-top btn btn-modern pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
+					</h2>
+					<br />
+					@include('partials/works_list')
 				</div>
 			</div>
 		</div>

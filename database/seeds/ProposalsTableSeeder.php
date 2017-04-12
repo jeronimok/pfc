@@ -34,6 +34,6 @@ class ProposalsTableSeeder extends Seeder
             'user_id' => 2
         ]);
 
-        factory(App\Proposal::class, 9)->create();
+        factory(App\Proposal::class, 15)->create();
     }
 }

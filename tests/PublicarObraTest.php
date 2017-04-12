@@ -28,4 +28,14 @@ class PublicarObraTest extends TestCase
         		'content' => 'Se está construyendo el metrobus en la zona...'
         		]);
     }
+
+    public function testVerObras()
+    {
+        $user = $this->createUSer('general');
+
+        $this->actingAs($user)
+        	->visit('accion-participativa/1')
+        	->see('Obras')
+        	->see('Metrobus');
+    }
 }

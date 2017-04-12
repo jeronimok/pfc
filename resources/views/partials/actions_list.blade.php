@@ -6,7 +6,7 @@
 		@else
 			<div class="card">
 				<a href="{{ route('action', ['id' => $actions[$j]->id]) }}">
-					<img class="card-img-top img-fluid" align="center" src="/images/700x400.png" alt="Card image cap">
+					<img class="card-img-top img-fluid" align="center" src="/images/action.jpg" alt="Card image cap">
 			    	<div class="card-block">
 			    		<h3 class="card-title" style="color: black;">{{ $actions[$j]->title }}</h3>
 			    		<span style="color: black;">{{ substr($actions[$j]->description, 0, 150) }}...</span>

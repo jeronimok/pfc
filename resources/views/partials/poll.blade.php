@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-md-10 col-md-offset-1">
-        <div class="panel">
-            <div class="panel-heading">
+        <div class="panel panel-default">
+            <div class="panel-heading" align="center">
                 <h3>{{$action->poll->question}}</h3>
             </div>
             <form class="form-horizontal" role="form" method="POST" action="{{ route('vote') }}">
@@ -40,8 +40,8 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class=" text-center">
-                    <button type="submit" name="btn_vote" class="btn btn-success btn-lg">
+                <div class="panel-footer text-center">
+                    <button type="submit" name="btn_vote" class="btn btn-modern btn-lg">
                         Votar</button>
                 </div>
             </form>
