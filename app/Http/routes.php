@@ -119,6 +119,16 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'create-poll'
 		]);
 
+	Route::get('publicar-obra/{action_id}', [
+		'uses'	=> 'WorkController@getCreate',
+		'as'	=> 'work.publish'
+		]);
+
+	Route::post('publicar-obra', [
+		'uses'	=> 'WorkController@postCreate',
+		'as'	=> 'work.post-create'
+		]);
+
 
 	// Administador de la plataforma
 	Route::group(['middleware' => 'role:admin'], function () {

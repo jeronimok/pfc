@@ -30,4 +30,9 @@ class Action extends Model
 
         return $this->hasOne(Poll::class);
     }
+
+    public function works(){
+
+        return $this->hasMany(Work::class);
+    }
 }

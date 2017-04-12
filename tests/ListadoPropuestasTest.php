@@ -16,6 +16,6 @@ class ListadoPropuestasTest extends TestCase
         	->visit('accion-participativa/1')
         	->see('Propuestas')
         	->see('Puestos saludables en parques')
-        	->dontSee('Más luces en las calles');
+        	->see('Más luces en las calles');
     }
 }

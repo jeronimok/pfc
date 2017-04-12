@@ -12,7 +12,9 @@
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu">
 					    <li><a href="{{route('action.create-poll', $action->id)}}">Crear Votación entre propuestas</a></li>
+					    <li><a href="{{route('work.publish', $action->id)}}">Publicar obra del municipio</a></li>
 					  </ul>
+
 					</div>
 				</h1>
 				@include('partials/warning')
