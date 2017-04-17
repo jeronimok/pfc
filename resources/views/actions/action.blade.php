@@ -20,11 +20,13 @@
 				@include('partials/warning')
 				<ul class="nav nav-tabs">
 	  				<li class="active"><a href="#">Descripción</a></li>
-	  				<li><a href="#" class="scroll-link" data-id="propuestas">Propuestas</a></li>
-	  				@if($action->poll)
+	  				@if(count($proposals)>0)
+	  					<li><a href="#" class="scroll-link" data-id="propuestas">Propuestas</a></li>
+	  				@endif
+	  				@if(count($action->poll) > 0 )
 	  					<li><a href="#" class="scroll-link" data-id="votacion">Votación</a></li>
 	  				@endif
-	  				@if($action->works)
+	  				@if(count($action->works()) > 0 )
 	  					<li><a href="#" class="scroll-link" data-id="obras">Obras</a></li>
 	  				@endif
 	  			</ul>
@@ -43,6 +45,7 @@
 	</div>
 </div>
 
+
 <div class="jumbotron no-margin-bottom page-section" id="propuestas">
 	<div class="container-fluid">
 		<div class="row">
@@ -56,7 +59,9 @@
 		</div>
 	</div>
 </div>
-@if($action->poll)
+
+
+@if(count($action->poll) > 0 )
 	<div class="jumbotron jumbo-img no-margin-bottom page-section" id="votacion">
 		<div class="container-fluid">
 			<div class="row">
@@ -74,7 +79,7 @@
 	</div>
 @endif
 
-@if($action->works)
+@if(count($action->works()) > 0 )
 	<div class="jumbotron no-margin-bottom page-section" id="obras">
 		<div class="container-fluid">
 			<div class="row">

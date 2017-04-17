@@ -252,7 +252,8 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .card-holder {
-  background-color: #eee;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 html {

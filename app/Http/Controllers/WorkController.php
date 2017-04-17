@@ -8,9 +8,16 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Action;
 use App\Work;
+use App\Rating;
 
 class WorkController extends Controller
 {
+    public function show($id){
+        $work = Work::findOrFail($id);
+
+        return view('works/show', compact('work'));
+    }
+
     public function getCreate($action_id){
 
         $action = Action::findOrFail($action_id);
@@ -29,10 +36,30 @@ class WorkController extends Controller
         $work->title = $request->get('title');
         $work->content = $request->get('content');
         $work->action_id = $request->get('action_id');
-
         $work->save();
 
         return redirect(route('action', $request->get('action_id')))
             ->with('alert', 'La obra ha sido publicada con éxito');
+    }
+
+    public function rate(Request $request){
+        
+        $this->validate($request, [
+            'comment'   => 'required'
+            ]);
+        
+        if($request->get('n_stars')<1){
+            return redirect()->back()->withErrors('Selecciona entre 1 y 5 estrellas');
+        }
+
+        $rating = new Rating;
+        $rating->stars      = $request->get('n_stars');
+        $rating->comment    = $request->get('comment');
+        $rating->work_id    = $request->get('work_id');
+        $rating->user_id    = auth()->user()->id;
+        $rating->save();
+
+        return redirect(route('works', $request->get('work_id')))
+            ->with('alert', 'Tu calificación ha sido publcada con éxito');
     }
 }

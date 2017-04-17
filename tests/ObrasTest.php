@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class PublicarObraTest extends TestCase
+class ObrasTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -36,6 +36,8 @@ class PublicarObraTest extends TestCase
         $this->actingAs($user)
         	->visit('accion-participativa/1')
         	->see('Obras')
-        	->see('Metrobus');
+        	->see('Paseo Boulevard');
     }
+
+    
 }

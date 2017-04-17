@@ -60,4 +60,14 @@ class User extends Model implements AuthenticatableContract,
     public function polls(){
         return $this->votes()->lists('poll_id')->toArray();
     }
+
+    public function ratings(){
+        return $this->hasMany(Rating::class);
+    }
+
+    //return array of works ids
+    public function ratedWorks(){
+        return $this->ratings()->lists('work_id')->toArray();
+    }    
+
 }

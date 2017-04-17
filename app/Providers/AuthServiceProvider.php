@@ -38,5 +38,14 @@ class AuthServiceProvider extends ServiceProvider
                 return false;
             }
         });
+
+        $gate->define('rate',function($user, $work_id){
+            if (auth()->check()){
+                return !in_array($work_id, $user->ratedWorks());
+            }
+            else {
+                return false;
+            }
+        });
     }
 }

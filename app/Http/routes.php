@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -66,6 +66,13 @@ Route::get('propuesta/{id}', [
 	'as'	=> 'proposal'
 	]);
 
+//Obras
+Route::get('obras/{id}', [
+	'uses'	=> 'WorkController@show',
+	'as'	=> 'works'
+	]);
+
+
 // Usuarios autenticados
 Route::group(['middleware' => 'auth'], function () {
 
@@ -103,6 +110,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('votar', [
 		'uses'	=> 'PollController@vote',
 		'as'	=> 'vote'
+		]);
+
+	Route::post('calificar', [
+		'uses'	=> 'WorkController@rate',
+		'as'	=> 'rate'
 		]);
 	
 
