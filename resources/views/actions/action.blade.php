@@ -7,15 +7,16 @@
 			<div class="col-md-8 col-md-offset-2">
 				<h1 class="light">
 					{{ $action->title }}
-					<div class="dropdown pull-right">
-					  <button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">Administrar
-					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu">
-					    <li><a href="{{route('action.create-poll', $action->id)}}">Crear Votación entre propuestas</a></li>
-					    <li><a href="{{route('work.publish', $action->id)}}">Publicar obra del municipio</a></li>
-					  </ul>
-
-					</div>
+					@if(Gate::allows('admin_action', $action->admin_id))
+						<div class="dropdown pull-right">
+						  <button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">Administrar
+						  <span class="caret"></span></button>
+						  <ul class="dropdown-menu">
+						    <li><a href="{{route('action.create-poll', $action->id)}}">Crear Votación entre propuestas</a></li>
+						    <li><a href="{{route('work.publish', $action->id)}}">Publicar obra del municipio</a></li>
+						  </ul>
+						</div>
+					@endif
 				</h1>
 				@include('partials/warning')
 				<ul class="nav nav-tabs">

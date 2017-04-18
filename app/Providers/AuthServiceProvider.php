@@ -26,8 +26,22 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        $gate->define('edit-action',function($user, $action){
-            return $user->id == $action->admin_id || $user->role == 'admin';
+        $gate->define('admin_action',function($user, $admin_id){
+            if (auth()->check()){
+                return $user->id == $admin_id or $user->role == 'admin';
+            }
+            else {
+                return false;
+            }
+        });
+
+        $gate->define('edit_proposal',function($user, $proposal){
+            if (auth()->check()){
+                return ($user->id == $proposal->user_id) or ($user->id == $proposal->action->admin_id) or ($user->role == 'admin');
+            }
+            else {
+                return false;
+            }
         });
 
         $gate->define('vote',function($user, $poll_id){
@@ -40,6 +54,15 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         $gate->define('rate',function($user, $work_id){
+            if (auth()->check()){
+                return !in_array($work_id, $user->ratedWorks());
+            }
+            else {
+                return false;
+            }
+        });
+
+        $gate->define('admin-action',function($user, $work_id){
             if (auth()->check()){
                 return !in_array($work_id, $user->ratedWorks());
             }

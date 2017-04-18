@@ -141,6 +141,10 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'work.post-create'
 		]);
 
+	Route::delete('borrar-propuesta', [
+		'uses'	=> 'ProposalController@destroy',
+		'as'	=> 'proposal.delete']);
+
 
 	// Administador de la plataforma
 	Route::group(['middleware' => 'role:admin'], function () {

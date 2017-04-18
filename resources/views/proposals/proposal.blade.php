@@ -10,6 +10,36 @@
 		<div class="col-md-8 col-md-offset-2">
 		  	<h2>
 				<a href="{{ route('action', ['id' => $action->id]) }}"><small>{{$action->title}}</small> </a> <small> >> Propuesta</small>
+				@if(Gate::allows('edit_proposal', $proposal))
+					<div class="dropdown pull-right">
+					  <button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">
+					  	<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+					  </button>
+					  <ul class="dropdown-menu">
+					    <li>
+					    	<a href="">Editar contenido de la propuesta</a>
+					    </li>
+					    <li role="separator" class="divider"></li>
+					    <li>
+					    	<form role="form" method="POST" action="{{ route('proposal.delete')}}">
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+								<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
+								<input type="hidden" name="_method" value="DELETE">
+								<button type="submit" class="btn btn-danger btn-block rect"
+								data-toggle="confirmation"
+								data-popout="true"
+								data-placement="bottom"
+								data-btn-ok-label="Si"
+						        data-btn-cancel-label="No"
+						        data-title="¿Estás seguro de que deseas eliminarla?"
+								>
+								  Eliminar propuesta
+								</button>
+							</form>
+					    </li>
+					  </ul>
+					</div>
+				@endif
 				<br>
 				{{ $proposal->title }}
 			</h2>
@@ -100,4 +130,12 @@
 		</div>
 	</div>
 </div>	
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+	$('[data-toggle=confirmation]').confirmation({
+	  rootSelector: '[data-toggle=confirmation]',
+	});
+</script>
 @endsection

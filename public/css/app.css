@@ -369,3 +369,6 @@ h1.light {
   color: #555;
 }
 
+.rect {
+  border-radius: 0 !important;
+}

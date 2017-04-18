@@ -77,9 +77,15 @@ class ProposalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $proposal   = Proposal::findOrFail($request->get('proposal_id'));
+        $title      = $proposal->title;
+        $action_id  = $proposal->action_id;
+        $proposal->delete();
+
+        return redirect(route('action', $action_id))
+            ->with('alert', "La propuesta '" . $title . "' ha sido eliminada con éxito.");
     }
 
     public function postComment(Request $request) {
