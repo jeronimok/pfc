@@ -30,8 +30,7 @@
                                             ({{ round(100*count($option->voters)/$action->poll->num_votes(), 2) }}%)
                                         </h4>
                                         <div class="progress">
-                                          <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"  style="width: {{ 100*count($option->voters)/$action->poll->num_votes() }}%">
-                                            
+                                          <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"  style="width: {{ 100*count($option->voters)/$action->poll->num_votes() }}%">    
                                           </div>
                                         </div>
                                     @endif
@@ -40,10 +39,12 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="panel-footer text-center">
-                    <button type="submit" name="btn_vote" class="btn btn-modern btn-lg">
-                        Votar</button>
-                </div>
+                @if(Gate::allows('vote', $action->poll->id))
+                    <div class="panel-footer text-center">
+                        <button type="submit" name="btn_vote" class="btn btn-modern btn-lg">
+                            Votar</button>
+                    </div>
+                @endif
             </form>
         </div>
     </div>
