@@ -17,7 +17,7 @@ class ProposalsTableSeeder extends Seeder
         	'title' => 'Puestos saludables en parques',
         	'content' => 'Propongo construir puestos saludables en los parques de la ciudad. Donde se pueda hacer ejercicios y tomar agua.',
         	'action_id' => 1,
-        	'user_id' => 1
+        	'user_id' => 2
         ]);
 
         factory(App\Proposal::class)->create([

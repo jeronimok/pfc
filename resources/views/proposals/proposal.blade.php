@@ -19,24 +19,26 @@
 					    <li>
 					    	<a href="">Editar contenido de la propuesta</a>
 					    </li>
-					    <li role="separator" class="divider"></li>
-					    <li>
-					    	<form role="form" method="POST" action="{{ route('proposal.delete')}}">
-								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
-								<input type="hidden" name="_method" value="DELETE">
-								<button type="submit" class="btn btn-danger btn-block rect"
-								data-toggle="confirmation"
-								data-popout="true"
-								data-placement="bottom"
-								data-btn-ok-label="Si"
-						        data-btn-cancel-label="No"
-						        data-title="¿Estás seguro de que deseas eliminarla?"
-								>
-								  Eliminar propuesta
-								</button>
-							</form>
-					    </li>
+					    @if(Gate::allows('admin_action', $proposal->action_id))
+						    <li role="separator" class="divider"></li>
+						    <li>
+						    	<form role="form" method="POST" action="{{ route('proposal.delete')}}">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
+									<input type="hidden" name="_method" value="DELETE">
+									<button type="submit" class="btn btn-danger btn-block rect"
+									data-toggle="confirmation"
+									data-popout="true"
+									data-placement="bottom"
+									data-btn-ok-label="Si"
+							        data-btn-cancel-label="No"
+							        data-title="¿Estás seguro de que deseas eliminarla?"
+									>
+									  Eliminar propuesta
+									</button>
+								</form>
+						    </li>
+						   @endif
 					  </ul>
 					</div>
 				@endif

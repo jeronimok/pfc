@@ -14,12 +14,19 @@ class UserTableSeeder extends Seeder
     	DB::table('users')->delete();
 
         factory(App\User::class)->create([
-        	'name' => 'Jerónimo',
+        	'name' => 'Jerónimo Admin',
         	'role' => 'admin',
         	'email' => 'jeronimo.calace@gmail.com',
         	'password' =>  bcrypt('admin')
         ]);
 
-        factory(App\User::class, 49)->create();
+        factory(App\User::class)->create([
+            'name' => 'Jerónimo General',
+            'role' => 'general',
+            'email' => 'jeronimo.calace+general@gmail.com',
+            'password' =>  bcrypt('general')
+        ]);
+
+        factory(App\User::class, 48)->create();
     }
 }
