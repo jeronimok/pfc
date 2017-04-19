@@ -133,11 +133,3 @@
 	</div>
 </div>	
 @endsection
-
-@section('scripts')
-<script type="text/javascript">
-	$('[data-toggle=confirmation]').confirmation({
-	  rootSelector: '[data-toggle=confirmation]',
-	});
-</script>
-@endsection

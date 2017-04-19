@@ -42,6 +42,17 @@ class WorkController extends Controller
             ->with('alert', 'La obra ha sido publicada con éxito');
     }
 
+    public function destroy(Request $request){
+
+        $work   = Work::findOrFail($request->get('work_id'));
+        $title      = $work->title;
+        $action_id  = $work->action_id;
+        $work->delete();
+
+        return redirect(route('action', $action_id))
+            ->with('alert', "La obra '" . $title . "' ha sido eliminada con éxito.");
+    }
+
     public function rate(Request $request){
         
         $this->validate($request, [

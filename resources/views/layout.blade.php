@@ -92,6 +92,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="/bootstrap/js/bootstrap.js"></script>
     <script src="/bootstrap/js/bootstrap-confirmation.min.js"></script>
+    <script src="/js/activate_confirmation.js"></script>
 
     @yield('scripts')
 
