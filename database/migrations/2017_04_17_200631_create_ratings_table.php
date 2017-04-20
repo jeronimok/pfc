@@ -18,11 +18,11 @@ class CreateRatingsTable extends Migration
             $table->integer('stars')->unsigned();
             $table->longText('comment');
 
-            $table->integer('work_id')->unsigned();
-            $table->foreign('work_id')->references('id')->on('works');
+            $table->integer('work_id')->unsigned()->nullable();
+            $table->foreign('work_id')->references('id')->on('works')->onDelete('set null');;
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
 
             $table->timestamps();
         });

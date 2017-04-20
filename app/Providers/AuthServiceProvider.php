@@ -26,6 +26,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
+        
+        $gate->define('admin',function($user){
+            if (auth()->check()){
+                return $user->role == 'admin';
+            }
+            else {
+                return false;
+            }
+        });
+
         $gate->define('admin_action',function($user, $admin_id){
             if (auth()->check()){
                 return $user->id == $admin_id or $user->role == 'admin';
@@ -71,13 +81,5 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
-        $gate->define('admin-action',function($user, $work_id){
-            if (auth()->check()){
-                return !in_array($work_id, $user->ratedWorks());
-            }
-            else {
-                return false;
-            }
-        });
     }
 }

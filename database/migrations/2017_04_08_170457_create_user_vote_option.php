@@ -15,11 +15,11 @@ class CreateUserVoteOption extends Migration
         Schema::create('user_vote_option', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
 
             $table->integer('option_id')->unsigned();
-            $table->foreign('option_id')->references('id')->on('options');
+            $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade');
 
             $table->timestamps();
         });

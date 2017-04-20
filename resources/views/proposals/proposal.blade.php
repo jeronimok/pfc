@@ -8,6 +8,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
+			@include('partials/warning')
 		  	<h2>
 				<a href="{{ route('action', ['id' => $action->id]) }}"><small>{{$action->title}}</small> </a> <small> >> Propuesta</small>
 				@if(Gate::allows('edit_proposal', $proposal))
@@ -87,7 +88,6 @@
 					</span>
 				</div>
 			</div>
-			@include('partials/warning')
 		</div>
 	</div>
 </div>

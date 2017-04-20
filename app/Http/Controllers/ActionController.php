@@ -92,9 +92,14 @@ class ActionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $action   = Action::findOrFail($request->get('action_id'));
+        $title    = $action->title;
+        $action->delete();
+
+        return redirect(route('actions'))
+            ->with('alert', "La acción participativa '" . $title . "' ha sido eliminada con éxito.");
     }
 
     public function getEditAction($id){

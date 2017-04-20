@@ -5,7 +5,7 @@
 			@if(Gate::allows('edit_comment', $comment))
 				<div class="dropdown pull-right">
 				  <button class="btn btn-modern dropdown-toggle" type="button" data-toggle="dropdown">
-				  	<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+				  	<span class="caret"></span></button>
 				  </button>
 				  <ul class="dropdown-menu">
 				    <li>

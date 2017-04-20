@@ -174,7 +174,11 @@ Route::group(['middleware' => 'auth'], function () {
 			'uses' 	=> 'AdminController@postCreateAction',
 			'as'	=> 'settings/create-action'
 			]);
-		
+		// Eliminar accion participativa
+		Route::delete('eliminar-accion', [
+		'uses'	=> 'ActionController@destroy',
+		'as'	=> 'action.delete'
+		]);
 
 	});
 

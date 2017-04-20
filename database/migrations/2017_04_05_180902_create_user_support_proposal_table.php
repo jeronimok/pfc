@@ -15,11 +15,11 @@ class CreateUserSupportProposalTable extends Migration
         Schema::create('user_support_proposal', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
 
-            $table->integer('proposal_id')->unsigned();
-            $table->foreign('proposal_id')->references('id')->on('proposals')->onDelete('CASCADE');
+            $table->integer('proposal_id')->unsigned()->nullable();
+            $table->foreign('proposal_id')->references('id')->on('proposals')->onDelete('set null');
 
             $table->timestamps();
         });

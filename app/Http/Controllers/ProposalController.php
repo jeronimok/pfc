@@ -80,6 +80,11 @@ class ProposalController extends Controller
     public function destroy(Request $request)
     {
         $proposal   = Proposal::findOrFail($request->get('proposal_id'));
+
+        if($proposal->options){
+            return redirect()->back()->with('warning', 'Esta propuesta está involucrada en una votación. Debes eliminar la votación primero.');
+        }
+
         $title      = $proposal->title;
         $action_id  = $proposal->action_id;
         $proposal->delete();

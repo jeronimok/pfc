@@ -16,10 +16,10 @@ class CreateProposalsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->longText('content');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->integer('action_id')->unsigned();
-            $table->foreign('action_id')->references('id')->on('actions');
+            $table->foreign('action_id')->references('id')->on('actions')->onDelete('cascade');
             $table->timestamps();
         });
     }

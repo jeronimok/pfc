@@ -17,7 +17,7 @@ class CreatePollsTable extends Migration
 
             $table->string('question');
             $table->integer('action_id')->unsigned();
-            $table->foreign('action_id')->references('id')->on('actions');
+            $table->foreign('action_id')->references('id')->on('actions')->onDelete('cascade');
 
             $table->timestamps();
         });
