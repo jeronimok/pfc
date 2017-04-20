@@ -44,6 +44,15 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
+        $gate->define('edit_comment',function($user, $comment){
+            if (auth()->check()){
+                return ($user->id == $comment->user_id) or ($user->id == $comment->$proposal->action->admin_id) or ($user->role == 'admin');
+            }
+            else {
+                return false;
+            }
+        });
+
         $gate->define('vote',function($user, $poll_id){
             if (auth()->check()){
                 return !in_array($poll_id, $user->polls());

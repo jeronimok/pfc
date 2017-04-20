@@ -151,6 +151,11 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'work.delete'
 		]);
 
+	Route::delete('borrar-comentario', [
+		'uses'	=> 'CommentController@destroy',
+		'as'	=> 'comment.delete'
+		]);
+
 
 	// Administador de la plataforma
 	Route::group(['middleware' => 'role:admin'], function () {

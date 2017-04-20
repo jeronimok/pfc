@@ -87,8 +87,13 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Request $request){
+
+        $comment   = Comment::findOrFail($request->get('comment_id'));
+        $proposal_id  = $comment->proposal_id;
+        $comment->delete();
+
+        return redirect(route('proposal', $proposal_id))
+            ->with('alert', "El comentario ha sido eliminado con éxito.");
     }
 }
