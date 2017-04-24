@@ -50,7 +50,7 @@
 			<hr>
 			<div class="row">
 				<div class="col-md-6">
-					@if(in_array(Auth::check() and Auth::user()->id, $supporters))
+					@if(Auth::check() and in_array(Auth::user()->id, $supporters))
 						<form role="form" method="POST" action="{{ route('proposal.unsupport')}}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
