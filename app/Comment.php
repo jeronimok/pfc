@@ -25,4 +25,8 @@ class Comment extends Model
     public function proposal(){
     	return $this->belongsTo(Proposal::class);	
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

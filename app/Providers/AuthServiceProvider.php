@@ -56,7 +56,7 @@ class AuthServiceProvider extends ServiceProvider
 
         $gate->define('edit_comment',function($user, $comment){
             if (auth()->check()){
-                return ($user->id == $comment->user_id) or ($user->id == $comment->$proposal->action->admin_id) or ($user->role == 'admin');
+                return ($user->id == $comment->user_id) or ($user->id == $comment->proposal->action->admin_id) or ($user->role == 'admin');
             }
             else {
                 return false;

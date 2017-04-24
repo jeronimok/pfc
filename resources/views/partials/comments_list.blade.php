@@ -1,7 +1,7 @@
 @foreach($comments as $comment)
 	<div class="card">
 		<div class="card-block"> 
-			<a href="">{{ $comment->user_name }}</a>
+			<a href="">{{ $comment->user->name }}</a>
 			@if(Gate::allows('edit_comment', $comment))
 				<div class="dropdown pull-right">
 				  <button class="btn btn-modern dropdown-toggle" type="button" data-toggle="dropdown">
