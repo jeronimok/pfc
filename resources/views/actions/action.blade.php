@@ -13,6 +13,7 @@
 						  <span class="caret"></span></button>
 						  <ul class="dropdown-menu">
 						    <li><a href="{{route('action.create-poll', $action->id)}}">Crear Votación entre propuestas</a></li>
+						    <li role="separator" class="divider"></li>
 						    <li><a href="{{route('work.publish', $action->id)}}">Publicar obra del municipio</a></li>
 						    @if(Gate::allows('admin'))
 						    	<li role="separator" class="divider"></li>
