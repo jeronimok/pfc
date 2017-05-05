@@ -34,7 +34,7 @@ class ObrasTest extends TestCase
         $user = $this->createUSer('general');
 
         $this->actingAs($user)
-        	->visit('accion-participativa/1')
+        	->visit('accion-participativa/2')
         	->see('Obras')
         	->see('Paseo Boulevard');
     }

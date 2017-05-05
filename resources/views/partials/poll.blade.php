@@ -40,7 +40,7 @@
                     </ul>
                 </div>
                 @if(Gate::allows('vote', $action->poll->id))
-                    <div class="panel-footer text-center">
+                    <div class="panel-footer text-center" name="footer_vote">
                         <button type="submit" name="btn_vote" class="btn btn-modern btn-lg">
                             Votar</button>
                     </div>

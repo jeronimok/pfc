@@ -151,6 +151,13 @@ class PollController extends Controller
 
         $user->votes()->attach($option_id);
 
-        return redirect()->back();
+        $poll = Poll::findOrFail($poll_id);
+        $options = $poll->options;
+        $results = [];
+        foreach($options as $option){
+            array_push($results, ['name' => $option->proposal->title, 'perc' => round(100*count($option->voters)/$poll->num_votes(), 2)]);
+        }
+
+        return response()->json($results);
     }
 }

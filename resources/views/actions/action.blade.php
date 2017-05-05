@@ -67,7 +67,7 @@
 	</div>
 </div>
 
-
+@if(count($action->proposals) > 0 )
 <div class="jumbotron no-margin-bottom page-section" id="propuestas">
 	<div class="container-fluid">
 		<div class="row">
@@ -81,6 +81,7 @@
 		</div>
 	</div>
 </div>
+@endif
 
 
 @if(count($action->poll) > 0 )
@@ -122,4 +123,7 @@
 @section('scripts')
 <script src="/js/scroll.js"></script>
 <script src="/js/button_block.js"></script>
+
+<script src="/js/reload_poll.js"></script>
+
 @endsection

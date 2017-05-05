@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Http\Request;
+use App\Poll;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -73,6 +74,7 @@ Route::get('obras/{id}', [
 	]);
 
 
+
 // Usuarios autenticados
 Route::group(['middleware' => 'auth'], function () {
 
@@ -107,7 +109,7 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'proposal.unsupport'
 		]);
 
-	Route::post('votar', [
+	Route::any('votar', [
 		'uses'	=> 'PollController@vote',
 		'as'	=> 'vote'
 		]);
