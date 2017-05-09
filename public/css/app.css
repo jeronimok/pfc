@@ -157,6 +157,7 @@ fieldset[disabled] .btn-primary.active {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  word-wrap: break-word !important;
 }
 .card-block {
   -webkit-box-flex: 1;
@@ -186,6 +187,7 @@ fieldset[disabled] .btn-primary.active {
   margin-bottom: 1.25rem;
 }
 
+
 @media (min-width: 0em) {
     .card-columns {
         -webkit-column-count: 1;
@@ -208,6 +210,7 @@ fieldset[disabled] .btn-primary.active {
     }
 }
 @media (min-width: 576px) {
+
   .card-deck {
     display: -webkit-box;
     display: -webkit-flex;
@@ -218,6 +221,7 @@ fieldset[disabled] .btn-primary.active {
             flex-flow: row wrap;
   }
   .card-deck .card {
+    max-width: 30%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -307,7 +311,7 @@ footer {
   margin-bottom: 0px;
 }
 
-.proposal-text{
+p{
   font-size: 20px;
   font-weight: lighter;
 }
@@ -371,4 +375,9 @@ h1.light {
 
 .rect {
   border-radius: 0 !important;
+}
+
+.control-label{
+  font-size: 18px;
+  font-weight: normal;
 }

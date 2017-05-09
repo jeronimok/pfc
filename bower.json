@@ -1,0 +1,20 @@
+{
+  "name": "Participacion ciudadana",
+  "description": "Plataforma web de participacion ciudadana",
+  "main": "",
+  "authors": [
+    "Jeronimo <jeronimo.calace@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jeronimok/pfc",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "summernote": "^0.8.3"
+  }
+}

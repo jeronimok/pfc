@@ -6,69 +6,60 @@
 	<div class="container fluid">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
+				<h2>Nueva acción participativa</h2>
+				<br>
 				<div class="panel panel-default">
-					<div class="panel-heading">Nueva acción participativa</div>
 					<div class="panel-body">
 						@include('partials/errors')
 
-						<form class="form-horizontal" role="form" method="POST" action="{{ route('settings/create-action') }}">
+						<form role="form" method="POST" action="{{ route('settings/create-action') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 							<div class="form-group">
-								<label class="col-md-3 control-label">Título</label>
-								<div class="col-md-9">
-								    <input type="text" name="title" class="form-control" value="{{ old('title') }}" required>
-								</div>
+								<label class="control-label">Título</label>
+								<input type="text" name="title" class="form-control" value="{{ old('title') }}" required>
 							</div>
-
+							<br>
 							<div class="form-group">
-								<label class="col-md-3 control-label">Descripción</label>
-								<div class="col-md-9">
-									<textarea class="form-control" rows="5" name="description" required>{{old('description')}}</textarea>
-								</div>
+								<label class="control-label">Descripción</label>
+								<textarea class="form-control" rows="5" name="description" required>{{old('description')}}</textarea>
 							</div>
-
+							<br>
 							<div class="form-group">
-								<label class="col-md-3 control-label">Administrador (email)</label>
-								<div class="col-md-9">
-								    <input type="email" name="admin_email" value="{{ old('admin_email') }}" class="form-control" required>
-								</div>
+								<label class="control-label">Administrador (email)</label>
+								<input type="email" name="admin_email" value="{{ old('admin_email') }}" class="form-control" required>
 							</div>
-
+							<br>
 							<div class="form-group">
-								<label class="col-md-3 control-label">Funcionalidades</label>
-								<div class="col-md-9">
-								    <div class="checkbox">
-									  <label><input type="checkbox" name="create_p" checked>Crear propuestas</label>
-									</div>
-									<div class="checkbox">
-									  <label><input type="checkbox" name="debate_p" >Debatir propuestas</label>
-									</div>
-									<div class="checkbox">
-									  <label><input type="checkbox" name="support_p" >Apoyar propuestas</label>
-									</div>
-									<div class="checkbox">
-									  <label><input type="checkbox" name="opt_p" >Optar entre alternativas</label>
-									</div>
-									<div class="checkbox">
-									  <label><input type="checkbox" name="audit" >Auditar obras</label>
-									</div>
+								<label class="control-label">Funcionalidades</label>
+							    <div class="checkbox">
+								  <label><input type="checkbox" name="create_p" checked>Crear propuestas</label>
+								</div>
+								<div class="checkbox">
+								  <label><input type="checkbox" name="debate_p" >Debatir propuestas</label>
+								</div>
+								<div class="checkbox">
+								  <label><input type="checkbox" name="support_p" >Apoyar propuestas</label>
+								</div>
+								<div class="checkbox">
+								  <label><input type="checkbox" name="opt_p" >Optar entre alternativas</label>
+								</div>
+								<div class="checkbox">
+								  <label><input type="checkbox" name="audit" >Auditar obras</label>
 								</div>
 							</div>	
-
-							<div class="form-group">
-								<div class="col-md-6 col-md-offset-3">
-									<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-										Crear acción participativa
-									</button>
-								</div>
+							<br>
+							<div class="form-group" align="center">
+								<button type="submit" class="btn btn-default btn-lg" style="margin-right: 15px;">
+									Crear acción participativa
+								</button>
 							</div>
 						</form>
 					</div>
 				</div>		
 			</div>
 		</div>
-		
 	</div>
 </div>
+
 @endsection

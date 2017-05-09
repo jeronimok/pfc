@@ -14,11 +14,11 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
 
-    <!-- Optional theme -->
-    <!-- <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-theme.css"> -->
+    <!-- summernote -->
+    <link rel="stylesheet" type="text/css" href="/bower_components/summernote/dist/summernote.css">
 
     <!-- Css local -->
-     <link rel="stylesheet" type="text/css" href="/css/app.css?v=<?=time();?>"/> 
+    <link rel="stylesheet" type="text/css" href="/css/app.css?v=<?=time();?>"/> 
 
     <style type="text/css">
       body {
@@ -93,6 +93,17 @@
     <script src="/bootstrap/js/bootstrap.js"></script>
     <script src="/bootstrap/js/bootstrap-confirmation.min.js"></script>
     <script src="/js/activate_confirmation.js"></script>
+
+    <!-- include summernote js-->
+    <script src="/bower_components/summernote/dist/summernote.min.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('textarea').summernote({
+              height:200,
+            });
+        });
+    </script>
 
     @yield('scripts')
 
