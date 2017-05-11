@@ -61,8 +61,10 @@
 						<br>
 					@endfor
 				@endif
-
+				
 				@if(count($user->comments) > 0)
+					<br>
+					<hr class="styled">
 				  	<h3>Comentarios</h3>
 				  	<br>
 				  	@foreach($user->comments as $comment)
@@ -114,6 +116,8 @@
 				@endif
 
 				@if(count($user->ratings) > 0)
+					<br>
+					<hr class="styled">
 				  	<h3>Calificaciones</h3>
 				  	<br>
 				  	@foreach($user->ratings as $rating)

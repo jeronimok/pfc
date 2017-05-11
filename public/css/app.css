@@ -391,3 +391,6 @@ body {
 .jumbottom {
     min-height: 240px;
 }
+hr.styled {
+  border-top: 1px solid #555;
+}
