@@ -254,6 +254,10 @@ fieldset[disabled] .btn-primary.active {
   max-width: 100%;
   height: auto;
 }
+.img-circle {
+  width: 150px;
+  height: 150px;
+}
 
 .card-holder {
   background-color: transparent;
@@ -312,7 +316,7 @@ footer {
 }
 
 p{
-  font-size: 20px;
+  font-size: 18px;
   font-weight: lighter;
 }
 .action-text{
@@ -383,4 +387,7 @@ h1.light {
 }
 body {
   margin-top: 50px;
+}
+.jumbottom {
+    min-height: 240px;
 }

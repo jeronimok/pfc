@@ -31,7 +31,7 @@
 							<br>
 							<div class="form-group">
 								<label class="control-label">Administrador (email)</label>
-								<input id="admin_email" type="email" name="admin_email" value="{{ old('admin_email') }}" class="form-control" required>
+								<input id="admin_email" type="email" name="admin_email" value="{{ old('admin_email') }}" class="form-control" placeholder="Empieza a escribir para filtrar resultados..." required>
 							</div>
 							<br>
 							<div class="form-group">

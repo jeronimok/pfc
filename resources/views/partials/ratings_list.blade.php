@@ -11,7 +11,7 @@
 			<div class="proposal-comment">{!! nl2br($rating->comment) !!}</div>
 			<hr>
 			<div class="pull-right">
-				<a href="">{{ $rating->user->name }}</a>
+				<a href="{{route('user', $rating->user->id)}}">{{ $rating->user->name }}</a>
 				<br>
 				<small>{{$rating->updated_at}}</small>
 			</div>

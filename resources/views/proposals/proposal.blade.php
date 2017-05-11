@@ -82,7 +82,7 @@
 				</div>
 				<div class="col-md-6">
 					<span class="text-muted pull-right">
-						Creado por <a href="">{{$creator->name}}</a>. 
+						Creado por <a href="{{route('user', $creator->id)}}">{{$creator->name}}</a>. 
 						<br>
 						Última edición: {{$proposal->updated_at}}
 					</span>

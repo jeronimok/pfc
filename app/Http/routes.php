@@ -1,7 +1,6 @@
 <?php
 use Illuminate\Http\Request;
 use App\Poll;
-use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -74,6 +73,11 @@ Route::get('obras/{id}', [
 	'as'	=> 'works'
 	]);
 
+//Perfil de usuario
+Route::get('usuarios/{id}', [
+	'uses'	=> 'UserController@show',
+	'as'	=> 'user'
+	]);
 
 
 // Usuarios autenticados
@@ -184,9 +188,10 @@ Route::group(['middleware' => 'auth'], function () {
 		]);
 
 		// Info de usuarios para filtrar al seleccionar admin de accion
-		Route::get('info-usuarios', function(){
-			return User::all('name', 'email')->toArray();
-		});
+		Route::get('info-usuarios', [
+			'uses'	=> 'UserController@index',
+			'as'	=> 'users.index'
+			]);
 
 	});
 

@@ -93,7 +93,7 @@ class CommentController extends Controller
         $proposal_id  = $comment->proposal_id;
         $comment->delete();
 
-        return redirect(route('proposal', $proposal_id))
+        return redirect()->back()
             ->with('alert', "El comentario ha sido eliminado con éxito.");
     }
 }
