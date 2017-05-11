@@ -11,20 +11,16 @@
 
     <title>PFC</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- summernote -->
     <link rel="stylesheet" type="text/css" href="/bower_components/summernote/dist/summernote.css">
 
-    <!-- Css local -->
+    <!-- css local -->
     <link rel="stylesheet" type="text/css" href="/css/app.css?v=<?=time();?>"/> 
 
-    <style type="text/css">
-      body {
-        margin-top: 50px;
-      }
-    </style>
+    @yield('styles')
 
   </head>
 

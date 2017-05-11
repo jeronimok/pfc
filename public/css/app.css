@@ -381,3 +381,6 @@ h1.light {
   font-size: 18px;
   font-weight: normal;
 }
+body {
+  margin-top: 50px;
+}

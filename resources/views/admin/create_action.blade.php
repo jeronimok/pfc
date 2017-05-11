@@ -1,7 +1,11 @@
 @extends('layout')
 
-@section('content')
+@section('styles')
+<!-- easy-autocomplete -->
+<link rel="stylesheet" type="text/css" href="/bower_components/EasyAutocomplete/dist/easy-autocomplete.min.css">
+@endsection
 
+@section('content')
 <div class="jumbotron">
 	<div class="container fluid">
 		<div class="row">
@@ -27,7 +31,7 @@
 							<br>
 							<div class="form-group">
 								<label class="control-label">Administrador (email)</label>
-								<input type="email" name="admin_email" value="{{ old('admin_email') }}" class="form-control" required>
+								<input id="admin_email" type="email" name="admin_email" value="{{ old('admin_email') }}" class="form-control" required>
 							</div>
 							<br>
 							<div class="form-group">
@@ -62,4 +66,34 @@
 	</div>
 </div>
 
+@endsection
+
+@section('scripts')
+<script src="/bower_components/EasyAutocomplete/dist/jquery.easy-autocomplete.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+	var options = {
+
+	  	url: "/info-usuarios",
+
+	    getValue: "email",
+
+	    template: {
+	        type: "description",
+	        fields: {
+	            description: "name"
+	        }
+	    },
+
+	    list: {
+	        match: {
+	            enabled: true
+	        }
+	    },
+	};
+
+	$("#admin_email").easyAutocomplete(options);
+});
+</script>
 @endsection
