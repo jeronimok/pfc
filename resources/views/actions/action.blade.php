@@ -67,6 +67,7 @@
 						</div>
 					@endif
 					<br>
+					<img class="img-fluid img-circle img-small" src="/images/action.jpg" alt="Foto de perfil">
 					{{ $action->title }}
 				</h1>
 				<br>

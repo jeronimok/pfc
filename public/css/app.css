@@ -258,6 +258,10 @@ fieldset[disabled] .btn-primary.active {
   width: 150px;
   height: 150px;
 }
+.img-small {
+  width: 100px;
+  height: 100px;
+}
 
 .card-holder {
   background-color: transparent;
