@@ -38,10 +38,8 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-2 col-md-offset-2" align="center">
+		<div class="col-md-4 col-md-offset-4" align="center">
 			<img class="img-fluid img-circle" src="/images/profile.jpg" alt="Foto de perfil">
-		</div>
-		<div class="col-md-6">
 			<h2>{{$user->name}}</h2>
 			<p>
 				Propuestas creadas: <strong>{{count($user->proposals)}}</strong>
