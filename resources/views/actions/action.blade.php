@@ -128,7 +128,7 @@
 	<div class="jumbotron jumbo-img no-margin-bottom page-section" id="votacion">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
+				<div class="col">
 					<h1 class="light" align="center" style="color: #f5f5f5;">
 						<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
 						VOTACIÓN
