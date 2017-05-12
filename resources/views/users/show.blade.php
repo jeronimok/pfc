@@ -49,7 +49,19 @@
 				Obras calificadas: <strong>{{count($user->ratings)}}</strong>
 			</p>
 		</div>
-		
+		<div class="col-md-1" align="center">
+			<div class="dropdown">
+			  	<button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">
+			  		<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+			  		Ajustes
+			  	</button>
+			  	<ul class="dropdown-menu">
+			    	<li>
+			    		<a href="">Editar perfil</a>
+			    	</li>
+			    </ul>
+			</div>
+		</div>
 	</div>
 </div>
 <br>

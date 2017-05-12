@@ -60,8 +60,8 @@
             <li><a href="{{ route('actions') }}">Acciones participativas</a></li>
             @if (Auth::check() and Auth::user()->role == 'admin')
               <li><a href="{{ route('settings') }}">
-                ADMINISTRACIÓN
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                Administración
               </a></li>
             @endif
           </ul>
