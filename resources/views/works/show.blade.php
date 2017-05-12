@@ -1,7 +1,30 @@
 @extends('layout')
 
+<!-- Description -->
+<meta name="description" content="{{$work->title}}" />
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="description" content="{{$work->title}}">
+<meta itemprop="image" content="http://pfc.local/images/works.jpg">
+
+<!-- Twitter Card data -->
+<meta name="twitter:description" content="{{$work->title}}">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="http://pfc.local//images/works.jpg">
+
+<!-- Open Graph data -->
+<meta property="og:image" content="http://pfc.local//images/works.jpg" />
+<meta property="og:description" content="{{$work->title}}" />
 
 @section('content')
+
+<div class="ssk-sticky ssk-left ssk-center ssk-lg">
+    <a href="" class="ssk ssk-facebook"></a>
+    <a href="" class="ssk ssk-twitter"></a>
+    <a href="" class="ssk ssk-google-plus"></a>
+    <a href="" class="ssk ssk-pinterest"></a>
+    <a href="" class="ssk ssk-tumblr"></a>
+</div>
 
 <div class="jumbotron"></div>
 
@@ -46,6 +69,14 @@
 				{{ $work->title }}
 			</h2>
 			<p class="proposal-text">{!! nl2br($work->content) !!}</p>
+			<br>
+			<div class="ssk-group" >
+			    <a href="" class="ssk ssk-facebook"></a>
+			    <a href="" class="ssk ssk-twitter"></a>
+			    <a href="" class="ssk ssk-google-plus"></a>
+			    <a href="" class="ssk ssk-pinterest"></a>
+			    <a href="" class="ssk ssk-tumblr"></a>
+			</div>
 			<hr>
 			@if(count($work->ratings) === 0)
 				<span class="text-muted">Sin calificaciones aún</span>

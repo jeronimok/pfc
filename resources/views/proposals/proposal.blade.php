@@ -1,7 +1,31 @@
 @extends('layout')
 
+<!-- Description -->
+<meta name="description" content="{{$proposal->title}}" />
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="description" content="{{$proposal->title}}">
+<meta itemprop="image" content="http://pfc.local/images/proposal.jpg">
+
+<!-- Twitter Card data -->
+<meta name="twitter:description" content="{{$proposal->title}}">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="http://pfc.local//images/proposal.jpg">
+
+<!-- Open Graph data -->
+<meta property="og:image" content="http://pfc.local//images/proposal.jpg" />
+<meta property="og:description" content="{{$proposal->title}}" />
 
 @section('content')
+
+<div class="ssk-sticky ssk-left ssk-center ssk-lg">
+    <a href="" class="ssk ssk-facebook"></a>
+    <a href="" class="ssk ssk-twitter"></a>
+    <a href="" class="ssk ssk-google-plus"></a>
+    <a href="" class="ssk ssk-pinterest"></a>
+    <a href="" class="ssk ssk-tumblr"></a>
+</div>
+
 
 <div class="jumbotron"></div>
 
@@ -47,6 +71,14 @@
 				{{ $proposal->title }}
 			</h2>
 			<p class="proposal-text">{!! nl2br($proposal->content) !!}</p>
+			<br>
+			<div class="ssk-group" >
+			    <a href="" class="ssk ssk-facebook"></a>
+			    <a href="" class="ssk ssk-twitter"></a>
+			    <a href="" class="ssk ssk-google-plus"></a>
+			    <a href="" class="ssk ssk-pinterest"></a>
+			    <a href="" class="ssk ssk-tumblr"></a>
+			</div>
 			<hr>
 			<div class="row">
 				<div class="col-md-6">

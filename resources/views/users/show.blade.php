@@ -1,6 +1,30 @@
 @extends('layout')
 
+<!-- Description -->
+<meta name="description" content="{{$user->name}}" />
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="description" content="{{$user->name}}">
+<meta itemprop="image" content="http://pfc.local/images/profile.jpg">
+
+<!-- Twitter Card data -->
+<meta name="twitter:description" content="{{$user->name}}">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="http://pfc.local//images/profile.jpg">
+
+<!-- Open Graph data -->
+<meta property="og:image" content="http://pfc.local//images/profile.jpg" />
+<meta property="og:description" content="{{$user->name}}" />
+
 @section('content')
+
+<div class="ssk-sticky ssk-left ssk-center ssk-lg">
+    <a href="" class="ssk ssk-facebook"></a>
+    <a href="" class="ssk ssk-twitter"></a>
+    <a href="" class="ssk ssk-google-plus"></a>
+    <a href="" class="ssk ssk-pinterest"></a>
+    <a href="" class="ssk ssk-tumblr"></a>
+</div>
 
 <div class="jumbotron">
 	<div class="container-fluid">

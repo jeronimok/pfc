@@ -1,22 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+
+    <title>Participación ciudadana</title>
+    <meta name="title" content="Participación ciudadana">
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Participación ciudadana">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Participación ciudadana">
+
+    <!-- Open Graph data -->
+
+    <meta property="og:title" content="Participación ciudadana" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{Request::url()}}" />
+    <meta property="og:site_name" content="PFC.local" />
+    
+    @yield('meta')
+    
+    <!-- favIcon -->
     <link rel="icon" href="../../favicon.ico">
-
-    <title>PFC</title>
-
     <!-- bootstrap -->
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-
     <!-- summernote -->
     <link rel="stylesheet" type="text/css" href="/bower_components/summernote/dist/summernote.css">
-
+    <!-- Social Share Kit CSS -->
+    <link rel="stylesheet" href="/bower_components/social-share-kit/dist/css/social-share-kit.css" type="text/css">
     <!-- css local -->
     <link rel="stylesheet" type="text/css" href="/css/app.css?v=<?=time();?>"/> 
 
@@ -92,12 +109,18 @@
 
     <!-- include summernote js-->
     <script src="/bower_components/summernote/dist/summernote.min.js"></script>
+
+    <!-- Social Share Kit JS -->
+    <script type="text/javascript" src="/bower_components/social-share-kit/dist/js/social-share-kit.js"></script>
     
     <script type="text/javascript">
         $(document).ready(function() {
+            
             $('textarea').summernote({
               height:200,
             });
+
+            SocialShareKit.init();
         });
     </script>
 

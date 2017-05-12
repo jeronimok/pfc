@@ -1,12 +1,40 @@
 @extends('layout')
 
+@section('meta')
+
+<!-- Description -->
+<meta name="description" content="{{$action->title}}" />
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="description" content="{{$action->title}}">
+<meta itemprop="image" content="http://pfc.local/images/action.jpg">
+
+<!-- Twitter Card data -->
+<meta name="twitter:description" content="{{$action->title}}">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="http://pfc.local//images/action.jpg">
+
+<!-- Open Graph data -->
+<meta property="og:image" content="http://pfc.local//images/action.jpg" />
+<meta property="og:description" content="{{$action->title}}" />
+
+@endsection
+
 @section('content')
+
+<div class="ssk-sticky ssk-left ssk-center ssk-lg">
+    <a href="" class="ssk ssk-facebook"></a>
+    <a href="" class="ssk ssk-twitter"></a>
+    <a href="" class="ssk ssk-google-plus"></a>
+    <a href="" class="ssk ssk-pinterest"></a>
+    <a href="" class="ssk ssk-tumblr"></a>
+</div>
+
 <div class="jumbotron no-bottom">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<h1 class="light">
-					{{ $action->title }}
 					@if(Gate::allows('admin_action', $action->admin_id))
 						<div class="dropdown pull-right">
 						  <button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">Administrar
@@ -38,7 +66,10 @@
 						  </ul>
 						</div>
 					@endif
+					<br>
+					{{ $action->title }}
 				</h1>
+				<br>
 				@include('partials/warning')
 				<ul class="nav nav-tabs">
 	  				<li class="active"><a href="#">Descripción</a></li>
@@ -63,6 +94,14 @@
 			@include('partials/success')
 	  		<p class="action-text">{!! nl2br($action->description) !!}</p>
 	  		<hr>
+	  		<div class="ssk-group" align="center">
+			    <a href="" class="ssk ssk-facebook"></a>
+			    <a href="" class="ssk ssk-twitter"></a>
+			    <a href="" class="ssk ssk-google-plus"></a>
+			    <a href="" class="ssk ssk-pinterest"></a>
+			    <a href="" class="ssk ssk-tumblr"></a>
+			</div>
+			<br>
 		</div>
 	</div>
 </div>
