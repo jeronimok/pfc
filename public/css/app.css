@@ -398,3 +398,6 @@ body {
 hr.styled {
   border-top: 1px solid #555;
 }
+.jumbo-full{
+    height: 85vh;
+}
