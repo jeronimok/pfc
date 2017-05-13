@@ -1,5 +1,6 @@
 @extends('layout')
 
+@section('meta')
 <!-- Description -->
 <meta name="description" content="{{$user->name}}" />
 
@@ -15,6 +16,7 @@
 <!-- Open Graph data -->
 <meta property="og:image" content="http://pfc.local//images/profile.jpg" />
 <meta property="og:description" content="{{$user->name}}" />
+@endsection
 
 @section('content')
 
@@ -49,19 +51,29 @@
 				Obras calificadas: <strong>{{count($user->ratings)}}</strong>
 			</p>
 		</div>
-		<div class="col-md-1" align="center">
-			<div class="dropdown">
-			  	<button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">
-			  		<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-			  		Ajustes
-			  	</button>
-			  	<ul class="dropdown-menu">
-			    	<li>
-			    		<a href="">Editar perfil</a>
-			    	</li>
-			    </ul>
+		@if(Gate::allows('config_profile', $user->id))
+			<div class="col-md-1" align="center">
+				<div class="dropdown">
+				  	<button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">
+				  		<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+				  		Ajustes
+				  	</button>
+				  	<ul class="dropdown-menu">
+				  		@if(Gate::allows('edit_profile', $user->id))
+					    	<li>
+					    		<a href="{{route('user.edit', $user->id)}}">Editar perfil</a>
+					    	</li>
+				    	@endif
+				    	@if(Gate::allows('admin'))
+				    		<li role="separator" class="divider"></li>
+				    		<li>
+					    		<button href="" class="btn btn-danger btn-block rect">Suspender usuario</button>
+					    	</li>
+				    	@endif
+				    </ul>
+				</div>
 			</div>
-		</div>
+		@endif
 	</div>
 </div>
 <br>
