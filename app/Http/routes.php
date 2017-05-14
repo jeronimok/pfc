@@ -124,9 +124,14 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'rate'
 		]);
 
-	Route::get('editar-perfil/{id}',[
+	Route::get('editar-perfil',[
 		'uses'	=> 'UserController@edit',
 		'as'	=> 'user.edit'
+		]);
+
+	Route::put('actualizar-perfil/{id}',[
+		'uses'	=> 'UserController@update',
+		'as'	=> 'user.update'
 		]);
 	
 

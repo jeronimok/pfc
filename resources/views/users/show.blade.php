@@ -41,7 +41,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4" align="center">
-			<img class="img-fluid img-circle" src="/images/profile.jpg" alt="Foto de perfil">
+			<img class="img-fluid img-circle" src="{{$user->avatar}}" alt="Foto de perfil">
 			<h2>{{$user->name}}</h2>
 			<p>
 				Propuestas creadas: <strong>{{count($user->proposals)}}</strong>
@@ -61,7 +61,7 @@
 				  	<ul class="dropdown-menu">
 				  		@if(Gate::allows('edit_profile', $user->id))
 					    	<li>
-					    		<a href="{{route('user.edit', $user->id)}}">Editar perfil</a>
+					    		<a href="{{route('user.edit')}}">Editar perfil</a>
 					    	</li>
 				    	@endif
 				    	@if(Gate::allows('admin'))
