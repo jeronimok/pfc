@@ -123,6 +123,16 @@ Route::group(['middleware' => 'auth'], function () {
 		'uses'	=> 'WorkController@rate',
 		'as'	=> 'rate'
 		]);
+
+	Route::get('editar-perfil',[
+		'uses'	=> 'UserController@edit',
+		'as'	=> 'user.edit'
+		]);
+
+	Route::put('actualizar-perfil/{id}',[
+		'uses'	=> 'UserController@update',
+		'as'	=> 'user.update'
+		]);
 	
 
 	// Admin de Accion Participativa

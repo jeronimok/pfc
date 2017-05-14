@@ -57,28 +57,43 @@
         <div id="navbar" class="navbar-collapse collapse">
           
           <ul class="nav navbar-nav">
-            <li><a href="{{ route('actions') }}">Acciones participativas</a></li>
             @if (Auth::check() and Auth::user()->role == 'admin')
               <li><a href="{{ route('settings') }}">
-                ADMINISTRACIÓN
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                Administración
               </a></li>
             @endif
           </ul>
 
           @if (Auth::guest())
             <div class="navbar-right">
-              <a class="btn btn-primary navbar-btn" href="{{ route('login') }}">@lang('auth.login')</a>
-              <a class="btn btn-default navbar-btn" href="{{ route('register') }}">@lang('auth.register')</a>
+              <ul class="nav navbar-nav">
+                <li>
+                  <a class="" href="{{ route('login') }}">@lang('auth.login')</a>
+                </li>
+                <li>
+                  <a class="" href="{{ route('register') }}">@lang('auth.register')</a>
+                </li>
+              </ul>
             </div>
           @else
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }} <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="{{route('user', Auth::user()->id)}}">Perfil</a></li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-expanded="false" style="position: relative; padding-left: 50px">
+                  <img class="navbar-avatar" src="{{Auth::user()->avatar}}">
+                  {{ Auth::user()->name }} <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="{{route('user', Auth::user()->id)}}">
+                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil
+                    </a>
+                  </li>
                   <li role="separator" class="divider"></li>
-                  <li> <a href="{{ route('logout') }}">@lang('auth.logout')</a> </li>
+                  <li>
+                    <a href="{{ route('logout') }}">
+                      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> @lang('auth.logout')
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -89,7 +104,7 @@
 
     @yield('content')
 
-    <footer class="footer">
+    <footer class="footer" style="background-color: #f0f0f0;">
       &copy; 2017 Jerónimo Calace Montú
     </footer>
 

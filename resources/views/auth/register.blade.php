@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="jumbotron">
+<div class="jumbotron jumbo-full">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">

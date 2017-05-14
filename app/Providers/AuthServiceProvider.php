@@ -81,5 +81,23 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
+        $gate->define('config_profile',function($user, $profile_id){
+            if (auth()->check()){
+                return ($user->id == $profile_id) or ($user->role == 'admin');
+            }
+            else {
+                return false;
+            }
+        });
+
+        $gate->define('edit_profile',function($user, $profile_id){
+            if (auth()->check()){
+                return ($user->id == $profile_id);
+            }
+            else {
+                return false;
+            }
+        });
+
     }
 }
