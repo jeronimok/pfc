@@ -70,7 +70,7 @@
 						@endif
 					</div>
 				</div>
-				<br>
+				<br>	
 				@include('partials/warning')
 				<ul class="nav nav-tabs">
 	  				<li class="active"><a href="#">Descripción</a></li>
