@@ -44,4 +44,13 @@ class Proposal extends Model
         return $this->hasMany(Option::class);
     }
 
+    public function last_activity(){
+
+        if( count($this->comments) > 0){
+            return $this->comments()->orderBy('updated_at', 'desc')->first()->updated_at;    
+        } else {
+            return $this->updated_at;
+        }
+    }
+
 }

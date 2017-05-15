@@ -26,13 +26,50 @@
 <div class="jumbotron no-bottom">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-2 pull-left" align="right">
-				<img class="img-fluid img-circle img-small" src="/images/action.jpg" alt="Foto de perfil">
-			</div>
-			<div class="col-md-8" align="center">
-				<h1 style="font-weight: normal;">
-					{{ $action->title }}
-				</h1>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row">
+					<div class="col-md-2">
+						<img class="img-fluid img-circle img-small" src="/images/action.jpg" alt="Foto de perfil">
+					</div>
+					<div class="col-md-8">
+						<h1 class="normal">
+							{{ $action->title }}
+						</h1>
+					</div>
+					<div class="col-md-2">
+						@if(Gate::allows('admin_action', $action->admin_id))
+							<div class="dropdown">
+							  <button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">Administrar
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li><a href="{{route('action.create-poll', $action->id)}}">Crear Votación entre propuestas</a></li>
+							    <li role="separator" class="divider"></li>
+							    <li><a href="{{route('work.publish', $action->id)}}">Publicar obra del municipio</a></li>
+							    @if(Gate::allows('admin'))
+							    	<li role="separator" class="divider"></li>
+								    <li>
+								    	<form role="form" method="POST" action="{{ route('action.delete')}}">
+											<input type="hidden" name="_token" value="{{ csrf_token() }}">
+											<input type="hidden" name="action_id" value="{{ $action->id }}">
+											<input type="hidden" name="_method" value="DELETE">
+											<button type="submit" class="btn btn-danger btn-block rect"
+											data-toggle="confirmation"
+											data-popout="true"
+											data-placement="bottom"
+											data-btn-ok-label="Si"
+									        data-btn-cancel-label="No"
+									        data-title="¿Estás seguro de que deseas eliminarla?"
+											>
+											  Eliminar acción participativa
+											</button>
+										</form>
+								    </li>
+							    @endif
+							  </ul>
+							</div>
+						@endif
+					</div>
+				</div>
 				<br>
 				@include('partials/warning')
 				<ul class="nav nav-tabs">
@@ -47,39 +84,6 @@
 	  					<li><a href="#" class="scroll-link" data-id="obras">Obras</a></li>
 	  				@endif
 	  			</ul>
-			</div>
-			<div class="col-md-2" align="left">
-				@if(Gate::allows('admin_action', $action->admin_id))
-					<div class="dropdown">
-					  <button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">Administrar
-					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu">
-					    <li><a href="{{route('action.create-poll', $action->id)}}">Crear Votación entre propuestas</a></li>
-					    <li role="separator" class="divider"></li>
-					    <li><a href="{{route('work.publish', $action->id)}}">Publicar obra del municipio</a></li>
-					    @if(Gate::allows('admin'))
-					    	<li role="separator" class="divider"></li>
-						    <li>
-						    	<form role="form" method="POST" action="{{ route('action.delete')}}">
-									<input type="hidden" name="_token" value="{{ csrf_token() }}">
-									<input type="hidden" name="action_id" value="{{ $action->id }}">
-									<input type="hidden" name="_method" value="DELETE">
-									<button type="submit" class="btn btn-danger btn-block rect"
-									data-toggle="confirmation"
-									data-popout="true"
-									data-placement="bottom"
-									data-btn-ok-label="Si"
-							        data-btn-cancel-label="No"
-							        data-title="¿Estás seguro de que deseas eliminarla?"
-									>
-									  Eliminar acción participativa
-									</button>
-								</form>
-						    </li>
-					    @endif
-					  </ul>
-					</div>
-				@endif
 			</div>
 		</div>
 	</div>

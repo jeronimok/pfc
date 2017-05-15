@@ -61,13 +61,17 @@
 				  	<ul class="dropdown-menu">
 				  		@if(Gate::allows('edit_profile', $user->id))
 					    	<li>
-					    		<a href="{{route('user.edit')}}">Editar perfil</a>
+					    		<a href="{{route('user.edit')}}">
+					    			<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar perfil
+					    		</a>
 					    	</li>
 				    	@endif
 				    	@if(Gate::allows('admin'))
 				    		<li role="separator" class="divider"></li>
 				    		<li>
-					    		<button href="" class="btn btn-danger btn-block rect">Suspender usuario</button>
+					    		<button href="" class="btn btn-danger btn-block rect">
+					    			<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Suspender usuario
+					    		</button>
 					    	</li>
 				    	@endif
 				    </ul>

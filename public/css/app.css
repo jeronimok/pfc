@@ -277,15 +277,15 @@ h1.light {
   font-size: 45px;
   color: #555;
 }
+h1.normal {
+  font-size: 45px;
+  font-weight: normal;
+}
 
 .rect {
   border-radius: 0 !important;
 }
 
-/*.control-label{
-  font-size: 18px;
-  font-weight: normal;
-}*/
 body {
   margin-top: 50px;
 }
