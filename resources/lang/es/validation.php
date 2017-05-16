@@ -75,6 +75,8 @@ return array(
     "unique"           => ":attribute ya ha sido registrado.",
     "url"              => "El formato :attribute es inválido.",
 
+    'recaptcha' => 'La validación :attribute ha fallado',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -112,7 +114,7 @@ return array(
         'admin_email'           => 'Administrador (email)',
         'title'                 => 'Título',
         'description'           => 'Descripción',
-        'g-recaptcha-response'  => 'reCAPTCHA',
+        'g-recaptcha-response'  => 'Captcha',
     ),
 
 );
