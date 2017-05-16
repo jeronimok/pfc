@@ -133,6 +133,16 @@ Route::group(['middleware' => 'auth'], function () {
 		'uses'	=> 'UserController@update',
 		'as'	=> 'user.update'
 		]);
+
+	Route::get('cambiar-contrasena', [
+		'uses'	=> 'UserController@getChangePassword',
+		'as'	=> 'user.change-password'
+		]);
+
+	Route::put('actualizar-contrasena', [
+		'uses'	=> 'UserController@postChangePassword',
+		'as'	=> 'user.post-change-password'
+		]);
 	
 
 	// Admin de Accion Participativa

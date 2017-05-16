@@ -10,7 +10,7 @@
 			<div class="col-md-6 col-md-offset-3">
 				<h2>Editar perfil</h2>
 				Si desea cambiar su contraseña diríjase a 
-				<a href="">Cambiar contraseña</a>
+				<a href="{{route('user.change-password')}}">Cambiar contraseña</a>
 			</div>
 		</div>
 	</div>

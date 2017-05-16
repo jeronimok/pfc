@@ -108,6 +108,7 @@ return array(
         'email'                 => 'Correo electrónico',
         'password'              => 'Contraseña',
         'password_confirmation' => 'Confirmar contraseña',
+        'new_password'          => 'Nueva contraseña',
         'admin_email'           => 'Administrador (email)',
         'title'                 => 'Título',
         'description'           => 'Descripción'

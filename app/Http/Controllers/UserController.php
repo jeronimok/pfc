@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use Validator;
 use Gate;
 use Auth;
+use Hash;
 
 class UserController extends Controller
 {
@@ -97,5 +98,30 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getChangePassword(){
+        return view('users.change-password');
+    }
+
+    public function postChangePassword(Request $request){
+        $this->validate($request, [
+            'current_password' => 'required',
+            'new_password' => 'required|confirmed|min:6',
+        ]);
+
+        $user = Auth::user();
+
+        if (! Hash::check($request->get('current_password'), $user->password)) {
+            return redirect()->back()->withErrors([
+                'current_password' => 'La contraseña actual introducida es incorrecta'
+                ]);
+        }
+
+        $user->password = bcrypt($request->get('new_password'));
+
+        $user->save();
+
+        return redirect()->route('user', $user->id)->with('alert', 'La contraseña ha sido cambiada con éxito');
     }
 }

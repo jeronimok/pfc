@@ -32,7 +32,6 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-				@include('partials/success')
 			</div>
 		</div>
 	</div>
@@ -50,6 +49,9 @@
 				<br>
 				Obras calificadas: <strong>{{count($user->ratings)}}</strong>
 			</p>
+			@include('partials/success')
+			@include('partials/warning')
+			@include('partials/errors')
 		</div>
 		@if(Gate::allows('config_profile', $user->id))
 			<div class="col-md-1" align="center">

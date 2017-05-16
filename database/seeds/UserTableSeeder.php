@@ -17,14 +17,14 @@ class UserTableSeeder extends Seeder
         	'name' => 'Jerónimo Admin',
         	'role' => 'admin',
         	'email' => 'jeronimo.calace@gmail.com',
-        	'password' =>  bcrypt('admin')
+        	'password' =>  bcrypt('123456')
         ]);
 
         factory(App\User::class)->create([
             'name' => 'Jerónimo General',
             'role' => 'general',
             'email' => 'jeronimo.calace+general@gmail.com',
-            'password' =>  bcrypt('general')
+            'password' =>  bcrypt('123456')
         ]);
 
         factory(App\User::class, 48)->create();
