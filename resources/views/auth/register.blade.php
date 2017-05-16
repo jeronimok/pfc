@@ -42,6 +42,10 @@
 				</div>
 
 				<div class="form-group">
+					{!! Recaptcha::render() !!}
+				</div>
+
+				<div class="form-group">
 					<button type="submit" class="btn btn-primary">
 						<span class="glyphicon glyphicon-user" aria-hidden="true"></span> @lang('auth.register_button')
 					</button>

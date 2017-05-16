@@ -111,7 +111,8 @@ return array(
         'new_password'          => 'Nueva contraseña',
         'admin_email'           => 'Administrador (email)',
         'title'                 => 'Título',
-        'description'           => 'Descripción'
+        'description'           => 'Descripción',
+        'g-recaptcha-response'  => 'reCAPTCHA',
     ),
 
 );
