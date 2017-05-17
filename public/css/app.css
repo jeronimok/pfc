@@ -281,6 +281,10 @@ h1.normal {
   font-size: 45px;
   font-weight: normal;
 }
+h1.home-title {
+  font-weight: lighter;
+  color: #555;
+}
 
 .rect {
   border-radius: 0 !important;

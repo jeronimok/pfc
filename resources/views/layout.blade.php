@@ -69,10 +69,14 @@
             <div class="navbar-right">
               <ul class="nav navbar-nav">
                 <li>
-                  <a class="" href="{{ route('login') }}">@lang('auth.login')</a>
+                  <a class="" href="{{ route('login') }}">
+                    <span class="glyphicon glyphicon-log-in"></span> @lang('auth.login')
+                  </a>
                 </li>
                 <li>
-                  <a class="" href="{{ route('register') }}">@lang('auth.register')</a>
+                  <a class="" href="{{ route('register') }}">
+                    <span class="glyphicon glyphicon-user"></span> @lang('auth.register')
+                  </a>
                 </li>
               </ul>
             </div>
