@@ -5,8 +5,10 @@
 <div class="jumbotron">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
+			<div class="col-md-8 col-md-offset-2">
 				<h2>Registrarse</h2>
+				@include('partials/errors')
+				@include('partials/success')
 			</div>
 		</div>
 	</div>
@@ -14,18 +16,23 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			@include('partials/errors')
-			@include('partials/success')
+		<div class="col-md-4 col-md-offset-2">
 
 			<a href="redirect/facebook" class="btn btn-block btn-social btn-facebook btn-lg">
-			    <span class="fa fa-facebook"></span> Registrarse con Facebook
+			    <span class="fa fa-facebook"></span> Acceder con Facebook
 			</a>
+			<a href="" class="btn btn-block btn-social btn-twitter btn-lg">
+			    <span class="fa fa-twitter"></span> Acceder con Twitter
+			</a>
+			<a href="" class="btn btn-block btn-social btn-google btn-lg">
+			    <span class="fa fa-google"></span> Acceder con Google
+			</a>
+			<br>
 
-			<hr>
+		</div>
+
+		<div class="col-md-4 divider-left">
 			<p>O con su correo electrónico:</p>
-
-
 			<form role="form" method="POST" action="{{ route('register') }}">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -61,5 +68,6 @@
 			</form>
 		</div>
 	</div>
+	<br>
 </div>
 @endsection

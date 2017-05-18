@@ -3,12 +3,14 @@
 @section('content')
 
 <div class="jumbotron">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2"> 
-			<h2>
-				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-				Administración de la plataforma
-			</h2>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2"> 
+				<h2>
+					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+					Administración de la plataforma
+				</h2>
+			</div>
 		</div>
 	</div>
 </div>

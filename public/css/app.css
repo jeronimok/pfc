@@ -310,3 +310,7 @@ hr.styled {
   left: 10px;
   border-radius: 50%;
 }
+
+.divider-left{
+  border-left: 1px solid #aaa;
+}

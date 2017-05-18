@@ -38,7 +38,18 @@ return [
     'facebook' => [
         'client_id' => '1888349911437822',
         'client_secret' => 'cf1d16d213eebe47c0e7155a6461770d',
-        'redirect' => 'http://pfc.local/callback',
+        'redirect' => 'http://pfc.local/callback/facebook',
     ],
 
+    'twitter' => [
+        'client_id' => 'Jkzo88h1e5Mkkn1QIaFpcGsGk',
+        'client_secret' => 'nxMTkcLtH1Ns09gSElOrCZCVUCH8t2U6CDVP5qNq04snIbriti',
+        'redirect' => 'http://pfc.local/callback/twitter',
+    ],
+
+    'google' => [
+        'client_id' => '271017504733-en1h89ojq6fvbhsrige9fsbjqs1r1q35.apps.googleusercontent.com',
+        'client_secret' => 'qChjz9QzGiyoAil2TzlDHwpQ',
+        'redirect' => 'http://pfc.local/callback/google',
+    ],
 ];
