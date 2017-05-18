@@ -18,6 +18,20 @@
 			@include('partials/errors')
 			@include('partials/success')
 
+			<a href="redirect/facebook" class="btn btn-block btn-social btn-facebook btn-lg">
+			    <span class="fa fa-facebook"></span> Iniciar sesión con Facebook
+			</a>
+			<a href="" class="btn btn-block btn-social btn-twitter btn-lg">
+			    <span class="fa fa-twitter"></span> Iniciar sesión con Twitter
+			</a>
+			<a href="" class="btn btn-block btn-social btn-google btn-lg">
+			    <span class="fa fa-google"></span> Iniciar sesión con Google
+			</a>
+
+
+			<hr>
+			<p>O con su correo electrónico:</p>
+
 			<form role="form" method="POST" action="{{ route('login') }}">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 

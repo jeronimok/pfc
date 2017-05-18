@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '1888349911437822',
+        'client_secret' => 'cf1d16d213eebe47c0e7155a6461770d',
+        'redirect' => 'http://pfc.local/callback',
+    ],
+
 ];

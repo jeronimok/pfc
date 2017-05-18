@@ -34,6 +34,10 @@
     <link rel="stylesheet" type="text/css" href="/bower_components/summernote/dist/summernote.css">
     <!-- Social Share Kit CSS -->
     <link rel="stylesheet" href="/bower_components/social-share-kit/dist/css/social-share-kit.css" type="text/css">
+    <!-- Bootstrap social -->
+    <link rel="stylesheet" href="/bower_components/bootstrap-social/bootstrap-social.css" type="text/css">
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" type="text/css">
     <!-- css local -->
     <link rel="stylesheet" type="text/css" href="/css/app.css?v=<?=time();?>"/> 
 

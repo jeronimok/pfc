@@ -51,6 +51,10 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
+//Social auth
+Route::get('redirect/{provider}', 'SocialAuthController@redirect');
+Route::get('/callback', 'SocialAuthController@callback');
+
 // Acciones participativas
 Route::get('acciones-participativas', [
 	'uses'	=> 'ActionController@index',

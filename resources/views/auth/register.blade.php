@@ -18,6 +18,14 @@
 			@include('partials/errors')
 			@include('partials/success')
 
+			<a href="redirect/facebook" class="btn btn-block btn-social btn-facebook btn-lg">
+			    <span class="fa fa-facebook"></span> Registrarse con Facebook
+			</a>
+
+			<hr>
+			<p>O con su correo electrónico:</p>
+
+
 			<form role="form" method="POST" action="{{ route('register') }}">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
