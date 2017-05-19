@@ -93,7 +93,11 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			@include('partials/success')
-	  		<p class="action-text">{!! nl2br($action->description) !!}</p>
+	  		<p>{!! nl2br($action->description) !!}</p>
+	  		@if($action->howto)
+	  			<h3>¿Cómo participo?</h3>
+	  			<p>{{$action->howto}}</p>
+	  		@endif
 	  		<hr>
 	  		<div class="ssk-group" align="center">
 			    <a href="" class="ssk ssk-facebook"></a>

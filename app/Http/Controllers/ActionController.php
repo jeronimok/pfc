@@ -39,6 +39,7 @@ class ActionController extends Controller
 
         $action->title          = $request->get('title');
         $action->description    = $request->get('description');
+        $action->howto          = $request->get('howto');
         $action->create_p       = ( $request->get('create_p') == 'on' ? 1 : 0 );
         $action->debate_p       = ( $request->get('debate_p') == 'on' ? 1 : 0 );
         $action->support_p      = ( $request->get('support_p') == 'on' ? 1 : 0 );

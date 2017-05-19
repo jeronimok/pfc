@@ -17,6 +17,7 @@ class CreateActionsTable extends Migration
 
             $table->string('title')->unique();
             $table->longText('description');
+            $table->longText('howto');
             $table->boolean('create_p');
             $table->boolean('debate_p');
             $table->boolean('support_p');

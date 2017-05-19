@@ -25,6 +25,7 @@ class AdminController extends Controller
         $this->validate($request,[
             'title'         => 'required',
             'description'   => 'required',
+            'howto'         => 'required',
             'admin_email'   => 'required'
             ]);
 
