@@ -24,6 +24,7 @@ class CreateActionsTable extends Migration
             $table->boolean('opt_p');
             $table->boolean('audit');
             $table->string('admin_email');
+            $table->string('avatar')->default('/images/action.jpg');
             $table->integer('admin_id')->unsigned()->nullable();
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('set null');
 

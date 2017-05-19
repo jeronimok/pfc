@@ -11,6 +11,8 @@ use App\User;
 use App\Proposal;
 use App\Poll;
 use Gate;
+use Image;
+use Illuminate\Support\Facades\File;
 
 class ActionController extends Controller
 {
@@ -47,6 +49,18 @@ class ActionController extends Controller
         $action->audit          = ( $request->get('audit') == 'on' ? 1 : 0 );
         $action->admin_email    = $request->get('admin_email');
         $action->admin_id       = User::where('email', $request->get('admin_email'))->first()->id;
+
+        $action->save(); //to generate the id
+
+        // Avatar 
+        if($request->hasFile('avatar')){
+            $avatar     = $request->file('avatar');
+            $filename   = $action->id . '.' . $avatar->getClientOriginalExtension();
+            $path       = '/uploads/actions/' . $filename;
+            Image::make($avatar)->resize(600,450)->save( public_path($path));
+
+            $action->avatar = $path;
+        }
 
         $action->save();
     }

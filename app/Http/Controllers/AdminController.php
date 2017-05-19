@@ -26,7 +26,8 @@ class AdminController extends Controller
             'title'         => 'required',
             'description'   => 'required',
             'howto'         => 'required',
-            'admin_email'   => 'required'
+            'admin_email'   => 'required',
+            'avatar'    => 'image|max:500'
             ]);
 
         if ( Action::where('title', $request->get('title') )->first() ) {

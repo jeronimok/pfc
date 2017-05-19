@@ -29,7 +29,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div class="row">
 					<div class="col-md-2">
-						<img class="img-fluid img-circle img-small" src="/images/action.jpg" alt="Foto de perfil">
+						<img class="img-fluid img-circle img-small" src="{{$action->avatar}}" alt="Foto de perfil">
 					</div>
 					<div class="col-md-8">
 						<h1 class="normal">

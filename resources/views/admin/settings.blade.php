@@ -10,6 +10,8 @@
 					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 					Administración de la plataforma
 				</h2>
+				@include('partials/success')
+				@include('partials/errors')
 			</div>
 		</div>
 	</div>
@@ -18,8 +20,6 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-2">
-			@include('partials/success')
-			@include('partials/errors')
 			<h4>
 				<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
 				Acciones participativas

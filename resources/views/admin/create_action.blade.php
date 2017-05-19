@@ -22,7 +22,7 @@
 		<div class="col-md-8 col-md-offset-2">	
 			@include('partials/errors')
 
-			<form role="form" method="POST" action="{{ route('settings/create-action') }}">
+			<form role="form" method="POST" enctype="multipart/form-data" action="{{ route('settings/create-action') }}">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 				<div class="form-group">
@@ -61,7 +61,25 @@
 					<div class="checkbox">
 					  <label><input type="checkbox" name="audit" >Auditar obras</label>
 					</div>
-				</div>	
+				</div>
+				<div class="form-group">
+			    	<label for="avatar">Logo</label>
+			    	<div class="alert alert-info">
+			    		<div class="row">
+				    		<div class="col-md-9 bottom-column">	
+			    				<strong>Subir un archivo</strong>
+			    				<br>
+			    				<p>(La imagen debe ser cuadrada para su correcta visualización)</p>
+			    				<input type="file" name="avatar">
+				    		</div>
+
+				    		<div class="col-md-3">
+				    			<img class="img-fluid img-rounded img-small" src="/images/action.jpg" alt="Logo">
+				    			(Default)		
+				    		</div>
+				    	</div>
+			    	</div>
+			  	</div>
 				<br>
 				<div class="form-group" align="center">
 					<button type="submit" class="btn btn-default btn-lg" style="margin-right: 15px;">
