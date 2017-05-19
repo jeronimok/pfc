@@ -24,9 +24,9 @@
 			<a href="" class="btn btn-block btn-social btn-twitter btn-lg">
 			    <span class="fa fa-twitter"></span> Acceder con Twitter
 			</a>
-			<a href="" class="btn btn-block btn-social btn-google btn-lg">
+			<!-- <a href="" class="btn btn-block btn-social btn-google btn-lg">
 			    <span class="fa fa-google"></span> Acceder con Google
-			</a>
+			</a> -->
 			<br>
 
 		</div>

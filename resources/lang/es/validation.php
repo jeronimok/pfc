@@ -115,6 +115,7 @@ return array(
         'title'                 => 'Título',
         'description'           => 'Descripción',
         'g-recaptcha-response'  => 'Captcha',
+        'current_password'      => 'Contraseña actual'
     ),
 
 );
