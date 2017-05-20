@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Comment;
+use Gate;
+use Validator;
 
 class CommentController extends Controller
 {
@@ -66,7 +68,13 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        if (Gate::denies('edit_comment', $comment)) {
+            abort(403, 'No autorizado');
+        }
+
+        return view('comments/edit', compact('comment'));
     }
 
     /**
@@ -78,7 +86,28 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validation = Validator::make($request->all(), [
+            'comment'      => 'required'
+        ]);
+
+        if ($validation->fails()) {
+            $this->throwValidationException(
+                $request, $validation
+            );
+        }
+
+        $comment = Comment::findOrFail($id);
+
+        if (Gate::denies('edit_comment', $comment)) {
+            abort(403, 'No autorizado');
+        }
+
+        $comment->comment = $request->get('comment');
+
+        $comment->save();
+
+        return redirect()->route('proposal', $comment->proposal->id)
+            ->with('alert', 'El comentario ha sido editado con éxito');
     }
 
     /**

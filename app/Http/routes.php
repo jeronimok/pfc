@@ -108,6 +108,16 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'proposal.comment'
 		]);
 
+	Route::get('editar-comentario/{id}', [
+		'uses'	=> 'CommentController@edit',
+		'as'	=> 'comment.edit'
+		]);
+
+	Route::put('editar-comentario/{id}', [
+		'uses'	=> 'CommentController@update',
+		'as'	=> 'comment.update'
+		]);
+
 	Route::post('apoyar-propuesta', [
 		'uses'	=> 'ProposalController@support',
 		'as'	=> 'proposal.support'

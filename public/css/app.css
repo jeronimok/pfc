@@ -314,3 +314,7 @@ hr.styled {
 .divider-left{
   border-left: 1px solid #aaa;
 }
+
+section.gray{
+  background-color: #eee;
+}
