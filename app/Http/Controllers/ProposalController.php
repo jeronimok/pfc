@@ -10,6 +10,8 @@ use App\Proposal;
 use App\User;
 use App\Action;
 use App\Comment;
+use Gate;
+use Validator;
 
 class ProposalController extends Controller
 {
@@ -56,7 +58,13 @@ class ProposalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proposal = Proposal::findOrFail($id);
+
+        if (Gate::denies('edit_proposal', $proposal)) {
+            abort(403, 'No autorizado');
+        }
+
+        return view('proposals/edit', compact('proposal'));
     }
 
     /**
@@ -68,7 +76,30 @@ class ProposalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validation = Validator::make($request->all(), [
+            'title'        => 'required|max:255',
+            'content'      => 'required'
+        ]);
+
+        if ($validation->fails()) {
+            $this->throwValidationException(
+                $request, $validation
+            );
+        }
+
+        $proposal = Proposal::findOrFail($id);
+
+        if (Gate::denies('edit_proposal', $proposal)) {
+            abort(403, 'No autorizado');
+        }
+
+        $proposal->title   = $request->get('title');
+        $proposal->content = $request->get('content');
+
+        $proposal->save();
+
+        return redirect()->route('proposal', $proposal->id)
+            ->with('alert', 'La propuesta ha sido editada con éxito');
     }
 
     /**

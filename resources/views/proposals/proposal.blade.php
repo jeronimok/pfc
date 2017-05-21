@@ -33,6 +33,8 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			@include('partials/warning')
+			@include('partials/errors')
+			@include('partials/success')
 		  	<h2>
 				<a href="{{ route('action', ['id' => $action->id]) }}"><small>{{$action->title}}</small> </a> <small> >> Propuesta</small>
 				@if(Gate::allows('edit_proposal', $proposal))
@@ -41,17 +43,23 @@
 					  	<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 					  </button>
 					  <ul class="dropdown-menu">
-					    <li>
-					    	<a href="">Editar contenido de la propuesta</a>
+					    <li class="list-group-item list-group-item-default">
+					    	<a href="{{route('proposal.edit', $proposal->id)}}"><i class="fa fa-edit" aria-hidden="true"></i> Editar contenido de la propuesta</a>
 					    </li>
 					    @if(Gate::allows('admin_action', $proposal->action_id))
-						    <li role="separator" class="divider"></li>
+						    <li class="list-group-item list-group-item-danger">
+						    	<a href="">
+						    		<i class="fa fa-ban" aria-hidden="true"></i> Cerrar con comentario
+						    	</a>
+						    </li>
 						    <li>
 						    	<form role="form" method="POST" action="{{ route('proposal.delete')}}">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
 									<input type="hidden" name="_method" value="DELETE">
+
 									<button type="submit" class="btn btn-danger btn-block rect"
+									style="text-align:left; padding-left: 35px" 
 									data-toggle="confirmation"
 									data-popout="true"
 									data-placement="bottom"
@@ -59,7 +67,7 @@
 							        data-btn-cancel-label="No"
 							        data-title="¿Estás seguro de que deseas eliminarla?"
 									>
-									  Eliminar propuesta
+									  <i class="fa fa-ban" aria-hidden="true"></i> Eliminar propuesta
 									</button>
 								</form>
 						    </li>
@@ -130,9 +138,6 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-
-				@include('partials/errors')
-			  	@include('partials/success')
 			  	<h3>Discusión</h3>
 			  	@include('partials/comments_list')
 
