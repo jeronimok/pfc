@@ -9,7 +9,7 @@
 					<img class="card-img-top img-fluid" align="center" src="/images/works.jpg" alt="Card image cap">
 			    	<div class="card-block">
 			    		<h3 class="card-title" style="color: black;">{{ $action->works()[$j]->title }}</h3>
-			    		<span style="color: black;">{{ substr($action->works()[$j]->content, 0, 150) }}...</span>
+			    		<span style="color: black;">{{ strip_tags(substr($action->works()[$j]->content, 0, 150)) }}...</span>
 			    	</div>
 			    </a>
 	    	</div>

@@ -9,14 +9,12 @@
 					<img class="card-img-top img-fluid" align="center" src="/images/proposal.jpg" alt="Card image cap">
 			    	<div class="card-block">
 			    		<h3 class="card-title" style="color: black;">{{ $proposals[$j]->title }}</h3>
-			    		
+			    		<span style="color: black;">{{ strip_tags(substr($proposals[$j]->content, 0, 100)) }}...</span>
 	    				<div class="row" style="color: black;">
 	    					<div class="col-md-8">
+	    						<br>
 				    			Comentarios: <span style="font-weight: normal;">{{count($proposals[$j]->comments)}}</span>
-				    			<br>
-				    			Última actividad:
-				    			<br>
-				    			<span style="font-weight: normal;">{{$proposals[$j]->last_activity()}}</span>
+				    			
 				    		</div>
 				    		<div class="col-md-4">
 				    			<h3 class="light" align="right" style="color: #555">

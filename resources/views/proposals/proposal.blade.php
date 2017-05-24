@@ -90,7 +90,19 @@
 			<hr>
 			<div class="row">
 				<div class="col-md-6">
-					@if(Auth::check() and in_array(Auth::user()->id, $supporters))
+					@if(Gate::allows('support_proposal', $proposal->supporters()))
+						<form role="form" method="POST" action="{{ route('proposal.support')}}">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
+							
+							<button type="submit" class="btn btn-modern btn-lg">
+							  <small>Apoyar</small>
+							</button>
+							&nbsp;
+							<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+							<span class="proposal-text"> {{count($supporters)}}</span>
+						</form>
+					@elseif(Auth::check())
 						<form role="form" method="POST" action="{{ route('proposal.unsupport')}}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
@@ -98,18 +110,6 @@
 							
 							<button type="submit" class="btn btn-modern btn-lg">
 							  <small>Quitar apoyo</small>
-							</button>
-							&nbsp;
-							<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-							<span class="proposal-text"> {{count($supporters)}}</span>
-						</form>
-					@elseif(Auth::check())
-						<form role="form" method="POST" action="{{ route('proposal.support')}}">
-							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
-							
-							<button type="submit" class="btn btn-modern btn-lg">
-							  <small>Apoyar</small>
 							</button>
 							&nbsp;
 							<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>

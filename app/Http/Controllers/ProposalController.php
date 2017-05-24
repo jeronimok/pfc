@@ -45,7 +45,7 @@ class ProposalController extends Controller
         $action     = $proposal->action;
         $creator    = $proposal->user;
         $comments   = $proposal->comments()->paginate();
-        $supporters = $proposal->supporters()->lists('user_id')->toArray();
+        $supporters = $proposal->supporters->lists('user_id')->toArray();
 
         return view('proposals/proposal', compact('proposal', 'creator', 'action', 'comments', 'supporters'));
     }

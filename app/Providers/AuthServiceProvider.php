@@ -72,6 +72,15 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
+        $gate->define('support_proposal',function($user, $supporters){
+            if (auth()->check()){
+                return !in_array($user->id, $supporters->lists('user_id')->toArray());
+            }
+            else {
+                return false;
+            }
+        });
+
         $gate->define('rate',function($user, $work_id){
             if (auth()->check()){
                 return !in_array($work_id, $user->ratedWorks());

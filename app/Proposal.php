@@ -36,7 +36,7 @@ class Proposal extends Model
     }
 
     public function supporters(){
-        return $this->belongsToMany(User::class, 'user_support_proposal')->withTimestamps();;
+        return $this->belongsToMany(User::class, 'user_support_proposal')->withTimestamps();
     }
 
     public function options(){
