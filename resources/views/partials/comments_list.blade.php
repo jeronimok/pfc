@@ -36,7 +36,60 @@
 			<br>
 			<div class="proposal-comment">{!! nl2br($comment->comment) !!}</div>
 			<hr>
-			<span class="glyphicon glyphicon-heart pull-right" aria-hidden="true"> 0</span>
+
+			<div id="likes_section" align="right">
+				@if(Gate::allows('like_comment', $comment))
+					<form id="like_comment{{$comment->id}}" role="form" method="POST" onsubmit="likeComment({{$comment->id}})" action="{{ route('comment.like')}}">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="comment_id" value="{{ $comment->id }}">
+						
+						<button type="submit" class="btn btn-default">
+						  <i class="fa fa-heart-o" aria-hidden="true"></i>
+						</button>
+						&nbsp;
+						<span class="proposal-text nlikes{{$comment->id}}"> {{count($comment->likers)}}</span>
+					</form>
+					<form class="hidden unlike_comment" id="unlike_comment{{$comment->id}}" role="form" method="POST" onsubmit="unlikeComment({{$comment->id}})" action="{{ route('comment.unlike')}}">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="comment_id" value="{{ $comment->id }}">
+						<input type="hidden" name="_method" value="DELETE">
+						
+						<button type="submit" class="btn btn-default">
+						  <i class="fa fa-heart" aria-hidden="true" style="color: #ff5555;"></i>
+						</button>
+						&nbsp;
+						<span class="proposal-text nlikes{{$comment->id}}"> {{count($comment->likers)}}</span>
+					</form>
+				@elseif(Auth::check())
+					<form class="unlike_comment" id="unlike_comment{{$comment->id}}" role="form" method="POST" onsubmit="unlikeComment({{$comment->id}})" action="{{ route('comment.unlike')}}">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="comment_id" value="{{ $comment->id }}">
+						<input type="hidden" name="_method" value="DELETE">
+						
+						<button type="submit" class="btn btn-default">
+						  <i class="fa fa-heart" aria-hidden="true" style="color: #ff5555;"></i>
+						</button>
+						&nbsp;
+						<span class="proposal-text nlikes{{$comment->id}}"> {{count($comment->likers)}}</span>
+					</form>
+					<form class="hidden" id="like_comment{{$comment->id}}" class="like_comment" role="form" method="POST" onsubmit="likeComment({{$comment->id}})" action="{{ route('comment.like')}}">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="comment_id" value="{{ $comment->id }}">
+						
+						<button type="submit" class="btn btn-default">
+						  <i class="fa fa-heart-o" aria-hidden="true"></i>
+						</button>
+						&nbsp;
+						<span class="proposal-text nlikes{{$comment->id}}"> {{count($comment->likers)}}</span>
+					</form>
+				@else
+					<i class="fa fa-heart" aria-hidden="true" style="color: #ff5555;"></i>
+					&nbsp;	
+					<span class="proposal-text">{{count($comment->likers)}}</span>
+				@endif
+	
+			</div>
+			
 		</div>
 	</div>
 	<br>

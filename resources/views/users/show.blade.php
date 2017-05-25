@@ -160,7 +160,11 @@
 								<br>
 								<div class="proposal-comment">{!! nl2br($comment->comment) !!}</div>
 								<hr>
-								<span class="glyphicon glyphicon-heart pull-right" aria-hidden="true"> 0</span>
+								<div align="right">
+									<i class="fa fa-heart" aria-hidden="true" style="color: #ff5555;"></i>
+									&nbsp;	
+									<span class="proposal-text">{{count($comment->likers)}}</span>
+								</div>
 							</div>
 						</div>
 						<br>

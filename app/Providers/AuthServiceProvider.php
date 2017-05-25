@@ -81,6 +81,15 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
+        $gate->define('like_comment',function($user, $comment){
+            if (auth()->check()){
+                return !in_array($user->id, $comment->likers()->lists('user_id')->toArray());
+            }
+            else {
+                return false;
+            }
+        });
+
         $gate->define('rate',function($user, $work_id){
             if (auth()->check()){
                 return !in_array($work_id, $user->ratedWorks());

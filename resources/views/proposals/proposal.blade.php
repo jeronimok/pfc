@@ -94,30 +94,34 @@
 						<form role="form" method="POST" action="{{ route('proposal.support')}}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
-							
-							<button type="submit" class="btn btn-modern btn-lg">
-							  <small>Apoyar</small>
-							</button>
-							&nbsp;
-							<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-							<span class="proposal-text"> {{count($supporters)}}</span>
+							<p>
+								<button type="submit" class="btn btn-modern btn-lg">
+								  <small>Apoyar</small>
+								</button>
+								&nbsp;
+								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+								<span class="proposal-text"> {{count($supporters)}}</span>
+							</p>
 						</form>
 					@elseif(Auth::check())
 						<form role="form" method="POST" action="{{ route('proposal.unsupport')}}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
 							<input type="hidden" name="_method" value="DELETE">
-							
-							<button type="submit" class="btn btn-modern btn-lg">
-							  <small>Quitar apoyo</small>
-							</button>
-							&nbsp;
-							<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-							<span class="proposal-text"> {{count($supporters)}}</span>
+							<p>
+								<button type="submit" class="btn btn-modern btn-lg">
+								  <small>Quitar apoyo</small>
+								</button>
+								&nbsp;
+								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+								<span class="proposal-text"> {{count($supporters)}}</span>
+							</p>
 						</form>
 					@else
-					  	<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>	
-						<span class="proposal-text">{{count($supporters)}}</span>
+						<p>
+						  	<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>	
+							<span class="proposal-text">{{count($supporters)}}</span>
+						</p>
 					@endif
 				</div>
 				<div class="col-md-6">
@@ -169,4 +173,9 @@
 		</div>
 	</div>
 </div>	
+@endsection
+
+@section('scripts')
+<script src="/js/like_comment.js"></script>
+<script src="/js/unlike_comment.js"></script>
 @endsection

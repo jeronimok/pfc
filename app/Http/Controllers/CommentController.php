@@ -125,4 +125,47 @@ class CommentController extends Controller
         return redirect()->back()
             ->with('alert', "El comentario ha sido eliminado con éxito.");
     }
+
+    public function like(Request $request) {
+
+        $user = auth()->user();
+        $comment   = Comment::findOrFail($request->get('comment_id'));
+        $likers = $comment->likers()->lists('user_id')->toArray();
+
+
+        if ( in_array($user->id, $likers) ) {
+            return redirect()->back()
+                ->with('warning', 'Ya diste me gusta a este comentario');
+        }
+
+        $user->likeComment()->attach($comment->id);
+
+        $data = [
+            'comment_id'    => $comment->id,
+            'n_likes'       => count($comment->likers)
+        ];
+
+        return response()->json($data);
+    }
+
+    public function unlike(Request $request) {
+
+        $user = auth()->user();
+        $comment   = Comment::findOrFail($request->get('comment_id'));
+        $likers = $comment->likers()->lists('user_id')->toArray();
+
+        if ( ! in_array($user->id, $likers) ) {
+            return redirect()->back()
+                ->with('warning', 'No has dado me gusta a este comentario');
+        }
+
+        $user->likeComment()->detach($comment->id);
+
+        $data = [
+            'comment_id'    => $comment->id,
+            'n_likes'       => count($comment->likers)
+        ];
+
+        return response()->json($data);
+    }
 }

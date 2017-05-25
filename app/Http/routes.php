@@ -167,6 +167,16 @@ Route::group(['middleware' => 'auth'], function () {
 		'uses'	=> 'UserController@postChangePassword',
 		'as'	=> 'user.post-change-password'
 		]);
+
+	Route::post('me-gusta-comentario', [
+		'uses'	=> 'CommentController@like',
+		'as'	=> 'comment.like'
+		]);
+
+	Route::delete('ya-no-me-gusta-comentario', [
+		'uses'	=> 'CommentController@unlike',
+		'as'	=> 'comment.unlike'
+		]);
 	
 
 	// Admin de Accion Participativa
