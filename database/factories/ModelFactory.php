@@ -25,7 +25,7 @@ $factory->define(App\Action::class, function (Faker\Generator $faker) {
     return [
         'title' 		=> $faker->sentence,
     	'description' 	=> $faker->text,
-    	'admin_email' 	=> $faker->safeEmail,
+    	'admin_email' 	=> 'jeronimo.calace+admin@gmail.com',
     	'admin_id'		=> 1,
     	'create_p'		=> rand(0,1),
     	'debate_p'		=> rand(0,1),

@@ -42,9 +42,22 @@
 							  <button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">Administrar
 							  <span class="caret"></span></button>
 							  <ul class="dropdown-menu">
-							    <li><a href="{{route('action.create-poll', $action->id)}}">Crear Votación entre propuestas</a></li>
-							    <li role="separator" class="divider"></li>
-							    <li><a href="{{route('work.publish', $action->id)}}">Publicar obra del municipio</a></li>
+							  	<li>
+							  		<a href="{{route('action.edit', $action->id)}}">
+							  			<i class="fa fa-edit" aria-hidden="true"></i> Editar
+							  		</a>
+							  	</li>
+							    <li>
+							    	<a href="{{route('action.create-poll', $action->id)}}">
+							    		<i class="fa fa-pie-chart" aria-hidden="true"></i> Crear Votación entre propuestas
+							    	</a>
+							    </li>
+							    <li>
+							    	<a href="{{route('work.publish', $action->id)}}">
+							    		<i class="fa fa-wrench" aria-hidden="true"></i> Publicar obra del municipio
+							    	</a>
+							    </li>
+
 							    @if(Gate::allows('admin'))
 							    	<li role="separator" class="divider"></li>
 								    <li>
@@ -60,7 +73,7 @@
 									        data-btn-cancel-label="No"
 									        data-title="¿Estás seguro de que deseas eliminarla?"
 											>
-											  Eliminar acción participativa
+											  <i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar acción participativa
 											</button>
 										</form>
 								    </li>
@@ -96,7 +109,7 @@
 	  		<p>{!! nl2br($action->description) !!}</p>
 	  		@if($action->howto)
 	  			<h3>¿Cómo participo?</h3>
-	  			<p>{{$action->howto}}</p>
+	  			<p>{!! nl2br($action->howto) !!}</p>
 	  		@endif
 	  		<hr>
 	  		<div class="ssk-group" align="center">

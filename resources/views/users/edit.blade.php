@@ -8,7 +8,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<h2>Editar perfil</h2>
+				<h2>Editar perfil <small><a href="{{route('user', $user->id)}}">({{$user->name}})</a></small></h2>
 				Si desea cambiar su contraseña diríjase a 
 				<a href="{{route('user.change-password')}}">Cambiar contraseña</a>
 			</div>

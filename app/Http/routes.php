@@ -12,25 +12,33 @@ use App\Poll;
 |
 */
 
-// Home route...
+
+
+// Usuarios no autenticados
+
+//Inicio
 Route::get('/', [
 	'uses' => 'HomeController@index',
 	'as' => 'home'
 	]
 );
 
-// Authentication routes...
+
+//Login
 Route::get('iniciar-sesion', [
 	'uses' => 'Auth\AuthController@getLogin',
 	'as' => 'login'
 	]);
+
 Route::post('iniciar-sesion', 'Auth\AuthController@postLogin');
+
 Route::get('cerrar-sesion', [
 	'uses' => 'Auth\AuthController@getLogout',
 	'as' => 'logout'
 	]);
 
-// Registration routes...
+
+//Registro
 Route::get('registro', [
 	'uses' => 'Auth\AuthController@getRegister',
 	'as' => 'register'
@@ -43,19 +51,21 @@ Route::get('confirmation/{token}', [
 	'as' => 'confirmation'
 	]);
 
-// Password reset link request routes...
+
+//Recuperar contraseña
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
-// Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-//Social auth
+
+//Login con redes sociales
 Route::get('redirect/{provider}', 'SocialAuthController@redirect');
 Route::get('/callback/{provider}', 'SocialAuthController@callback');
 
-// Acciones participativas
+
+//Acciones participativas
 Route::get('acciones-participativas', [
 	'uses'	=> 'ActionController@index',
 	'as'	=> 'actions'
@@ -65,17 +75,20 @@ Route::get('accion-participativa/{id}', [
 	'as'	=> 'action'
 	]);
 
+
 //Propuestas
 Route::get('propuesta/{id}', [
 	'uses'	=> 'ProposalController@show',
 	'as'	=> 'proposal'
 	]);
 
+
 //Obras
 Route::get('obras/{id}', [
 	'uses'	=> 'WorkController@show',
 	'as'	=> 'works'
 	]);
+
 
 //Perfil de usuario
 Route::get('usuarios/{id}', [
@@ -84,15 +97,28 @@ Route::get('usuarios/{id}', [
 	]);
 
 
+
 // Usuarios autenticados
 Route::group(['middleware' => 'auth'], function () {
 
-	// General
+	//Acciones
 	Route::get('editar-accion/{id}',[
 		'uses' 	=> 'ActionController@getEditAction',
 		'as' 	=> 'edit-action'
 		]);
 
+	Route::get('accion-participativa/editar/{id}', [
+		'uses'	=> 'ActionController@edit',
+		'as'	=> 'action.edit'
+		]);
+
+	Route::put('accrion-participativa/actualizar/{id}', [
+		'uses'	=> 'ActionController@update',
+		'as'	=> 'action.update'
+		]);
+
+
+	//Propuestas
 	Route::get('crear-propuesta/{action_id}', [
 		'uses'	=> 'ActionController@getCreateProposal',
 		'as'	=> 'create-proposal-form'
@@ -118,16 +144,6 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'proposal.update'
 		]);
 
-	Route::get('editar-comentario/{id}', [
-		'uses'	=> 'CommentController@edit',
-		'as'	=> 'comment.edit'
-		]);
-
-	Route::put('editar-comentario/{id}', [
-		'uses'	=> 'CommentController@update',
-		'as'	=> 'comment.update'
-		]);
-
 	Route::post('apoyar-propuesta', [
 		'uses'	=> 'ProposalController@support',
 		'as'	=> 'proposal.support'
@@ -138,9 +154,65 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'proposal.unsupport'
 		]);
 
+	Route::delete('borrar-propuesta', [
+		'uses'	=> 'ProposalController@destroy',
+		'as'	=> 'proposal.delete'
+		]);
+
+
+	//Comentarios
+	Route::get('editar-comentario/{id}', [
+		'uses'	=> 'CommentController@edit',
+		'as'	=> 'comment.edit'
+		]);
+
+	Route::put('editar-comentario/{id}', [
+		'uses'	=> 'CommentController@update',
+		'as'	=> 'comment.update'
+		]);
+
+	Route::post('me-gusta-comentario', [
+		'uses'	=> 'CommentController@like',
+		'as'	=> 'comment.like'
+		]);
+
+	Route::delete('ya-no-me-gusta-comentario', [
+		'uses'	=> 'CommentController@unlike',
+		'as'	=> 'comment.unlike'
+		]);
+
+	Route::delete('borrar-comentario', [
+		'uses'	=> 'CommentController@destroy',
+		'as'	=> 'comment.delete'
+		]);
+
+
+	//Encuestas
+	Route::get('crear-votacion/{action_id}', [
+		'uses'	=> 'PollController@getCreate',
+		'as'	=> 'action.create-poll'
+		]);
+	
+	Route::post('crear-votacion', [
+		'uses'	=> 'PollController@postCreate',
+		'as'	=> 'create-poll'
+		]);
+
 	Route::any('votar', [
 		'uses'	=> 'PollController@vote',
 		'as'	=> 'vote'
+		]);
+
+
+	//Obras
+	Route::get('publicar-obra/{action_id}', [
+		'uses'	=> 'WorkController@getCreate',
+		'as'	=> 'work.publish'
+		]);
+
+	Route::post('publicar-obra', [
+		'uses'	=> 'WorkController@postCreate',
+		'as'	=> 'work.post-create'
 		]);
 
 	Route::post('calificar', [
@@ -148,6 +220,13 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'rate'
 		]);
 
+	Route::delete('borrar-obra', [
+		'uses'	=> 'WorkController@destroy',
+		'as'	=> 'work.delete'
+		]);
+
+
+	//Perfil de usuario
 	Route::get('editar-perfil',[
 		'uses'	=> 'UserController@edit',
 		'as'	=> 'user.edit'
@@ -168,54 +247,6 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'user.post-change-password'
 		]);
 
-	Route::post('me-gusta-comentario', [
-		'uses'	=> 'CommentController@like',
-		'as'	=> 'comment.like'
-		]);
-
-	Route::delete('ya-no-me-gusta-comentario', [
-		'uses'	=> 'CommentController@unlike',
-		'as'	=> 'comment.unlike'
-		]);
-	
-
-	// Admin de Accion Participativa
-	//...
-
-	Route::get('crear-votacion/{action_id}', [
-		'uses'	=> 'PollController@getCreate',
-		'as'	=> 'action.create-poll'
-		]);
-	
-	Route::post('crear-votacion', [
-		'uses'	=> 'PollController@postCreate',
-		'as'	=> 'create-poll'
-		]);
-
-	Route::get('publicar-obra/{action_id}', [
-		'uses'	=> 'WorkController@getCreate',
-		'as'	=> 'work.publish'
-		]);
-
-	Route::post('publicar-obra', [
-		'uses'	=> 'WorkController@postCreate',
-		'as'	=> 'work.post-create'
-		]);
-
-	Route::delete('borrar-propuesta', [
-		'uses'	=> 'ProposalController@destroy',
-		'as'	=> 'proposal.delete'
-		]);
-
-	Route::delete('borrar-obra', [
-		'uses'	=> 'WorkController@destroy',
-		'as'	=> 'work.delete'
-		]);
-
-	Route::delete('borrar-comentario', [
-		'uses'	=> 'CommentController@destroy',
-		'as'	=> 'comment.delete'
-		]);
 
 
 	// Administador de la plataforma
@@ -226,15 +257,18 @@ Route::group(['middleware' => 'auth'], function () {
 			'uses' 	=> 'AdminController@getSettings',
 			'as' 	=> 'settings'
 			]);
+
 		// Crear accion participativa
 		Route::get('administracion/crear-accion-participativa', [
 			'uses' 	=> 'AdminController@getCreateAction',
 			'as' 	=> 'settings/create-action'
 			]);
+
 		Route::post('administracion/crear-accion-participativa', [
 			'uses' 	=> 'AdminController@postCreateAction',
 			'as'	=> 'settings/create-action'
 			]);
+
 		// Eliminar accion participativa
 		Route::delete('eliminar-accion', [
 		'uses'	=> 'ActionController@destroy',

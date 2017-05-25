@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all('name', 'email')->toArray();
+        return User::where('email', '<>', '')->select('name', 'email')->get();
     }
 
     public function show($id)

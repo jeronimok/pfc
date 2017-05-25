@@ -142,7 +142,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-			  	<h3>Discusión</h3>
+			  	<h3><i class="fa fa-comments" aria-hidden="true"></i> Discusión</h3>
 			  	@include('partials/comments_list')
 
 			  	@if(Auth::check())

@@ -13,6 +13,7 @@ use App\Poll;
 use Gate;
 use Image;
 use Illuminate\Support\Facades\File;
+use Validator;
 
 class ActionController extends Controller
 {
@@ -63,6 +64,9 @@ class ActionController extends Controller
         }
 
         $action->save();
+
+        return redirect(route('action', $action->id))
+            ->with('alert', 'La acción participativa ha sido creada con éxito');
     }
 
     /**
@@ -86,7 +90,13 @@ class ActionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $action = Action::findOrFail($id);
+
+        if (Gate::denies('admin_action', $action->admin_id)) {
+            abort(403, 'No autorizado');
+        }
+
+        return view('actions/edit', compact('action'));
     }
 
     /**
@@ -98,7 +108,50 @@ class ActionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validation = Validator::make($request->all(), [
+            'title'         => 'required|max:255',
+            'description'   => 'required',
+            'howto'         => 'required',
+            'admin_email'   => 'required'
+        ]);
+
+        if ($validation->fails()) {
+            $this->throwValidationException(
+                $request, $validation
+            );
+        }
+
+        $action = Action::findOrFail($id);
+
+        if (Gate::denies('admin_action', $action->id)) {
+            abort(403, 'No autorizado');
+        }
+
+        $action->title          = $request->get('title');
+        $action->description    = $request->get('description');
+        $action->howto          = $request->get('howto');
+        $action->admin_email    = $request->get('admin_email');
+        $action->admin_id       = User::where('email', $request->get('admin_email'))->first()->id;
+        $action->create_p       = ( $request->get('create_p') == 'on' ? 1 : 0 );
+        $action->debate_p       = ( $request->get('debate_p') == 'on' ? 1 : 0 );
+        $action->support_p      = ( $request->get('support_p') == 'on' ? 1 : 0 );
+        $action->opt_p          = ( $request->get('opt_p') == 'on' ? 1 : 0 );
+        $action->audit          = ( $request->get('audit') == 'on' ? 1 : 0 );
+
+        // Avatar 
+        if($request->hasFile('avatar')){
+            $avatar     = $request->file('avatar');
+            $filename   = $action->id . '.' . $avatar->getClientOriginalExtension();
+            $path       = '/uploads/actions/' . $filename;
+            Image::make($avatar)->resize(600,450)->save( public_path($path));
+
+            $action->avatar = $path;
+        }
+
+        $action->save();
+
+        return redirect()->route('action', $action->id)
+            ->with('alert', 'La acción participativa ha sido editada con éxito');
     }
 
     /**

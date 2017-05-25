@@ -52,10 +52,7 @@ class AdminController extends Controller
             $user->save();
         }
 
-        app('App\Http\Controllers\ActionController')->store($request);
-
-        return redirect(route('settings'))
-            ->with('alert', 'La acción participativa ha sido creada con éxito');
+        return app('App\Http\Controllers\ActionController')->store($request);
 
     }
 }
