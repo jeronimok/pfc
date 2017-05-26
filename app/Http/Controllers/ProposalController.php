@@ -169,4 +169,51 @@ class ProposalController extends Controller
 
         return redirect(route('proposal', $proposal->id));
     }
+
+    public function getClose($id){
+        $proposal = Proposal::findOrFail($id);
+
+        if (Gate::denies('edit_proposal', $proposal)) {
+            abort(403, 'No autorizado');
+        }
+
+        return view('proposals/close', compact('proposal'));
+    }
+
+    public function putClose(Request $request, $id){
+        $validation = Validator::make($request->all(), [
+            'closing_message' => 'required'
+        ]);
+
+        if ($validation->fails()) {
+            $this->throwValidationException(
+                $request, $validation
+            );
+        }
+
+        $proposal = Proposal::findOrFail($id);
+
+        if (Gate::denies('edit_proposal', $proposal)) {
+            abort(403, 'No autorizado');
+        }
+
+        $proposal->closing_message = $request->get('closing_message');
+        $proposal->save();
+
+        return redirect(route('proposal', $id));
+    }
+
+    public function reOpen($id){
+
+        $proposal = Proposal::findOrFail($id);
+
+        if (Gate::denies('edit_proposal', $proposal)) {
+            abort(403, 'No autorizado');
+        }
+
+        $proposal->closing_message = null;
+        $proposal->save();
+
+        return redirect(route('proposal', $id));
+    }
 }

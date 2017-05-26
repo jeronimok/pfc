@@ -53,4 +53,8 @@ class Proposal extends Model
         }
     }
 
+    public function isOpened(){
+        return ($this->closing_message == null);
+    }
+
 }

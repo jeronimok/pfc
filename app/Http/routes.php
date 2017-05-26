@@ -159,6 +159,22 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'proposal.delete'
 		]);
 
+	Route::get('cerrar-propuesta/{id}', [
+		'uses'	=> 'ProposalController@getClose',
+		'as'	=> 'proposal.getclose'
+		]);
+
+	Route::put('cerrar-propuesta/{id}', [
+		'uses'	=> 'ProposalController@putClose',
+		'as'	=> 'proposal.putclose'
+		]);
+
+	Route::get('reabrir-propuesta/{id}', [
+		'uses'	=> 'ProposalController@reOpen',
+		'as'	=> 'proposal.reopen'
+		]);
+	
+
 
 	//Comentarios
 	Route::get('editar-comentario/{id}', [
