@@ -139,7 +139,8 @@ class AuthController extends Controller
         return [
             'email'                 => $request->get('email'),
             'password'              => $request->get('password'),
-            'registration_token'    => null
+            'registration_token'    => null,
+            'ban_reason'            => null
         ];
 
     }

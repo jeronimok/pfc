@@ -13,6 +13,7 @@ use Validator;
 use Gate;
 use Auth;
 use Hash;
+use Mail;
 
 class UserController extends Controller
 {
@@ -123,5 +124,48 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('user', $user->id)->with('alert', 'La contraseña ha sido cambiada con éxito');
+    }
+
+    public function ban($id){
+
+        $user = User::findOrFail($id);
+
+        return view('users/ban', compact('user'));
+    }
+
+    public function putban(Request $request, $id){
+        $validation = Validator::make($request->all(), [
+            'ban_reason' => 'required'
+        ]);
+
+        if ($validation->fails()) {
+            $this->throwValidationException(
+                $request, $validation
+            );
+        }
+        $user = User::findOrFail($id);
+        $user->ban_reason = $request->get('ban_reason');
+        $user->save();
+
+        Mail::send('emails/banned', compact('user'), function($m) use ($user){
+            $m->to($user->email, $user->name)->subject('Has sido suspendido');
+        });
+
+        return redirect()->route('user', $user->id)->with('alert', 'El usuario ha sido suspendido por tiempo indefinido');
+    }
+
+    public function unban($id){
+
+        $user = User::findOrFail($id);
+
+        $user->ban_reason = null;
+
+        $user->save();
+
+        Mail::send('emails/unbanned', compact('user'), function($m) use ($user){
+            $m->to($user->email, $user->name)->subject('Se ha levantado tu suspensión');
+        });
+
+        return redirect()->route('user', $user->id)->with('alert', 'Se ha quitado la suspensión al usuario');
     }
 }

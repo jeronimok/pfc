@@ -297,6 +297,24 @@ Route::group(['middleware' => 'auth'], function () {
 			'as'	=> 'users.index'
 			]);
 
+		// Suspender usuario
+		Route::get('suspender-usuario/{id}', [
+			'uses'	=> 'UserController@ban',
+			'as'	=> 'user.ban'
+			]);
+
+		Route::put('suspender-usuario/{id}', [
+			'uses'	=> 'UserController@putBan',
+			'as'	=> 'user.putban'
+			]);
+
+		Route::get('habilitar-usuario/{id}', [
+			'uses'	=> 'UserController@unban',
+			'as'	=> 'user.unban'
+			]);
+
+		
+
 	});
 
 });

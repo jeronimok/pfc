@@ -68,12 +68,17 @@
 					    		</a>
 					    	</li>
 				    	@endif
-				    	@if(Gate::allows('admin'))
-				    		<li role="separator" class="divider"></li>
+				    	@if(Gate::allows('admin') and $user->id != Auth::user()->id)
 				    		<li>
-					    		<button href="" class="btn btn-danger btn-block rect">
-					    			<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Suspender usuario
-					    		</button>
+				    			@if($user->ban_reason != null)
+						    		<a href="{{route('user.unban', $user->id)}}">
+						    			<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Quitar suspensión
+						    		</a>
+						    	@else
+						    		<a href="{{route('user.ban', $user->id)}}" class="btn btn-danger btn-block rect">
+						    			<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Suspender usuario
+						    		</a>
+						    	@endif
 					    	</li>
 				    	@endif
 				    </ul>
