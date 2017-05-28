@@ -70,6 +70,12 @@
 			</h2>
 			<p class="proposal-text">{!! nl2br($work->content) !!}</p>
 			<br>
+      @if($work->location)
+        <h3>Ubicación</h3>
+        <p id="location">{{$work->location}}</p>
+    		<div id="map"></div>
+      @endif
+			<br>
 			<div class="ssk-group" >
 			    <a href="" class="ssk ssk-facebook"></a>
 			    <a href="" class="ssk ssk-twitter"></a>
@@ -150,7 +156,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col" align="center">
+									<div class="col col-md-10 col-md-offset-2">
 										<button type="submit" class="btn btn-modern btn-lg" style="margin-right: 15px;">
 										Enviar
 										</button>
@@ -175,4 +181,32 @@
 
 @section('scripts')
 <script src="/js/stars.js"></script>
+
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyDLZblL7GuHX4hcogyC28dfFLS4V9Zzow8"></script>
+<script src="/js/gmaps.js"></script>
+<script>
+
+  GMaps.geocode({
+    address: $('#location').text(),
+    callback: function(results, status) {
+      if (status == 'OK') {
+        var latlng = results[0].geometry.location;
+        var map = new GMaps({
+          el: '#map',
+          lat: latlng.lat(),
+          lng: latlng.lng()
+        });
+        map.setZoom(15);
+        var marker = map.addMarker({
+          lat: latlng.lat(),
+          lng: latlng.lng()
+        });
+        var infowindow = new google.maps.InfoWindow;
+        infowindow.setContent(results[0].formatted_address);
+        infowindow.open(map, marker);
+      }
+    }
+  });
+
+</script>
 @endsection

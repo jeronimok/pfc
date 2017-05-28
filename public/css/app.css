@@ -159,6 +159,10 @@
   width: 100px;
   height: 100px;
 }
+.img-xsmall {
+  width: 30px;
+  height: 30px;
+}
 
 .card-holder {
   background-color: transparent;
@@ -317,4 +321,10 @@ hr.styled {
 
 section.gray{
   background-color: #eee;
+}
+
+#map {
+  min-width: 100px;
+  height: 300px;
+  max-width: 100%;
 }

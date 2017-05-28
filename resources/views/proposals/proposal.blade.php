@@ -174,12 +174,12 @@
 							<input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
 
 							<div class="form-group">
-								<div class="col-md-12">
+								<div class="col col-md-12">
 									<textarea class="form-control" rows="5" name="comment" required>{{old('comment')}}</textarea>
 								</div>
 							</div>
 							<div class="form-group">
-								<div class="col" align="right">
+								<div class="col col-md-12">
 									<button type="submit" class="btn btn-default" style="margin-right: 15px;">
 									Publicar comentario
 									</button>

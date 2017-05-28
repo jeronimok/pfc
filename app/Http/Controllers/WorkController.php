@@ -36,6 +36,11 @@ class WorkController extends Controller
         $work->title = $request->get('title');
         $work->content = $request->get('content');
         $work->action_id = $request->get('action_id');
+
+        if($request->has('location')){
+            $work->location = $request->get('location');
+        }
+
         $work->save();
 
         return redirect(route('action', $request->get('action_id')))
