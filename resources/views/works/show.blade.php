@@ -31,6 +31,8 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
+			@include('partials/errors')
+			@include('partials/success')
 		  	<h2>
 				<a href="{{ route('action', ['id' => $work->action->id]) }}"><small>{{$work->action->title}}</small> </a> <small> >> Obra del municipio</small>
 
@@ -41,7 +43,7 @@
 					  </button>
 					  <ul class="dropdown-menu">
 					    <li>
-					    	<a href="">Editar contenido de la obra</a>
+					    	<a href="{{route('work.edit', $work->id)}}"><i class="fa fa-edit" aria-hidden="true"></i> Editar obra</a>
 					    </li>
 					    <li role="separator" class="divider"></li>
 					    <li>
@@ -57,7 +59,7 @@
 						        data-btn-cancel-label="No"
 						        data-title="¿Estás seguro de que deseas eliminarla?"
 								>
-								  Eliminar obra
+								<i class="fa fa-ban" aria-hidden="true"></i> Eliminar obra
 								</button>
 							</form>
 					    </li>
@@ -108,7 +110,7 @@
 					<div class="col-md-4" align="center">
 						<h2 class="text-muted light">
 							<small>
-							{{count($work->ratings)}} calificaciones
+							Calificaciones: {{count($work->ratings)}}
 							</small>
 						</h2>
 					</div>
@@ -125,9 +127,6 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-
-				@include('partials/errors')
-			  	@include('partials/success')
 			  	@if(!Auth::check())
 			  		<p class="text-muted" align="center">Inicia sesión para calificar</p>
 			  	@elseif(Gate::allows('rate', $work->id))
@@ -196,7 +195,7 @@
           lat: latlng.lat(),
           lng: latlng.lng()
         });
-        map.setZoom(15);
+        map.setZoom(16);
         var marker = map.addMarker({
           lat: latlng.lat(),
           lng: latlng.lng()

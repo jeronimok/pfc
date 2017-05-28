@@ -241,6 +241,16 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'work.delete'
 		]);
 
+	Route::get('editar-obra/{id}', [
+		'uses'	=> 'WorkController@edit',
+		'as'	=> 'work.edit'
+		]);
+
+	Route::put('editar-obra/{id}', [
+		'uses'	=> 'WorkController@update',
+		'as'	=> 'work.update'
+		]);
+
 
 	//Perfil de usuario
 	Route::get('editar-perfil',[

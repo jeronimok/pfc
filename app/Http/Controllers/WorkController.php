@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Action;
 use App\Work;
 use App\Rating;
+use Gate;
 
 class WorkController extends Controller
 {
@@ -77,5 +78,55 @@ class WorkController extends Controller
 
         return redirect(route('works', $request->get('work_id')))
             ->with('alert', 'Tu calificación ha sido publcada con éxito');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $work = Work::findOrFail($id);
+
+        if (Gate::denies('admin_action', $work->action->admin_id)) {
+            abort(403, 'No autorizado');
+        }
+
+        return view('works/edit', compact('work'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request,[
+            'title'     => 'required|max:255',
+            'content'   => 'required'
+            ]);
+
+        $work = Work::findOrFail($id);
+
+        if (Gate::denies('admin_action', $work->action->admin_id)) {
+            abort(403, 'No autorizado');
+        }
+
+        $work->title   = $request->get('title');
+        $work->content = $request->get('content');
+
+        if($request->has('location')){
+            $work->location = $request->get('location');
+        }
+
+        $work->save();
+
+        return redirect()->route('works', $work->id)
+            ->with('alert', 'La obra ha sido editada con éxito');
     }
 }
