@@ -30,7 +30,7 @@
 				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				Usuarios
 			</h4>
-			<a href="" class="list-group-item">Crear usuarios<span class="pull-right glyphicon glyphicon-plus" aria-hidden="true"></span> </a>
+			<a href="{{route('user.create')}}" class="list-group-item">Crear usuario<span class="pull-right glyphicon glyphicon-plus" aria-hidden="true"></span> </a>
 		</div>
 		<div class="col-md-4">
 			<h4>

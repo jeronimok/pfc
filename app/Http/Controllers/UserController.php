@@ -168,4 +168,29 @@ class UserController extends Controller
 
         return redirect()->route('user', $user->id)->with('alert', 'Se ha quitado la suspensión al usuario');
     }
+
+    public function getCreate(){
+        return view('users/create');
+    }
+
+    public function postCreate(Request $request){
+
+        $this->validate($request, [
+            'name'      => 'required',
+            'email'     => 'required',
+            'role'      => 'required',
+            'password'  => 'required|confirmed|min:6'
+        ]);
+
+        $user = new User;
+        
+        $user->name             = $request->get('name');
+        $user->email            = $request->get('email');
+        $user->role            = $request->get('role');
+        $user->password         = bcrypt($request->get('password'));
+
+        $user->save();
+
+        return redirect()->route('user', $user->id)->with('alert', 'Usuario creado con éxito');
+    }
 }
