@@ -35,4 +35,9 @@ class Action extends Model
 
         return $this->hasMany(Work::class)->paginate();
     }
+
+    public function newvents(){
+
+        return $this->hasMany(Newvent::class)->paginate();
+    }
 }

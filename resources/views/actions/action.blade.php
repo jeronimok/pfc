@@ -20,10 +20,12 @@
 
 @endsection
 
-@section('content')
+@section('styles')
+<link rel="stylesheet" type="text/css" href="/bower_components/slick-carousel/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="/bower_components/slick-carousel/slick/slick-theme.css"/>
+@endsection
 
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+@section('content')
 
 <div class="jumbotron no-bottom">
 	<div class="container-fluid">
@@ -124,62 +126,9 @@
 	  			<p>{!! nl2br($action->howto) !!}</p>
 	  		@endif
 
-	  		<div class="alert" style="background-color: #eee;">
-	  			<p>Noticias y Eventos</p>
-	  			<br>
-	  			<div class="autoplay">
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2" align="center">
-						  <div class="panel panel-primary">
-						  	<div class="panel-heading">
-						  		JUNIO 2017
-						  	</div>
-						  	<div class="panel-body" style="color: #555;">
-						  		<h1 align="center">07</h1>
-						  		<h4>Inicio de actividades</h4>
-						  	</div>
-						  </div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-10 col-md-offset-1">
-							<div class="card">
-								<a href="">
-							    	<div class="card-block">
-							    		<span class="text-muted">05-07-2017</span>
-							    		<h3 class="card-title">Iniciaron las actividades en el Consejo de Niños y Niñas</h3>
-							    	</div>
-							    </a>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2" align="center">
-						  <div class="panel panel-primary">
-						  	<div class="panel-heading">
-						  		JUNIO 2017
-						  	</div>
-						  	<div class="panel-body" style="color: #555;">
-						  		<h1 align="center">28</h1>
-						  		<h4>Reunión con el intendente</h4>
-						  	</div>
-						  </div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-10 col-md-offset-1">
-							<div class="card">
-								<a href="">
-							    	<div class="card-block">
-							    		<span class="text-muted">05-07-2017</span>
-							    		<h3 class="card-title">Los chicos mostraron sus propuestas al intendente</h3>
-							    	</div>
-							    </a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+	  		@if(count($action->newvents())>0)
+	  			@include('partials/newvents_list')
+	  		@endif
 	  		
 	  		<hr>
 	  		<div class="ssk-group" align="center">
@@ -252,7 +201,7 @@
 <script src="/js/button_block.js"></script>
 <script src="/js/reload_poll.js"></script>
 
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script type="text/javascript" src="/bower_components/slick-carousel/slick/slick.min.js"></script>
 
 <script type="text/javascript">
     $('.autoplay').slick({
@@ -260,6 +209,24 @@
 	  slidesToScroll: 1,
 	  autoplay: true,
 	  autoplaySpeed: 2000,
+	  dots: true,
+	  responsive: [
+                    {
+                      breakpoint: 800,
+                      settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                      }
+                    },
+                    {
+                      breakpoint: 500,
+                      settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                      }
+                    }
+
+                  ]
 	});
 </script>
 
