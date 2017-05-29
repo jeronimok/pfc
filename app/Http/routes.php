@@ -112,9 +112,24 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'action.edit'
 		]);
 
-	Route::put('accrion-participativa/actualizar/{id}', [
+	Route::put('accion-participativa/actualizar/{id}', [
 		'uses'	=> 'ActionController@update',
 		'as'	=> 'action.update'
+		]);
+
+	Route::get('publicar-noticia/{action_id}', [
+		'uses'	=> 'NewventController@publishNew',
+		'as'	=> 'new.publish'
+		]);
+
+	Route::get('publicar-evento/{action_id}', [
+		'uses'	=> 'NewventController@publishEvent',
+		'as'	=> 'event.publish'
+		]);
+
+	Route::post('gardar-evento-o-noticia', [
+		'uses'	=> 'NewventController@store',
+		'as'	=> 'newvent.store'
 		]);
 
 
