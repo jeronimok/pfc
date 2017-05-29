@@ -38,9 +38,15 @@ class NewventController extends Controller
         return view('newvents/publish_event', compact('action'));
     }
 
-    public function publishNew()
+    public function publishNew($action_id)
     {
-        //
+        $action = Action::findOrFail($action_id);
+
+        if (Gate::denies('admin_action', $action->admin_id)) {
+            abort(403, 'No autorizado');
+        }
+
+        return view('newvents/publish_new', compact('action'));
     }
 
     /**
@@ -62,6 +68,7 @@ class NewventController extends Controller
         $newvent = new Newvent;
         $newvent->title = $request->get('title');
         $newvent->link = $request->get('link');
+        $newvent->type = $request->get('type');
         $newvent->date = $request->get('date');
         $newvent->action_id = $request->get('action_id');
 

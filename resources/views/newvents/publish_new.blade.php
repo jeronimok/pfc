@@ -9,7 +9,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-2">
-				<h2>Publicar evento <small><a href="{{route('action', $action->id)}}">{{ $action->title }}</a></small></h2>	
+				<h2>Publicar noticia <small><a href="{{route('action', $action->id)}}">{{ $action->title }}</a></small></h2>	
 			</div>
 		</div>
 	</div>
@@ -22,14 +22,11 @@
 			<form role="form" method="POST" action="{{route('newvent.store')}}">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<input type="hidden" name="action_id" value="{{ $action->id }}">
-				<input type="hidden" name="type" value="event">
+				<input type="hidden" name="type" value="new">
+				<input type="hidden" name="date" value="{{ Carbon\Carbon::today()->format('d-m-Y') }}">
 				<div class="form-group">
 					<label class="control-label">Título</label>
 					<input type="text" name="title" class="form-control" value="{{ old('title') }}" required>
-				</div>
-				<div class="form-group">
-					<label class="control-label">Fecha</label>
-					<input class="form-control" id="date" name="date" placeholder="dd/mm/aaaa" type="text" value="{{ old('date') }}" required>
 				</div>
 				<div class="form-group">
 					<label class="control-label">Link</label>
