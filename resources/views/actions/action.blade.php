@@ -127,6 +127,7 @@
 	  		@endif
 
 	  		@if(count($action->newvents())>0)
+	  			<hr>
 	  			@include('partials/newvents_list')
 	  		@endif
 	  		
