@@ -21,13 +21,14 @@ class ActionTableSeeder extends Seeder
             La idea del proyecto es hacer efectiva la participación de los niños y niñas en las cuestiones que conciernen a la ciudad, atendiendo a sus necesidades y expectativas. Niños y niñas, entre 8 y 11 años, de los ocho distritos de la ciudad ejercen su derecho a opinar y a ser oídos mediante el trabajo en las escuelas y en la sesión anual en la que se encuentran con el Intendente de la ciudad para presentarle sus proyectos.',
             'howto'        => 'En esta acción los ciudadanos pueden crear propuestas y debatir en las mismas mediante la publicación de comentarios. Además se puede otorgar un voto de apoyo a las propuestas y finalmente optar por la que se considere más conveniente.',
 
-        	'admin_email'  => 'jeronimo.calace@gmail.com',
+        	
         	'admin_id'     => 1,
-        	'create_p'     => 1,
-        	'debate_p'     => 1,
-        	'support_p'    => 1,
-        	'opt_p'        => 1,
-        	'audit'        => 1
+        	'allow_proposals'    => 1,
+            'proposal_posters' => 'general',
+        	'allow_comments'     => 1,
+        	'allow_polls'        => 1,
+        	'allow_works'        => 1,
+        	'allow_newvents'     => 1
         ]);
 
         factory(App\Action::class, 5)->create();

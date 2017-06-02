@@ -18,12 +18,12 @@ class CreateActionsTable extends Migration
             $table->string('title')->unique();
             $table->longText('description');
             $table->longText('howto');
-            $table->boolean('create_p');
-            $table->boolean('debate_p');
-            $table->boolean('support_p');
-            $table->boolean('opt_p');
-            $table->boolean('audit');
-            $table->string('admin_email');
+            $table->boolean('allow_proposals');
+            $table->enum('proposal_posters', ['admin', 'general']);
+            $table->boolean('allow_comments');
+            $table->boolean('allow_polls');
+            $table->boolean('allow_works');
+            $table->boolean('allow_newvents');
             $table->string('avatar')->default('/images/action.jpg');
             $table->integer('admin_id')->unsigned()->nullable();
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('set null');

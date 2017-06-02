@@ -29,6 +29,9 @@ class ActionController extends Controller
         return view('actions/index', compact('actions'));
     }
 
+    public function create(){
+        return view('actions.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,20 +41,61 @@ class ActionController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title'         => 'required',
+            'description'   => 'required',
+            'howto'         => 'required',
+            'admin_email'   => 'required',
+            'avatar'    => 'image|max:500'
+            ]);
+
+        if ( Action::where('title', $request->get('title') )->first() ) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors([
+                    'title' => 'Ya existe una acción participativa con ese nombre'
+                    ]);
+        }
+        if ( ! User::where('email', $request->get('admin_email') )->first() ) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors([
+                    'admin_email' => 'No existe ningún usuario con ese email'
+                    ]);
+        }
+
+        $user = User::where('email', $request->get('admin_email') )->first();
+
+        if ($user->role == 'general'){
+            $user->role = 'action_admin';
+            $user->save();
+        }
+
         $action = new Action;
 
         $action->title          = $request->get('title');
         $action->description    = $request->get('description');
         $action->howto          = $request->get('howto');
-        $action->create_p       = ( $request->get('create_p') == 'on' ? 1 : 0 );
-        $action->debate_p       = ( $request->get('debate_p') == 'on' ? 1 : 0 );
-        $action->support_p      = ( $request->get('support_p') == 'on' ? 1 : 0 );
-        $action->opt_p          = ( $request->get('opt_p') == 'on' ? 1 : 0 );
-        $action->audit          = ( $request->get('audit') == 'on' ? 1 : 0 );
-        $action->admin_email    = $request->get('admin_email');
         $action->admin_id       = User::where('email', $request->get('admin_email'))->first()->id;
+        $action->allow_works          = $request->get('allow_works');
+        $action->allow_newvents       = $request->get('allow_newvents');
+        $action->allow_proposals      = $request->get('allow_proposals');
 
-        $action->save(); //to generate the id
+        if ($action->allow_proposals == 1){
+
+            $action->proposal_posters   = $request->get('proposal_posters');
+            $action->allow_comments           = $request->get('allow_comments');
+            $action->allow_polls              = $request->get('allow_polls');
+
+        } else {
+
+            $action->proposal_posters   = 'admin';
+            $action->allow_comments           = 0;
+            $action->allow_polls              = 0;
+        }
+
+
+        $action->save();
 
         // Avatar 
         if($request->hasFile('avatar')){
@@ -108,18 +152,13 @@ class ActionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validation = Validator::make($request->all(), [
-            'title'         => 'required|max:255',
+        $this->validate($request,[
+            'title'         => 'required',
             'description'   => 'required',
             'howto'         => 'required',
-            'admin_email'   => 'required'
-        ]);
-
-        if ($validation->fails()) {
-            $this->throwValidationException(
-                $request, $validation
-            );
-        }
+            'admin_email'   => 'required',
+            'avatar'    => 'image|max:500'
+            ]);
 
         $action = Action::findOrFail($id);
 
@@ -127,16 +166,51 @@ class ActionController extends Controller
             abort(403, 'No autorizado');
         }
 
+        if ( Action::where('title', $request->get('title') )->first() != $action) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors([
+                    'title' => 'Ya existe una acción participativa con ese nombre'
+                    ]);
+        }
+        if ( ! User::where('email', $request->get('admin_email') )->first() ) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors([
+                    'admin_email' => 'No existe ningún usuario con ese email'
+                    ]);
+        }
+
+        $user = User::where('email', $request->get('admin_email') )->first();
+
+        if ($user->role == 'general'){
+            $user->role = 'action_admin';
+            $user->save();
+        }
+
         $action->title          = $request->get('title');
         $action->description    = $request->get('description');
         $action->howto          = $request->get('howto');
-        $action->admin_email    = $request->get('admin_email');
         $action->admin_id       = User::where('email', $request->get('admin_email'))->first()->id;
-        $action->create_p       = ( $request->get('create_p') == 'on' ? 1 : 0 );
-        $action->debate_p       = ( $request->get('debate_p') == 'on' ? 1 : 0 );
-        $action->support_p      = ( $request->get('support_p') == 'on' ? 1 : 0 );
-        $action->opt_p          = ( $request->get('opt_p') == 'on' ? 1 : 0 );
-        $action->audit          = ( $request->get('audit') == 'on' ? 1 : 0 );
+        $action->allow_works          = $request->get('allow_works');
+        $action->allow_newvents       = $request->get('allow_newvents');
+        $action->allow_proposals      = $request->get('allow_proposals');
+
+        if ($action->allow_proposals == 1){
+
+            $action->proposal_posters   = $request->get('proposal_posters');
+            $action->allow_comments           = $request->get('allow_comments');
+            $action->allow_polls              = $request->get('allow_polls');
+
+        } else {
+
+            $action->proposal_posters   = 'admin';
+            $action->allow_comments           = 0;
+            $action->allow_polls              = 0;
+        }
+
+
+        $action->save();
 
         // Avatar 
         if($request->hasFile('avatar')){

@@ -22,7 +22,7 @@
 		<div class="col-md-8 col-md-offset-2">	
 			@include('partials/errors')
 
-			<form role="form" method="POST" enctype="multipart/form-data" action="{{ route('settings/create-action') }}">
+			<form role="form" method="POST" enctype="multipart/form-data" action="{{ route('action.store') }}">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 				<div class="form-group">
@@ -44,22 +44,50 @@
 					<input id="admin_email" type="email" name="admin_email" value="{{ old('admin_email') }}" class="form-control" placeholder="Empieza a escribir para filtrar resultados..." required>
 				</div>
 				<br>
-				<div class="form-group">
-					<label class="control-label">Funcionalidades</label>
-				    <div class="checkbox">
-					  <label><input type="checkbox" name="create_p" checked>Crear propuestas</label>
+				<label class="control-label">Funcionalidades</label>
+				<div class="form-group alert alert-success">
+				    <div id="create-proposals">
+				    	<label>¿Habilitar publicación de propuestas?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_proposals" value="1" id="yes-proposals" checked>Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_proposals" value="0" id="no-proposals">No</label>
+					    </div>
 					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" name="debate_p" >Debatir propuestas</label>
+					<div id="proposal-options" class="proposal-options">
+						<hr>
+				    	<label>¿Quién puede crear propuestas?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="proposal_posters" value="admin" checked>Sólo el administrador</label>
+					    	<label class="radio-inline"><input type="radio" name="proposal_posters" value="general">Administrador y ciudadanos</label>
+					    </div>
+					    <hr>
+				    	<label>¿Habilitar comentarios en propuestas?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_comments" value="1" checked>Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_comments" value="0">No</label>
+					    </div>
+					    <hr>
+				    	<label>¿Habilitar creación de votaciones entre propuestas?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_polls" value="1" checked>Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_polls" value="0">No</label>
+					    </div>
 					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" name="support_p" >Apoyar propuestas</label>
+					<hr>
+					<div id="works">
+				    	<label>¿Habilitar publicación de obras del municipio?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_works" value="1">Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_works" value="0" checked>No</label>
+					    </div>
 					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" name="opt_p" >Optar entre alternativas</label>
-					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" name="audit" >Auditar obras</label>
+					<hr>
+					<div id="newvents">
+				    	<label>¿Habilitar publicación de noticias y eventos?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_newvents" value="1" checked>Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_newvents" value="0">No</label>
+					    </div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -80,13 +108,13 @@
 				    	</div>
 			    	</div>
 			  	</div>
-				<br>
-				<div class="form-group" align="center">
-					<button type="submit" class="btn btn-default btn-lg" style="margin-right: 15px;">
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-lg" style="margin-right: 15px;">
 						Crear acción participativa
 					</button>
 				</div>
 			</form>
+			<hr>
 		</div>
 	</div>
 </div>
@@ -97,28 +125,29 @@
 <script src="/bower_components/EasyAutocomplete/dist/jquery.easy-autocomplete.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
-
 	var options = {
-
 	  	url: "/info-usuarios",
-
 	    getValue: "email",
-
 	    template: {
 	        type: "description",
 	        fields: {
 	            description: "name"
 	        }
 	    },
-
 	    list: {
 	        match: {
 	            enabled: true
 	        }
 	    },
 	};
-
 	$("#admin_email").easyAutocomplete(options);
+
+	$('#no-proposals').change(function(e, value){
+	    $('#proposal-options').addClass('hidden');
+	  });
+	$('#yes-proposals').change(function(e, value){
+	    $('#proposal-options').removeClass('hidden');
+	  });
 });
 </script>
 @endsection

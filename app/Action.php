@@ -40,4 +40,8 @@ class Action extends Model
 
         return $this->hasMany(Newvent::class)->paginate();
     }
+
+    public function admin(){
+        return $this->belongsTo(User::class);
+    }
 }

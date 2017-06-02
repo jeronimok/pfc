@@ -301,13 +301,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 		// Crear accion participativa
 		Route::get('administracion/crear-accion-participativa', [
-			'uses' 	=> 'AdminController@getCreateAction',
-			'as' 	=> 'settings/create-action'
+			'uses' 	=> 'ActionController@create',
+			'as' 	=> 'action.create'
 			]);
 
 		Route::post('administracion/crear-accion-participativa', [
-			'uses' 	=> 'AdminController@postCreateAction',
-			'as'	=> 'settings/create-action'
+			'uses' 	=> 'ActionController@store',
+			'as'	=> 'action.store'
 			]);
 
 		// Eliminar accion participativa

@@ -42,25 +42,53 @@
 				<br>
 				<div class="form-group">
 					<label class="control-label">Administrador (email)</label>
-					<input id="admin_email" type="email" name="admin_email" value="{{ $action->admin_email }}" class="form-control" placeholder="Empieza a escribir para filtrar resultados..." required>
+					<input id="admin_email" type="email" name="admin_email" value="{{ $action->admin->email }}" class="form-control" placeholder="Empieza a escribir para filtrar resultados..." required>
 				</div>
 				<br>
-				<div class="form-group">
-					<label class="control-label">Funcionalidades</label>
-				    <div class="checkbox">
-					  <label><input type="checkbox" name="create_p" @if( $action->create_p )checked @endif>Crear propuestas</label>
+				<label class="control-label">Funcionalidades</label>
+				<div class="form-group alert alert-success">
+				    <div id="create-proposals">
+				    	<label>¿Habilitar publicación de propuestas?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_proposals" value="1" id="yes-proposals" @if($action->allow_proposals) checked @endif >Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_proposals" value="0" id="no-proposals" @if(!$action->allow_proposals) checked @endif >No</label>
+					    </div>
 					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" name="debate_p" @if( $action->debate_p )checked @endif >Debatir propuestas</label>
+					<div id="proposal-options" class="proposal-options @if(!$action->allow_proposals) hidden @endif">
+						<hr>
+				    	<label>¿Quién puede crear propuestas?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="proposal_posters" value="admin" @if($action->proposal_posters == 'admin') checked @endif>Sólo el administrador</label>
+					    	<label class="radio-inline"><input type="radio" name="proposal_posters" value="general" @if($action->proposal_posters == 'general') checked @endif>Administrador y ciudadanos</label>
+					    </div>
+					    <hr>
+				    	<label>¿Habilitar comentarios en propuestas?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_comments" value="1" @if($action->allow_comments) checked @endif>Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_comments" value="0" @if(!$action->allow_comments) checked @endif>No</label>
+					    </div>
+					    <hr>
+				    	<label>¿Habilitar creación de votaciones entre propuestas?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_polls" value="1" @if($action->allow_polls) checked @endif>Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_polls" value="0" @if(!$action->allow_polls) checked @endif>No</label>
+					    </div>
 					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" name="support_p" @if( $action->support_p )checked @endif >Apoyar propuestas</label>
+					<hr>
+					<div id="works">
+				    	<label>¿Habilitar publicación de obras del municipio?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_works" value="1" @if($action->allow_works) checked @endif>Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_works" value="0" @if(!$action->allow_works) checked @endif>No</label>
+					    </div>
 					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" name="opt_p" @if( $action->opt_p )checked @endif >Optar entre alternativas</label>
-					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" name="audit" @if( $action->audit )checked @endif >Auditar obras</label>
+					<hr>
+					<div id="newvents">
+				    	<label>¿Habilitar publicación de noticias y eventos?</label>
+				    	<div class="radio">
+					    	<label class="radio-inline"><input type="radio" name="allow_newvents" value="1" @if($action->allow_newvents) checked @endif>Si</label>
+					    	<label class="radio-inline"><input type="radio" name="allow_newvents" value="0" @if(!$action->allow_newvents) checked @endif>No</label>
+					    </div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -80,13 +108,13 @@
 				    	</div>
 			    	</div>
 			  	</div>
-				<br>
-				<div class="form-group" align="center">
-					<button type="submit" class="btn btn-default btn-lg" style="margin-right: 15px;">
+				<div class="form-group">
+					<button type="submit" class="btn btn-success btn-lg" style="margin-right: 15px;">
 						Guardar
 					</button>
 				</div>
 			</form>
+			<hr>
 		</div>
 	</div>
 </div>
@@ -99,26 +127,28 @@
 $(document).ready(function () {
 
 	var options = {
-
 	  	url: "/info-usuarios",
-
 	    getValue: "email",
-
 	    template: {
 	        type: "description",
 	        fields: {
 	            description: "name"
 	        }
 	    },
-
 	    list: {
 	        match: {
 	            enabled: true
 	        }
 	    },
 	};
-
 	$("#admin_email").easyAutocomplete(options);
+
+	$('#no-proposals').change(function(e, value){
+	    $('#proposal-options').addClass('hidden');
+	  });
+	$('#yes-proposals').change(function(e, value){
+	    $('#proposal-options').removeClass('hidden');
+	  });
 });
 </script>
 @endsection

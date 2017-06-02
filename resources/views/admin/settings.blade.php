@@ -24,7 +24,7 @@
 				<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
 				Acciones participativas
 			</h4>
-			<a href="{{ route('settings/create-action') }}" class="list-group-item">@lang('admin.create_action') <span class="pull-right glyphicon glyphicon-plus" aria-hidden="true"></span> </a>
+			<a href="{{ route('action.create') }}" class="list-group-item">@lang('admin.create_action') <span class="pull-right glyphicon glyphicon-plus" aria-hidden="true"></span> </a>
 			<hr>
 			<h4>
 				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
