@@ -11,7 +11,7 @@
 	<div class="container fluid">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-				<h2>Editar <small><a href="{{route('action', $action->id)}}">({{$action->title}})</a></small></h2>
+				<h2>Editar<br><small><a href="{{route('action', $action->id)}}">({{$action->title}})</a></small></h2>
 			</div>
 		</div>
 	</div>
@@ -68,7 +68,7 @@
 					    	<label class="radio-inline"><input type="radio" name="allow_comments" value="0" @if(!$action->allow_comments) checked @endif>No</label>
 					    </div>
 					    <hr>
-				    	<label>¿Habilitar creación de votaciones entre propuestas?</label>
+				    	<label>¿Habilitar creación de votaciones entre propuestas?</label> (Deben ser creadas por el administrador)
 				    	<div class="radio">
 					    	<label class="radio-inline"><input type="radio" name="allow_polls" value="1" @if($action->allow_polls) checked @endif>Si</label>
 					    	<label class="radio-inline"><input type="radio" name="allow_polls" value="0" @if(!$action->allow_polls) checked @endif>No</label>

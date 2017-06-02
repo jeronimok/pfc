@@ -67,7 +67,7 @@
 					    	<label class="radio-inline"><input type="radio" name="allow_comments" value="0">No</label>
 					    </div>
 					    <hr>
-				    	<label>¿Habilitar creación de votaciones entre propuestas?</label>
+				    	<label>¿Habilitar creación de votaciones entre propuestas?</label> (Deben ser creadas por el administrador)
 				    	<div class="radio">
 					    	<label class="radio-inline"><input type="radio" name="allow_polls" value="1" checked>Si</label>
 					    	<label class="radio-inline"><input type="radio" name="allow_polls" value="0">No</label>
