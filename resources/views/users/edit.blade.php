@@ -57,7 +57,7 @@
 			  	</div>
 
 				<br>
-			  	<div align="center">
+			  	<div>
 					<button type="submit" class="btn btn-default btn-lg">
 				    	Guardar cambios
 				  	</button>
@@ -66,5 +66,3 @@
 		</div>
 	</div>
 </div>
-
-<div class="jumbotron"></div>

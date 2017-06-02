@@ -51,6 +51,11 @@
 							  			<i class="fa fa-edit" aria-hidden="true"></i> Editar
 							  		</a>
 							  	</li>
+							  	<li>
+							    	<a href="{{ route('create-proposal-form', $action->id) }}">
+							    		<i class="fa fa-bullhorn" aria-hidden="true"></i> Publicar propuesta
+							    	</a>
+							    </li>
 							    <li>
 							    	<a href="{{route('action.create-poll', $action->id)}}">
 							    		<i class="fa fa-pie-chart" aria-hidden="true"></i> Crear Votación entre propuestas
@@ -63,7 +68,7 @@
 							    </li>
 							    <li>
 							    	<a href="{{route('new.publish', $action->id)}}">
-							    		<i class="fa fa-newspaper-o" aria-hidden="true"></i> Publicar noticia
+							    		<i class="fa fa-file-text-o" aria-hidden="true"></i> Publicar noticia
 							    	</a>
 							    </li>
 							    <li>

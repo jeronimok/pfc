@@ -48,29 +48,37 @@
 					  <button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">
 					  	<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 					  </button>
-					  <ul class="dropdown-menu">
-					    @if(Gate::allows('admin_action', $proposal->action_id))
-						    @if($proposal->isOpened())
-						    	<li class="list-group-item list-group-item-default">
-							    	<a href="{{route('proposal.edit', $proposal->id)}}"><i class="fa fa-edit" aria-hidden="true"></i> Editar contenido de la propuesta</a>
-							    </li>
+					  <ul class="dropdown-menu">    
+					    @if($proposal->isOpened())
+					    	<li class="list-group-item list-group-item-default">
+						    	<a href="{{route('proposal.edit', $proposal->id)}}"><i class="fa fa-edit" aria-hidden="true"></i> Editar contenido de la propuesta</a>
+						    </li>
+						    @if(Gate::allows('admin_action', $proposal->action_id))
 							    <li class="list-group-item list-group-item-danger">
 							    	<a href="{{route('proposal.getclose', $proposal->id)}}">
 							    		<i class="fa fa-ban" aria-hidden="true"></i> Cerrar con comentario
 							    	</a>
 							    </li>
-							@else
-								<li class="list-group-item list-group-item-success">
+							@endif
+						@else
+							<li class="list-group-item list-group-item-danger text-center">
+								PROPUESTA CERRADA
+							</li>
+							@if(Gate::allows('admin_action', $proposal->action_id))
+								<li class="divider"></li>
+								<li>
 							    	<a href="{{route('proposal.reopen', $proposal->id)}}">
 							    		<i class="fa fa-folder-open-o" aria-hidden="true"></i> Reabrir propuesta
 							    	</a>
 							    </li>
-								<li class="list-group-item list-group-item-danger">
+								<li>
 							    	<a href="{{route('proposal.getclose', $proposal->id)}}">
 							    		<i class="fa fa-edit" aria-hidden="true"></i> Editar comentario de cierre
 							    	</a>
 							    </li>
 							@endif
+						@endif
+						@if(Gate::allows('admin_action', $proposal->action_id))
 						    <li class="divider"></li>
 						    <li>
 						    	<form role="form" method="POST" action="{{ route('proposal.delete')}}">
@@ -91,7 +99,7 @@
 									</button>
 								</form>
 						    </li>
-						   @endif
+						@endif
 					  </ul>
 					</div>
 				@endif
