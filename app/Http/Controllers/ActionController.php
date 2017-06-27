@@ -166,7 +166,7 @@ class ActionController extends Controller
             abort(403, 'No autorizado');
         }
 
-        if ( Action::where('title', $request->get('title') )->first() != $action) {
+        if ( Action::where('title', $request->get('title') )->first() and Action::where('title', $request->get('title') )->first() != $action) {
             return redirect()->back()
                 ->withInput()
                 ->withErrors([
