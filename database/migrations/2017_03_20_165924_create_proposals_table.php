@@ -20,7 +20,7 @@ class CreateProposalsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->integer('action_id')->unsigned();
             $table->foreign('action_id')->references('id')->on('actions')->onDelete('cascade');
-            $table->longText('closing_message')->default(null);
+            $table->longText('closing_message')->nullable()->default(null);
             $table->timestamps();
         });
     }

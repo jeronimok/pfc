@@ -78,6 +78,7 @@
     		<div id="map"></div>
       @endif
 			<br>
+			<strong>COMPARTIR</strong>
 			<div class="ssk-group" >
 			    <a href="" class="ssk ssk-facebook"></a>
 			    <a href="" class="ssk ssk-twitter"></a>
@@ -127,6 +128,10 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
+				@if(count($work->ratings) > 0)
+					<h3>Calificaciones</h3>
+					@include('partials/ratings_list')
+				@endif
 			  	@if(!Auth::check())
 			  		<p class="text-muted" align="center">Inicia sesión para calificar</p>
 			  	@elseif(Gate::allows('rate', $work->id))
@@ -166,10 +171,6 @@
 					</div>
 				@else
 					<p class="text-muted" align="center">Ya calificaste esta obra</p>
-				@endif
-				@if(count($work->ratings) > 0)
-					<h3>Calificaciones</h3>
-					@include('partials/ratings_list')
 				@endif
 			</div>
 		</div>

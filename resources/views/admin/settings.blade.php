@@ -47,6 +47,7 @@
 				<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
 				Estadísticas
 			</h4>
+			Resumen:
 			<ul>
 				<li>Usuarios registrados: <strong>{{$data['users']}}</strong></li>
 				<li>Usuarios registrados con redes sociales: <strong>{{$data['social_users']}}</strong></li>
@@ -56,6 +57,9 @@
 				<li>Obras publicadas: <strong>{{$data['works']}}</strong></li>
 				<li>Comentarios realizados: <strong>{{$data['comments']}}</strong></li>
 			</ul>
+			
+			<a href="" >Ver estadísticas detalladas <span> <i class="fa fa-area-chart" aria-hidden="true"></i> <i class="fa fa-bar-chart" aria-hidden="true"></i> <i class="fa fa-line-chart" aria-hidden="true"></i></span> </a>
+			
 		</div>
 	</div>
 </div>

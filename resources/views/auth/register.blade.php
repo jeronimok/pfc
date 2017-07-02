@@ -47,6 +47,11 @@
 				</div>
 
 				<div class="form-group">
+					<label class="control-label">Barrio</label>
+					<input type="text" class="form-control" name="barrio" value="{{ old('barrio') }}">
+				</div>
+
+				<div class="form-group">
 					<label class="control-label">@lang('validation.attributes.password')</label>
 					<input type="password" class="form-control" name="password">
 				</div>

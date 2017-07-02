@@ -21,7 +21,7 @@ class CreateWorksTable extends Migration
             $table->integer('action_id')->unsigned();
             $table->foreign('action_id')->references('id')->on('actions')->onDelete('cascade');
 
-            $table->string('location');
+            $table->string('location')->nullable();
 
             $table->timestamps();
         });

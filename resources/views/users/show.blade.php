@@ -43,7 +43,7 @@
 			<img class="img-fluid img-circle" src="{{$user->avatar}}" alt="Foto de perfil">
 			<h2>{{$user->name}}</h2>
 			<p>
-				Propuestas creadas: <strong>{{count($user->proposals)}}</strong>
+				Propuestas publicadas: <strong>{{count($user->proposals)}}</strong>
 				<br>
 				Comentarios realizados: <strong>{{count($user->comments)}}</strong>
 				<br>
@@ -95,7 +95,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				
 				@if(count($user->proposals) > 0)
-					<h3>Propuestas</h3>
+					<h3>Propuestas publicadas</h3>
 					<br>
 				  	@for ($i = 0; $i < count($user->proposals); $i=$i+3)
 						<div class="card-deck">
@@ -122,7 +122,7 @@
 				@if(count($user->comments) > 0)
 					<br>
 					<hr class="styled">
-				  	<h3>Comentarios</h3>
+				  	<h3>Comentarios realizados</h3>
 				  	<br>
 				  	@foreach($user->comments as $comment)
 				  		<div class="card">

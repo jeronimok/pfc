@@ -95,7 +95,7 @@
 							        data-btn-cancel-label="No"
 							        data-title="¿Estás seguro de que deseas eliminarla?"
 									>
-									  <i class="fa fa-ban" aria-hidden="true"></i> Eliminar propuesta
+									  <i class="fa fa-trash" aria-hidden="true"></i> Eliminar propuesta
 									</button>
 								</form>
 						    </li>
@@ -108,6 +108,7 @@
 			</h2>
 			<p class="proposal-text">{!! nl2br($proposal->content) !!}</p>
 			<br>
+			<strong>COMPARTIR</strong>
 			<div class="ssk-group" >
 			    <a href="" class="ssk ssk-facebook"></a>
 			    <a href="" class="ssk ssk-twitter"></a>

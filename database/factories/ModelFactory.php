@@ -26,6 +26,7 @@ $factory->define(App\Action::class, function (Faker\Generator $faker) {
     return [
         'title' 		    => $faker->sentence,
     	'description' 	    => $faker->text,
+        'howto'             => $faker->text,
     	'admin_id'		    => 1,
     	'allow_proposals'         => 1,
         'proposal_posters'  => 'general',

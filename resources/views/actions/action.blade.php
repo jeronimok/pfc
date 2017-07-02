@@ -137,7 +137,8 @@
 	  		@endif
 	  		
 	  		<hr>
-	  		<div class="ssk-group" align="center">
+	  		<strong>COMPARTIR</strong>
+	  		<div class="ssk-group">
 			    <a href="" class="ssk ssk-facebook"></a>
 			    <a href="" class="ssk ssk-twitter"></a>
 			    <a href="" class="ssk ssk-google-plus"></a>

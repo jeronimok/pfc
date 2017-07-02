@@ -45,6 +45,9 @@
 				</div>
 			</div>
 			<hr>
+			<div>
+				<a href=""><i class="fa fa-comment" aria-hidden="true"></i> Responder</a> | <a href="">Denunciar <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+			</div>
 			<div id="likes_section" align="right">
 				@if(Gate::allows('like_comment', $comment))
 					<form id="like_comment{{$comment->id}}" role="form" method="POST" onsubmit="likeComment({{$comment->id}})" action="{{ route('comment.like')}}">
