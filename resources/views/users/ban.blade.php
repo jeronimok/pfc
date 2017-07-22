@@ -25,6 +25,11 @@
 					<textarea class="form-control" rows="5" name="ban_reason" required>{{$user->ban_reason}}</textarea>
 				</div>
 				<div class="form-group">
+					<label>Tiempo (días)</label>
+					<br>
+					<input type="number" name="quantity" min="1" max="90">
+				</div>
+				<div class="form-group">
 					<button type="submit" class="btn btn-primary" style="margin-right: 15px;">Enviar</button>
 				</div>
 			</form>

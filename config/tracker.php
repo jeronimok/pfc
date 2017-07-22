@@ -10,7 +10,7 @@ return [
     /*
      * Enable cache?
      */
-    'cache_enabled' => true,
+    'cache_enabled' => false,
 
     /*
      * Deffer booting for middleware use
@@ -120,7 +120,7 @@ return [
     /*
      * Log events?
      */
-    'log_events' => false,
+    'log_events' => true,
 
     /*
      * Which events do you want to log exactly?
@@ -165,7 +165,7 @@ return [
      *     sudo apt-get purge php5-geoip
      *
      */
-    'log_geoip' => false,
+    'log_geoip' => true,
 
     /*
      * Do you wish to log the user agent?
@@ -175,27 +175,27 @@ return [
     /*
      * Do you wish to log your users?
      */
-    'log_users' => false,
+    'log_users' => true,
 
     /*
      * Do you wish to log devices?
      */
-    'log_devices' => false,
+    'log_devices' => true,
 
     /*
      * Do you wish to log languages?
      */
-    'log_languages' => false,
+    'log_languages' => true,
 
     /*
      * Do you wish to log HTTP referers?
      */
-    'log_referers' => false,
+    'log_referers' => true,
 
     /*
      * Do you wish to log url paths?
      */
-    'log_paths' => false,
+    'log_paths' => true,
 
     /*
      * Do you wish to log url queries and query arguments?
@@ -205,12 +205,12 @@ return [
     /*
      * Do you wish to log routes and route parameters?
      */
-    'log_routes' => false,
+    'log_routes' => true,
 
     /*
      * Log errors and exceptions?
      */
-    'log_exceptions' => false,
+    'log_exceptions' => true,
 
     /*
      * A cookie may be created on your visitor device, so you can have information
@@ -232,7 +232,7 @@ return [
      * ** IMPORTANT **
      *   Change the user model to your own.
      */
-    'user_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\User',
+    'user_model' => 'App\User',
 
     /*
      * You can use your own model for every single table Tracker has.
@@ -291,7 +291,7 @@ return [
     /*
      * Laravel internal variables on user authentication and login.
      */
-    'authentication_ioc_binding' => ['auth', 'admin'], // defaults to 'auth' in Illuminate\Support\Facades\Auth
+    'authentication_ioc_binding' => ['auth'], // defaults to 'auth' in Illuminate\Support\Facades\Auth
 
     'authenticated_check_method' => 'check', // to Auth::check()
 
@@ -322,7 +322,7 @@ return [
      * Stats Panel routes middleware
      *
      */
-    'stats_routes_middleware' => 'web',
+    'stats_routes_middleware' => 'auth',
 
     /*
      * Stats Panel template path
