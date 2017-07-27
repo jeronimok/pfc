@@ -4,7 +4,7 @@
             <div class="panel-heading" align="center">
                 <h3>{{$action->poll->question}}</h3>
             </div>
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('vote') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('vote') }}" id="poll-form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="panel-body">
                     <ul class="list-group">

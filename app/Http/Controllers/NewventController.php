@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Action;
 use App\Newvent;
 use Gate;
+use Validator;
+
 
 class NewventController extends Controller
 {
@@ -97,7 +99,13 @@ class NewventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $newvent = Newvent::findOrFail($id);
+
+        if (Gate::denies('admin_action', $newvent->action->admin_id)) {
+            abort(403, 'No autorizado');
+        }
+
+        return view('newvents/edit', compact('newvent'));
     }
 
     /**
@@ -109,7 +117,32 @@ class NewventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validation = Validator::make($request->all(), [
+            'title'        => 'required|max:255',
+            'link'      => 'required',
+            'date'      => 'required'
+        ]);
+
+        if ($validation->fails()) {
+            $this->throwValidationException(
+                $request, $validation
+            );
+        }
+
+        $newvent = newvent::findOrFail($id);
+
+        if (Gate::denies('admin_action', $newvent->action->admin_id)) {
+            abort(403, 'No autorizado');
+        }
+
+        $newvent->title     = $request->get('title');
+        $newvent->link      = $request->get('link');
+        $newvent->date      = $request->get('date');
+
+        $newvent->save();
+
+        return redirect()->route('action', $newvent->action->id)
+            ->with('alert', 'La edición ha finalizado con con éxito');
     }
 
     /**
@@ -118,8 +151,23 @@ class NewventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $newvent   = Newvent::findOrFail($request->get('newvent_id'));
+
+        $type      = $newvent->type;
+        
+        if($type == 'new'){
+            $message = "La noticia ha sido eliminada con éxito";
+        } else {
+            $message = "El evento ha sido eliminado con éxito";
+        }
+
+        $action_id  = $newvent->action_id;
+        
+        $newvent->delete();
+
+        return redirect(route('action', $action_id))
+            ->with('alert', $message);
     }
 }

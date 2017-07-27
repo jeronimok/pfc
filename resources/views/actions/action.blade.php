@@ -25,6 +25,8 @@
 <link rel="stylesheet" type="text/css" href="/bower_components/slick-carousel/slick/slick-theme.css"/>
 @endsection
 
+
+
 @section('content')
 
 <div class="jumbotron no-bottom">

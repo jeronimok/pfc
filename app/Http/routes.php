@@ -117,6 +117,7 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'action.update'
 		]);
 
+	//Noticias y Eventos
 	Route::get('publicar-noticia/{action_id}', [
 		'uses'	=> 'NewventController@publishNew',
 		'as'	=> 'new.publish'
@@ -127,9 +128,24 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'event.publish'
 		]);
 
-	Route::post('gardar-evento-o-noticia', [
+	Route::post('guardar-evento-o-noticia', [
 		'uses'	=> 'NewventController@store',
 		'as'	=> 'newvent.store'
+		]);
+
+	Route::get('editar-evento-o-noticia/{newvent_id}', [
+		'uses'	=> 'NewventController@edit',
+		'as'	=> 'newvent.edit'
+		]);
+
+	Route::put('editar-noticia-o-evento/{id}', [
+		'uses'	=> 'NewventController@update',
+		'as'	=> 'newvent.update'
+		]);
+
+	Route::delete('borrar-noticia-o-evento', [
+		'uses'	=> 'NewventController@destroy',
+		'as'	=> 'newvent.delete'
 		]);
 
 

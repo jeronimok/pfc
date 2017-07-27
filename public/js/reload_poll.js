@@ -1,9 +1,9 @@
-$('form').submit(function( event ) {
+$('#poll-form').submit(function( event ) {
     event.preventDefault();
     $.ajax({
         url: '/votar',
         type: 'post',
-        data: $('form').serialize(), 
+        data: $('#poll-form').serialize(), 
         success: function( response ){
             $('.list-group-item').addClass('hidden');
             $('div[name=footer_vote]').addClass('hidden'); 
