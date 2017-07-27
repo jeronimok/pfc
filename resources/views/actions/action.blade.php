@@ -51,21 +51,31 @@
 							  			<i class="fa fa-edit" aria-hidden="true"></i> Editar
 							  		</a>
 							  	</li>
+							  	@if($action->allow_proposals)
 							  	<li>
 							    	<a href="{{ route('create-proposal-form', $action->id) }}">
 							    		<i class="fa fa-bullhorn" aria-hidden="true"></i> Publicar propuesta
 							    	</a>
 							    </li>
+							    @endif
+
+							    @if($action->allow_polls)
 							    <li>
 							    	<a href="{{route('action.create-poll', $action->id)}}">
 							    		<i class="fa fa-pie-chart" aria-hidden="true"></i> Crear Votación entre propuestas
 							    	</a>
 							    </li>
+							    @endif
+
+							    @if($action->allow_works)
 							    <li>
 							    	<a href="{{route('work.publish', $action->id)}}">
 							    		<i class="fa fa-wrench" aria-hidden="true"></i> Publicar obra del municipio
 							    	</a>
 							    </li>
+							    @endif
+
+							    @if($action->allow_newvents)
 							    <li>
 							    	<a href="{{route('new.publish', $action->id)}}">
 							    		<i class="fa fa-file-text-o" aria-hidden="true"></i> Publicar noticia
@@ -76,6 +86,7 @@
 							    		<i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Publicar evento
 							    	</a>
 							    </li>
+							    @endif
 
 							    @if(Gate::allows('admin'))
 							    	<li role="separator" class="divider"></li>

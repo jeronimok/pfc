@@ -34,8 +34,10 @@
 	<hr>
 @endfor
 
+@if($action->proposal_posters == 'general')
 <div class="row text-center">
 	<a href="{{ route('create-proposal-form', ['action_id' => $action->id]) }}" class="btn btn-modern btn-lg">Crear propuesta</a>
 </div>
+@endif
 
 {!! $proposals->render() !!}
