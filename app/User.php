@@ -80,4 +80,9 @@ class User extends Model implements AuthenticatableContract,
         return $this->ratings()->lists('work_id')->toArray();
     }    
 
+    public function getIsAdminAttribute()
+    {
+        return true;
+    }
+
 }

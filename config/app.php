@@ -148,6 +148,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
 
     ],
 
@@ -200,6 +201,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Tracker' => PragmaRX\Tracker\Vendor\Laravel\Facade::class,
 
 
     ],
