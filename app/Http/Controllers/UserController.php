@@ -151,7 +151,7 @@ class UserController extends Controller
             $m->to($user->email, $user->name)->subject('Has sido suspendido');
         });
 
-        return redirect()->route('user', $user->id)->with('alert', 'El usuario ha sido suspendido por tiempo indefinido');
+        return redirect()->route('user', $user->id)->with('alert', 'El usuario ha sido suspendido');
     }
 
     public function unban($id){
