@@ -44,6 +44,11 @@ class CommentController extends Controller
 
         $comment->comment       = $request->get('comment');
         $comment->proposal_id   = $request->get('proposal_id');
+
+        if($request->has('father_id')){
+            $comment->father_id     = $request->get('father_id');
+        }
+        
         $comment->user_name     = auth()->user()->name;
 
         auth()->user()->comments()->save($comment);

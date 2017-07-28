@@ -20,6 +20,8 @@ class CreateCommentsTable extends Migration
             $table->string('user_name');
             $table->integer('proposal_id')->unsigned();
             $table->foreign('proposal_id')->references('id')->on('proposals')->onDelete('cascade');
+            $table->integer('father_id')->unsigned()->nullable();
+            $table->foreign('father_id')->references('id')->on('comments');
             $table->timestamps();
         });
     }

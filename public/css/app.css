@@ -159,6 +159,10 @@
   width: 100px;
   height: 100px;
 }
+.img-msmall {
+  width: 70px;
+  height: 70px;
+}
 .img-xsmall {
   width: 30px;
   height: 30px;
@@ -229,7 +233,7 @@ p{
   font-weight: lighter;
 }
 .proposal-comment{
-  font-size: 20px;
+  font-size: 18px;
   font-weight: lighter;
 }
 

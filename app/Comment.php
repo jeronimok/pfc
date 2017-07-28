@@ -34,4 +34,8 @@ class Comment extends Model
         return $this->belongsToMany(User::class, 'user_like_comment')->withTimestamps();
     }
 
+    public function responses(){
+        return $this->hasMany(Comment::class, 'father_id');
+    }
+
 }
