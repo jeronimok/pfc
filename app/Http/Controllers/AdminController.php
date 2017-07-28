@@ -18,6 +18,7 @@ class AdminController extends Controller
 {
     public function getSettings(){
         $banned_users = User::whereNotNull('ban_reason')->select('name', 'id')->get();
+        $reported_comments = Comment::where('reported', '>', 0)->select('comment', 'id', 'proposal_id')->get();
         $data = [
             'actions'       => Action::all()->count(),
             'users'         => User::all()->count(),
@@ -27,7 +28,7 @@ class AdminController extends Controller
             'proposals'     => Proposal::all()->count(),
             'works'         => Work::all()->count()
         ];
-        return view('admin.settings', compact('data', 'banned_users'));
+        return view('admin.settings', compact('data', 'banned_users', 'reported_comments'));
     }
 
 }

@@ -233,6 +233,11 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'comment.delete'
 		]);
 
+	Route::get('denunciar-comentario/{id}', [
+		'uses'	=> 'CommentController@report',
+		'as'	=> 'comment.report'
+		]);
+
 
 	//Encuestas
 	Route::get('crear-votacion/{action_id}', [

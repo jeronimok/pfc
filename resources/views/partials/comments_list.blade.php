@@ -48,7 +48,15 @@
 			<div class="row">
 				<br>
 				<div class="col col-md-3 col-md-offset-3" style="padding-left: 0px;">
-					<a href="">Denunciar <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+					<a href="{{route('comment.report', $comment->id)}}" 
+					data-toggle="confirmation"
+					data-popout="true"
+					data-placement="bottom"
+					data-btn-ok-label="Si"
+			        data-btn-cancel-label="No"
+			        data-title="¿Deseas denunciar este comentario?">
+			        	Denunciar <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+			        </a>
 				</div>
 				<div id="likes_section" class="col col-md-6" align="right">
 					@if(Gate::allows('like_comment', $comment))

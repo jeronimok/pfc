@@ -82,6 +82,18 @@ class CommentController extends Controller
         return view('comments/edit', compact('comment'));
     }
 
+    public function report($id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        $comment->reported = $comment->reported + 1;
+
+        $comment->save();
+
+        return redirect()->back()
+            ->with('alert', "El comentario ha sido denunciado");
+    }
+
     /**
      * Update the specified resource in storage.
      *

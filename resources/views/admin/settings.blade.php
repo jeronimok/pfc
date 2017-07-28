@@ -38,6 +38,18 @@
 						<li>Obras publicadas: <strong>{{$data['works']}}</strong></li>
 						<li>Comentarios realizados: <strong>{{$data['comments']}}</strong></li>
 					</ul>
+					@if(count($reported_comments)>0)
+						<div class="alert alert-danger">
+							<label>Comentarios denunciados</label>
+							<br>
+							@foreach($reported_comments as $comment)
+								<small>
+									#{{$comment->id}}: {{ strip_tags(substr($comment->comment, 0,30)) }}... En <a href="{{route('proposal', $comment->proposal_id)}}">{{$comment->proposal->title}}</a>
+									<br>
+								</small>
+							@endforeach
+						</div>
+					@endif
 				</div>
 				<div class="col-md-6">
 					<h4>
