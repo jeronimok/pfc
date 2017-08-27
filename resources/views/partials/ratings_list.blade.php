@@ -10,10 +10,15 @@
 			<br>
 			<div class="proposal-comment">{!! nl2br($rating->comment) !!}</div>
 			<hr>
-			<div class="pull-right">
-				<a href="{{route('user', $rating->user->id)}}">{{ $rating->user->name }}</a>
-				<br>
-				<small>{{$rating->updated_at}}</small>
+			<div class="row">
+				<div class="col col-md-3 col-md-offset-8" align="right">
+					<a href="{{route('user', $rating->user->id)}}">{{ $rating->user->name }}</a>
+					<br>
+					<small>{{$rating->updated_at}}</small>
+				</div>
+				<div class="col col-md-1" align="center">
+					<img class="img-circle img-xsmall" src="{{$rating->user->avatar}}">
+				</div>
 			</div>
 		</div>
 	</div>
