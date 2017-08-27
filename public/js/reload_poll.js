@@ -11,12 +11,14 @@ $('#poll-form').submit(function( event ) {
 			    $('.list-group').append(
 			    	"<li class='list-group-item' style='display: none;'>"
 			    	 	+"<h4>" + option['name'] + " (" + option['perc'] + "%)</h4>"
-                        +"<div class='progress'><div class='progress-bar progress-bar-info progress-bar-striped' role='progressbar' style='width:"
+                        +"<div><div class='progress'><div class='progress-bar progress-bar-info progress-bar-striped' role='progressbar' style='width:"
                         +option['perc']+"%'"
-                        +"></div></div>"
+                        +"></div></div></div>"
 			    	+"</li>"
 			    );
-			    $('.list-group-item').show('slow');
+			    $('.list-group-item').show();
+                $('.progress').hide();
+                $('.progress').show('slow');
 			})
         },
         error: function( response ){    
