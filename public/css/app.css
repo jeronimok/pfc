@@ -331,3 +331,7 @@ section.gray{
   height: 300px;
   max-width: 100%;
 }
+
+.dropdown-header{
+  font-size: 14px;
+}

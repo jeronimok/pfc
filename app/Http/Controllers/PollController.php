@@ -130,7 +130,13 @@ class PollController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $poll   = Poll::findOrFail($id);
+
+        $action_id  = $poll->action_id;
+        $poll->delete();
+
+        return redirect(route('action', $action_id))
+            ->with('alert', "La votación ha sido eliminada con éxito.");
     }
 
     public function vote(Request $request)

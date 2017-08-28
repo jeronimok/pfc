@@ -250,6 +250,11 @@ Route::group(['middleware' => 'auth'], function () {
 		'as'	=> 'create-poll'
 		]);
 
+	Route::any('eliminar-votacion/{id}', [
+		'uses'	=> 'PollController@destroy',
+		'as'	=> 'poll.delete'
+		]);
+
 	Route::any('votar', [
 		'uses'	=> 'PollController@vote',
 		'as'	=> 'vote'

@@ -48,23 +48,10 @@
 							  <button class="btn btn-modern dropdown-toggle btn-lg" type="button" data-toggle="dropdown">Administrar
 							  <span class="caret"></span></button>
 							  <ul class="dropdown-menu">
-							  	<li>
-							  		<a href="{{route('action.edit', $action->id)}}">
-							  			<i class="fa fa-edit" aria-hidden="true"></i> Editar
-							  		</a>
-							  	</li>
 							  	@if($action->allow_proposals)
 							  	<li>
 							    	<a href="{{ route('create-proposal-form', $action->id) }}">
 							    		<i class="fa fa-bullhorn" aria-hidden="true"></i> Publicar propuesta
-							    	</a>
-							    </li>
-							    @endif
-
-							    @if($action->allow_polls)
-							    <li>
-							    	<a href="{{route('action.create-poll', $action->id)}}">
-							    		<i class="fa fa-pie-chart" aria-hidden="true"></i> Crear Votación entre propuestas
 							    	</a>
 							    </li>
 							    @endif
@@ -89,6 +76,44 @@
 							    	</a>
 							    </li>
 							    @endif
+
+							    @if($action->allow_polls)
+							    	@if(count($action->poll)==0)
+								    <li>
+								    	<a href="{{route('action.create-poll', $action->id)}}">
+								    		<i class="fa fa-pie-chart" aria-hidden="true"></i> Crear Votación entre propuestas
+								    	</a>
+								    </li>
+								    @else
+								    <li role="separator" class="divider"></li>
+								    <li class="dropdown-header">Votación:</li>
+								    <li>
+								    	<a href="">
+								    		<i class="fa fa-stop-circle-o" aria-hidden="true"></i> Terminar
+								    	</a>
+								    </li>
+								    <li>
+								    	<a href="{{route('poll.delete', $action->poll->id)}}"
+								    		data-toggle="confirmation"
+											data-popout="true"
+											data-placement="bottom"
+											data-btn-ok-label="Si"
+									        data-btn-cancel-label="No"
+									        data-title="¿Estás seguro de que deseas eliminarla?"
+											>
+								    		<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar
+								    	</a>
+								    </li>
+								    @endif
+							    @endif
+
+							    <li role="separator" class="divider"></li>
+							    <li class="dropdown-header">Acción participativa:</li>
+							    <li>
+							  		<a href="{{route('action.edit', $action->id)}}">
+							  			<i class="fa fa-edit" aria-hidden="true"></i> Editar
+							  		</a>
+							  	</li>
 
 							    @if(Gate::allows('admin'))
 							    	<li role="separator" class="divider"></li>
