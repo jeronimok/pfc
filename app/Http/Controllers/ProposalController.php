@@ -112,7 +112,7 @@ class ProposalController extends Controller
     {
         $proposal   = Proposal::findOrFail($request->get('proposal_id'));
 
-        if($proposal->options){
+        if(count($proposal->options)>0){
             return redirect()->back()->with('warning', 'Esta propuesta está involucrada en una votación. Debes eliminar la votación primero.');
         }
 
