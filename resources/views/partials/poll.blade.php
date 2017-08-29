@@ -3,6 +3,7 @@
         <div class="panel panel-default">
             <div class="panel-heading" align="center">
                 <h3>{{$action->poll->question}}</h3>
+                <span class="muted-text">Fecha de cierre: {{$action->poll->ending_date}}</span>
             </div>
             <form class="form-horizontal" role="form" method="POST" action="{{ route('vote') }}" id="poll-form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

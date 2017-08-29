@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Poll extends Model
 {
@@ -21,5 +22,10 @@ class Poll extends Model
     		$n = $n + count($option->voters);
     	}
     	return $n;
+    }
+
+    public function opened(){
+        // return $this->ongoing;
+        return (Carbon::today() < $this->ending_date) and $this->ongoing;
     }
 }

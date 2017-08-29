@@ -12,6 +12,7 @@ use App\Proposal;
 use App\Poll;
 use App\Option;
 use Gate;
+use Carbon\Carbon;
 
 class PollController extends Controller
 {
@@ -72,6 +73,7 @@ class PollController extends Controller
         $poll = new Poll;
         $poll->question  = $request->get('question');
         $poll->action_id = $request->get('action_id');
+        $poll->ending_date = $request->get('date');
         $poll->save();
 
         //Store options
@@ -137,6 +139,20 @@ class PollController extends Controller
 
         return redirect(route('action', $action_id))
             ->with('alert', "La votación ha sido eliminada con éxito.");
+    }
+
+    public function end($id)
+    {
+        $poll   = Poll::findOrFail($id);
+
+        $action_id  = $poll->action_id;
+        $poll->ongoing = false;
+        $poll->ending_date = Carbon::today();
+
+        $poll->save();
+
+        return redirect(route('action', $action_id))
+            ->with('alert', "Se ha cambiado el estado de la votación a «finalizada».");
     }
 
     public function vote(Request $request)

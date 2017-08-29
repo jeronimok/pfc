@@ -87,11 +87,20 @@
 								    @else
 								    <li role="separator" class="divider"></li>
 								    <li class="dropdown-header">Votación:</li>
-								    <li>
-								    	<a href="">
-								    		<i class="fa fa-stop-circle-o" aria-hidden="true"></i> Terminar
-								    	</a>
-								    </li>
+								    	@if($action->poll->ongoing)
+									    <li>
+									    	<a href="{{route('poll.end', $action->poll->id)}}"
+									    		data-toggle="confirmation"
+												data-popout="true"
+												data-placement="bottom"
+												data-btn-ok-label="Si"
+										        data-btn-cancel-label="No"
+										        data-title="¿Estás seguro de que deseas terminar la votación?"
+												>
+									    		<i class="fa fa-stop-circle-o" aria-hidden="true"></i> Terminar
+									    	</a>
+									    </li>
+									    @endif
 								    <li>
 								    	<a href="{{route('poll.delete', $action->poll->id)}}"
 								    		data-toggle="confirmation"
@@ -99,7 +108,7 @@
 											data-placement="bottom"
 											data-btn-ok-label="Si"
 									        data-btn-cancel-label="No"
-									        data-title="¿Estás seguro de que deseas eliminarla?"
+									        data-title="¿Estás seguro de que deseas eliminar la votación?"
 											>
 								    		<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar
 								    	</a>

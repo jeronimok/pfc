@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Poll;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -64,8 +65,9 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         $gate->define('vote',function($user, $poll_id){
+            $poll = Poll::findOrFail($poll_id);
             if (auth()->check()){
-                return !in_array($poll_id, $user->polls());
+                return !in_array($poll_id, $user->polls()) and $poll->opened();
             }
             else {
                 return false;
