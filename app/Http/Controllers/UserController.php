@@ -74,6 +74,10 @@ class UserController extends Controller
         $user->name = $request->get('name');
         $user->email = $request->get('email');
 
+        if ($request->get('district')){
+            $user->district = $request->get('district');
+        }
+
         // Change avatar 
         if($request->hasFile('avatar')){
             $avatar     = $request->file('avatar');

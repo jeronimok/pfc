@@ -51,6 +51,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'district' => 'required',
             'password' => 'required|confirmed|min:6',
             'g-recaptcha-response' => 'required|recaptcha',
         ]);
@@ -69,6 +70,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        $user->district = $data['district'];
         $user->role = 'general';
         $user->registration_token = str_random(40);
         $user->save();

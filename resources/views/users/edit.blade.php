@@ -56,6 +56,23 @@
 			    	<input type="email" name="email" value="{{$user->email}}" class="form-control">
 			  	</div>
 
+			  	<div class="form-group">
+					<label class="control-label">Distrito <a href="https://www.google.com/maps/d/u/0/viewer?ll=-31.552792999999998%2C-60.70838900000001&spn=0.102398%2C0.222473&t=m&msa=0&z=12&source=embed&ie=UTF8&iwloc=0004da28cd59655d04330&mid=1LGfSSm_S_DPnLAWRYg25YLj_CDM" target="_blank">(Ver mapa)</a></label>
+					<br>
+					{{ $user->district }}
+					<select class="form-control" name="district" value="{{ $user->district }}">
+						<option disabled selected>Cambiar</option>
+					    <option >Centro</option>
+					    <option >Este</option>
+					    <option >La costa</option>
+					    <option >Norte</option>
+					    <option >Noreste</option>
+					    <option >Noroeste</option>
+					    <option >Oeste</option>
+					    <option >Suroeste</option>
+					  </select>
+				</div>
+
 				<br>
 			  	<div>
 					<button type="submit" class="btn btn-default btn-lg">
