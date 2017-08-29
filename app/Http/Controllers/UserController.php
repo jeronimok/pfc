@@ -27,6 +27,31 @@ class UserController extends Controller
         return User::where('email', '<>', '')->select('name', 'email')->get();
     }
 
+    public function index_districts()
+    {
+        $total = User::count();
+
+        $centro     = round(100*User::where('district','Centro')->count()/$total,1);
+        $este       = round(100*User::where('district','Este')->count()/$total,1);
+        $costa      = round(100*User::where('district','La costa')->count()/$total,1);
+        $norte      = round(100*User::where('district','Norte')->count()/$total,1);
+        $noreste    = round(100*User::where('district','Noreste')->count()/$total,1);
+        $noroeste   = round(100*User::where('district','Noroeste')->count()/$total,1);
+        $oeste      = round(100*User::where('district','Oeste')->count()/$total,1);
+        $suroeste   = round(100*User::where('district','Suroeste')->count()/$total,1);
+        $sin_datos  = round(100*User::where('district','')->count()/$total,1);
+
+        return json_encode(array( ["label"=> 'Centro', "value" => $centro],
+                                  ["label"=> 'Este', "value" => $este],
+                                  ["label"=> 'La costa', "value" => $costa],
+                                  ["label"=> 'Norte', "value" => $norte],
+                                  ["label"=> 'Noreste', "value" => $noreste],
+                                  ["label"=> 'Noroeste', "value" => $noroeste],
+                                  ["label"=> 'Oeste', "value" => $oeste],
+                                  ["label"=> 'Suroeste', "value" => $suroeste],
+                                  ["label"=> 'Sin datos', "value" => $sin_datos]));
+    }
+
     public function show($id)
     {
         $user = User::findOrFail($id);

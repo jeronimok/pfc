@@ -119,22 +119,25 @@ new Morris.Area({
   
 });
 
-Morris.Donut({
+var districts = Morris.Donut({
   element: 'mysecondchart',
-  data: [
-    {label: "Centro", value: 29},
-    {label: "Este", value: 22},
-    {label: "La costa", value: 18},
-    {label: "Norte", value: 10},
-    {label: "Noreste", value: 9},
-    {label: "Noroeste", value: 5},
-    {label: "Oeste", value: 2},
-    {label: "Suroeste", value: 5}
-  ],
+  data: [{label: 'Santa Fe', value: 100}],
   formatter: function (y, data) { return y + '%' }
 });
 
-
+$.ajax({
+      type: "GET",
+      dataType: 'json',
+      url: "/info-distritos"
+    })
+    .done(function( data ) {
+      // When the response to the AJAX request comes back render the chart with new data
+      districts.setData(data);
+    })
+    .fail(function() {
+      // If there is no communication between the server, show an error
+      alert( "error occured" );
+    });
 
 </script>
 @endsection

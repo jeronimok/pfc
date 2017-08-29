@@ -353,6 +353,13 @@ Route::group(['middleware' => 'auth'], function () {
 			'as'	=> 'users.index'
 			]);
 
+		Route::get('info-distritos', [
+			'uses'	=> 'UserController@index_districts',
+			'as'	=> 'users.index_districts'
+			]);
+		
+
+
 		// Usuarios
 		Route::get('suspender-usuario/{id}', [
 			'uses'	=> 'UserController@ban',
