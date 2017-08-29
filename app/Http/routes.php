@@ -331,7 +331,7 @@ Route::group(['middleware' => 'auth'], function () {
 			]);
 
 		// Info para grafico de progresion mensual
-		Route::get('info-mensual', [
+		Route::get('info-mensual/{meses}', [
 			'uses'	=> 'AdminController@info_months',
 			'as'	=> 'admin.info_months'
 			]);

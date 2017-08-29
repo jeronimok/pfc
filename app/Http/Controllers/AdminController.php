@@ -33,39 +33,20 @@ class AdminController extends Controller
         return view('admin.settings', compact('data', 'banned_users', 'reported_comments'));
     }
 
-    public function info_months()
+    public function info_months($months)
     {
-        $today  = Carbon::today();
-        $sub1   = Carbon::today()->subMonth();
-        $sub2   = Carbon::today()->subMonths(2);
-        $sub3   = Carbon::today()->subMonths(3);
-        $sub4   = Carbon::today()->subMonths(4);
+        $data = [];    
+        for ($i=0; $i < $months; $i++) {
+            $sub = Carbon::today()->subMonths($i);
 
-        return json_encode(array( ["y"              => $today->format('Y-m'),
-                                   "propuestas"     => Proposal::whereMonth('created_at', '=', $today->month)->count(),
-                                   "comentarios"    => Comment::whereMonth('created_at', '=', $today->month)->count(),
-                                   "obras"          => Work::whereMonth('created_at', '=', $today->month)->count(),
-                                   "calificaciones" => Rating::whereMonth('created_at', '=', $today->month)->count()],
-                                   
-                                   ["y"             => $sub1->format('Y-m'),
-                                   "propuestas"     => Proposal::whereMonth('created_at', '=', $sub1->month)->count(),
-                                   "comentarios"    => Comment::whereMonth('created_at', '=', $sub1->month)->count(),
-                                   "obras"          => Work::whereMonth('created_at', '=', $sub1->month)->count(),
-                                   "calificaciones" => Rating::whereMonth('created_at', '=', $sub1->month)->count()],
-                                   
-                                   ["y"             => $sub2->format('Y-m'),
-                                   "propuestas"     => Proposal::whereMonth('created_at', '=', $sub2->month)->count(),
-                                   "comentarios"    => Comment::whereMonth('created_at', '=', $sub2->month)->count(),
-                                   "obras"          => Work::whereMonth('created_at', '=', $sub2->month)->count(),
-                                   "calificaciones" => Rating::whereMonth('created_at', '=', $sub2->month)->count()],
-                                   
-                                   ["y"             => $sub3->format('Y-m'),
-                                   "propuestas"     => Proposal::whereMonth('created_at', '=', $sub3->month)->count(),
-                                   "comentarios"    => Comment::whereMonth('created_at', '=', $sub3->month)->count(),
-                                   "obras"          => Work::whereMonth('created_at', '=', $sub3->month)->count(),
-                                   "calificaciones" => Rating::whereMonth('created_at', '=', $sub3->month)->count()]
-                                   
-                                   ));
+            array_push($data, ["y"              => $sub->format('Y-m'),
+                               "propuestas"     => Proposal::whereMonth('created_at', '=', $sub->month)->count(),
+                               "comentarios"    => Comment::whereMonth('created_at', '=', $sub->month)->count(),
+                               "obras"          => Work::whereMonth('created_at', '=', $sub->month)->count(),
+                               "calificaciones" => Rating::whereMonth('created_at', '=', $sub->month)->count()]);
+        }
+
+        return json_encode($data);
     }
 
 }

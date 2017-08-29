@@ -84,6 +84,19 @@
 				<div class="col-md-6">
 					Propuestas, comentarios y calificaciones publicadas por mes:
 					<div id="myfirstchart" style="height: 250px;"></div>
+					<div class="row">
+						<div class="col-md-3 col-md-offset-3" align="right">
+							Meses:
+						</div>
+					   	<div class="col-md-3" align="left">
+					  		<select class="form-control" id="months_select">
+						    	<option>2</option>
+						    	<option selected="selected">4</option>
+						    	<option>6</option>
+						    	<option>12</option>
+					  		</select>
+				   		</div>
+					</div>
 				</div>
 				<div class="col-md-6">
 					Usuarios por distrito:
@@ -104,6 +117,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
 <script type="text/javascript">
+
+// Grafico de progresion mensual
 var months = Morris.Area({
   element: 'myfirstchart',
   data: [
@@ -114,38 +129,40 @@ var months = Morris.Area({
   labels: ['Propuestas', 'Comentarios', 'Calificaciones'],
   
 });
-
-$.ajax({
+// Muestro datos de acuerdo la cantidad de meses
+$("#months_select")
+  .change(function () {
+    var n = $( "#months_select option:selected" ).text();
+    $.ajax({
       type: "GET",
       dataType: 'json',
-      url: "/info-mensual"
+      url: "/info-mensual/" + n
     })
     .done(function( data ) {
-      // When the response to the AJAX request comes back render the chart with new data
       months.setData(data);
     })
     .fail(function() {
-      // If there is no communication between the server, show an error
       alert( "error occured" );
     });
+  })
+  .change();
 
+
+// Grafico de usuarios por distrito
 var districts = Morris.Donut({
   element: 'mysecondchart',
   data: [{label: 'Santa Fe', value: 100}],
   formatter: function (y, data) { return y + '%' }
 });
-
 $.ajax({
       type: "GET",
       dataType: 'json',
       url: "/info-distritos"
     })
     .done(function( data ) {
-      // When the response to the AJAX request comes back render the chart with new data
       districts.setData(data);
     })
     .fail(function() {
-      // If there is no communication between the server, show an error
       alert( "error occured" );
     });
 
