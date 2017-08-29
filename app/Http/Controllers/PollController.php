@@ -73,7 +73,7 @@ class PollController extends Controller
         $poll = new Poll;
         $poll->question  = $request->get('question');
         $poll->action_id = $request->get('action_id');
-        $poll->ending_date = $request->get('date');
+        $poll->ending_date = date('Y-m-d', strtotime($request->get('date')));
         $poll->save();
 
         //Store options

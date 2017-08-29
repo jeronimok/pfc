@@ -50,7 +50,7 @@
 
 				<div class="form-group">
 					<label class="control-label">Fecha de cierre *</label>
-					<input class="form-control" id="date" name="date" placeholder="aaaa-mm-dd" type="text" value="{{ old('date') }}" required>
+					<input class="form-control" id="date" name="date" placeholder="dd-mm-aaaa" type="text" value="{{ old('date') }}" required>
 				</div>
 
 				<br>
@@ -77,7 +77,7 @@
     $(document).ready(function(){
       var date_input=$('input[name="date"]');
       var options={
-        format: 'yyyy-mm-dd',
+        format: 'dd-mm-yyyy',
         container: $('#form-container'),
         todayHighlight: true,
         autoclose: true,
