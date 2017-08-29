@@ -104,20 +104,30 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
 <script type="text/javascript">
-new Morris.Area({
+var months = Morris.Area({
   element: 'myfirstchart',
   data: [
-    { y: '2017-01', propuestas: 5, comentarios:10, obras: 20, calificaciones: 20 },
-    { y: '2017-02', propuestas: 12, comentarios:20,  obras: 8, calificaciones: 30 },
-    { y: '2017-03', propuestas: 20, comentarios:27,  obras: 3, calificaciones: 40 },
-    { y: '2017-04', propuestas: 15, comentarios:30,  obras: 2, calificaciones: 50 },
-    { y: '2017-05', propuestas: 10, comentarios:37,  obras: 2, calificaciones: 60 }
+    { y: '2017-01', propuestas: 0, comentarios:0, obras: 0, calificaciones: 0 }
   ],
   xkey: 'y',
   ykeys: ['propuestas', 'comentarios', 'calificaciones'],
   labels: ['Propuestas', 'Comentarios', 'Calificaciones'],
   
 });
+
+$.ajax({
+      type: "GET",
+      dataType: 'json',
+      url: "/info-mensual"
+    })
+    .done(function( data ) {
+      // When the response to the AJAX request comes back render the chart with new data
+      months.setData(data);
+    })
+    .fail(function() {
+      // If there is no communication between the server, show an error
+      alert( "error occured" );
+    });
 
 var districts = Morris.Donut({
   element: 'mysecondchart',

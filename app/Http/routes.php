@@ -330,6 +330,12 @@ Route::group(['middleware' => 'auth'], function () {
 			'as' 	=> 'settings'
 			]);
 
+		// Info para grafico de progresion mensual
+		Route::get('info-mensual', [
+			'uses'	=> 'AdminController@info_months',
+			'as'	=> 'admin.info_months'
+			]);
+
 		// Crear accion participativa
 		Route::get('administracion/crear-accion-participativa', [
 			'uses' 	=> 'ActionController@create',
@@ -352,12 +358,11 @@ Route::group(['middleware' => 'auth'], function () {
 			'uses'	=> 'UserController@index',
 			'as'	=> 'users.index'
 			]);
-
+		// Info para grafico de distritos
 		Route::get('info-distritos', [
 			'uses'	=> 'UserController@index_districts',
 			'as'	=> 'users.index_districts'
 			]);
-		
 
 
 		// Usuarios
