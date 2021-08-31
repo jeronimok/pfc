@@ -8,7 +8,7 @@ Laravel, Bootstrap, php, javascript, mysql.
 ## Installation
 
 ### Notes
-- The project was developed and tested using Ubuntu 16.04 LTS and Laravel 5.1.
+- The project was developed and tested using **Ubuntu 16.04 LTS, PHP 5.5.9 and Laravel 5.1.**
 - Correct functioning on other systems and software versions is not guaranteed.
 - This installation guide also mentions the alternative steps to install the project on windows and mac in order to make it accessible to all users but it was not tested on those operating systems.
 
@@ -18,7 +18,8 @@ Laravel, Bootstrap, php, javascript, mysql.
 - Update windows environment variable path to point to your php install folder (inside wamp installation dir) (here is how you can do this http://stackoverflow.com/questions/17727436/how-to-properly-set-php-environment-variable-to-run-commands-in-git-bash)
 
 ### Ubuntu (Mac Os and Windows users also continue here):
-- Create a database locally named `pfc` utf8_general_ci 
+- Create a mysql  database locally named `pfc` utf8_general_ci
+- Create a mysql  database locally named `tracker` utf8_general_ci 
 - Download composer https://getcomposer.org/download/
 - Pull from master repo
 - Rename `.env.example` file to `.env`inside your project root and fill the database information.
