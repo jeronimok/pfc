@@ -78,7 +78,7 @@
 							    @endif
 
 							    @if($action->allow_polls)
-							    	@if(count($action->poll)==0)
+							    	@if(is_null($action->poll))
 								    <li>
 								    	<a href="{{route('action.create-poll', $action->id)}}">
 								    		<i class="fa fa-pie-chart" aria-hidden="true"></i> Crear Votación entre propuestas
@@ -156,7 +156,7 @@
 	  				@if(count($proposals)>0)
 	  					<li><a href="#" class="scroll-link" data-id="propuestas">Propuestas</a></li>
 	  				@endif
-	  				@if(count($action->poll) > 0 )
+	  				@if(!is_null($action->poll) )
 	  					<li><a href="#" class="scroll-link" data-id="votacion">Votación</a></li>
 	  				@endif
 	  				@if(count($action->works()) > 0 )
@@ -214,7 +214,7 @@
 @endif
 
 
-@if(count($action->poll) > 0 )
+@if(!is_null($action->poll) )
 	<div class="jumbotron jumbo-img no-margin-bottom page-section" id="votacion">
 		<div class="container-fluid">
 			<div class="row">
