@@ -45,6 +45,9 @@ Laravel, Bootstrap, php, javascript, mysql.
 - Create yor public and private recaptcha keys: https://cloud.google.com/recaptcha-enterprise/docs/create-key
 - Fill the required variables in your .env file
 
+### User manual
+- After installing the project, it may be helpful to read the user manual: https://github.com/jeronimok/pfc/blob/master/Manual-de-usuario.pdf
+
 
 
 ### If for some reason your project stops working try this:
