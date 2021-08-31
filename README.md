@@ -18,6 +18,7 @@ Laravel, Bootstrap, php, javascript, mysql.
 - Update windows environment variable path to point to your php install folder (inside wamp installation dir) (here is how you can do this http://stackoverflow.com/questions/17727436/how-to-properly-set-php-environment-variable-to-run-commands-in-git-bash)
 
 ### Ubuntu (Mac Os and Windows users also continue here):
+- Install Mysql server and create a user (optionally install phpmyadmin to manage your DBs)
 - Create a mysql  database locally named `pfc` utf8_general_ci
 - Create a mysql  database locally named `tracker` utf8_general_ci 
 - Download composer https://getcomposer.org/download/
