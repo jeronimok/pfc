@@ -31,7 +31,7 @@ Laravel, Bootstrap, php, javascript, mysql.
 - Run `php artisan serve`
 -  You can now access the project at https://localhost:8000
 
-## If for some reason your project stops working do these:
+### If for some reason your project stops working do these:
 - `composer install`
 - `php artisan migrate`
 
