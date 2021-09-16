@@ -32,9 +32,9 @@ Laravel, Bootstrap, php, javascript, mysql.
 
 - Run `php artisan migrate`
 - Run `php artisan db:seed` to run seeders
-- Run `php artisan serve`
 
-### Test access
+### Serve
+- Run `php artisan serve`
 - At this point you should be able to access the project at http://localhost:8000
 
 ### Set up mail server for local testing (required for users registration)
